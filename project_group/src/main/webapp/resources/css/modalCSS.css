@@ -1,0 +1,39 @@
+@charset "UTF-8";
+
+
+.signUp-title {
+	width : 100%;
+	text-align : center;
+	font-weight: bold;
+}
+
+.modal-cancel{
+	
+	position : absolute;
+	right : 1rem;
+}
+
+.signUp-header{
+	
+	background-color: #efefef;
+	border-bottom : none;
+}
+.signUp-body {
+	
+	padding : 0px;
+}
+.signUp-body > form{
+	
+	width : 100%;
+	margin : 0px auto;
+	padding: 1rem 4rem;
+	box-shadow : none;
+}
+
+.signUp-footer{
+	background-color: #efefef;
+	border-top : none;
+	padding : 1rem 2rem 3rem 2rem;
+	justify-content: center;
+	
+}

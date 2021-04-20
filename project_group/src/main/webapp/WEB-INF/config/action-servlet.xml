@@ -19,10 +19,36 @@
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
+	</beans:bean> 
+	 
+	 
+	<context:component-scan base-package="com.spring" />
+	
+	<!-- tiles 선언  -->
+	 <beans:bean id="urlBasedViewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<beans:property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView"/>
+		<beans:property name="order" value="0"/>
+	</beans:bean>
+	<beans:bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+		<beans:property name="definitions">
+			<beans:list>
+				<beans:value>/WEB-INF/config/tiles.xml</beans:value>
+			</beans:list>
+		</beans:property> 
 	</beans:bean>
 	
-	<context:component-scan base-package="com.spring.group" />
+	<!-- 업로드 패스 설정 -->
+	<beans:bean class="java.lang.String" id="uploadPath">
+		<beans:constructor-arg value=""/>
+	</beans:bean>
+	
+	<!-- 일반 파일 업로드 경로  --> 
+	<resources location="/resources/imgUpload/" mapping="/imgUpload/**"></resources>
 	
 	
+	<beans:bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver" id="multipartResolver">
+		<beans:property name="maxUploadSize" value="31457280"/>
+		  <beans:property name="defaultEncoding" value="utf-8" />
+	</beans:bean>
 	
 </beans:beans>
