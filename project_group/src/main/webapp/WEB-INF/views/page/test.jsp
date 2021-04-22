@@ -7,7 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
+test
 
-<% response.sendRedirect(request.getContextPath()+"/StudyPlanner");%> 
+ <input type="button" value="로그아웃" onclick="location.href='/logout'">
 </body>
 </html>

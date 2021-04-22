@@ -7,13 +7,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class ViewController {
 	
-	@RequestMapping(value="/YoonStudy")
+	@RequestMapping(value="/StudyPlanner")
 	public String YoonStudy(
 			
 			Model model
 			) {
 		
-		System.out.println("YoonStudy.go");
+		System.out.println("StudyPlanner");
 		
 		model.addAttribute("title","LOGIN");
 		

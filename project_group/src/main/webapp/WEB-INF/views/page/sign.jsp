@@ -1,9 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
-
 <div class="simple-login-container">
-    <h2>YOON STUDY</h2>
+    <h2>STUDY PLANNER</h2>
     <div class="row">
         <div class="col-md-12 form-group">
             <input type="text" class="form-control" placeholder="아이디 ">
@@ -16,7 +14,9 @@
     </div>
     <div class="row">
         <div class="col-md-12 form-group">
-            <input type="submit" class="btn btn-block btn-login" value="로그인">
+            <a href="/login?with=this" class="btn btn-block btn-login">  
+            	로그인
+            </a>
         </div>
     </div>
     <div class="row">
@@ -27,12 +27,16 @@
     
     <div class="row">
         <div class="col-md-12 form-group"> 
-             <input type="button" class="btn btn-block btn-signUp" value="카카오 로그인">
+            <a href="/login?with=kakao" >
+             	<img src="//mud-kage.kakao.com/14/dn/btqbjxsO6vP/KPiGpdnsubSq3a0PHEGUK1/o.jpg" width="300"/>
+            </a> 
         </div>
     </div>
     <div class="row">
         <div class="col-md-12 form-group"> 
-             <input type="button" class="btn btn-block btn-signUp" value="구글 로그인">
+            <a href="/login?with=google">
+             	<img src="//mud-kage.kakao.com/14/dn/btqbjxsO6vP/KPiGpdnsubSq3a0PHEGUK1/o.jpg" width="300"/>
+            </a> 
         </div>
     </div>
     
@@ -75,11 +79,12 @@
 				</form>
 			</div>
 			<div class="modal-footer signUp-footer">
-				<button type="submit">가입 완료</button>
+				<button type="submit" >가입 완료</button>
 			</div>
 		</div>
 	</div>
 </div>
+
 
 <script type="text/javascript">
 	
@@ -95,8 +100,23 @@ $(document).ready(function(){
 	      $(this).parent().find(".label-txt").removeClass('label-active');
 	    };
 	  });
-
+	
 	});
+
+
+/* function login(data){
+	
+	$.ajax({
+		
+		url : "/login?with="+data,
+		success : function(url){
+			
+			
+			
+		}
+	})
+} */
+
 
 </script>
 
