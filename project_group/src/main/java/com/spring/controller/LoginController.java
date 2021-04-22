@@ -69,5 +69,7 @@ public class LoginController {
 	    session.removeAttribute("userId");
 	    return "sign.page";
 	}
+	
+	
 }
 

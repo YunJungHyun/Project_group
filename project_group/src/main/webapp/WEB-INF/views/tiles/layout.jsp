@@ -13,7 +13,8 @@
 	<title>YoonStudy - ${title}</title>
 </head>
 <body>
-
+	
+	
 	<!-- bootstrap 4.3.1 js  -->
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script
@@ -26,9 +27,14 @@
 		crossorigin="anonymous"></script>
 
 
+	
 	<div class="view">
 		<tiles:insertAttribute name="body" />
 	</div>
-
+	<div id="mask"></div>
+	
 </body>
+
+
 </html>
+
