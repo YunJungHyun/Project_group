@@ -19,7 +19,7 @@
 
 		 <property name="driverClassName" value="org.mariadb.jdbc.Driver"></property>
 		<property name="url"
-			value="jdbc:mariadb://localhost:3306/mariadb_group?useSSL=false&amp;serverTimezone=UTC">
+			value="jdbc:mariadb://localhost:9090/mariadb_group?useSSL=false&amp;serverTimezone=UTC">
 		</property>
 		<property name="username" value="group_id"></property>
 		<property name="password" value="0000"></property>
@@ -68,9 +68,9 @@
 	</bean>
 
 	<!-- bean 등록 -->
-	<!-- <context:component-scan
+	 <context:component-scan
 		base-package="com.spring.dao"></context:component-scan>
 	<context:component-scan
-		base-package="com.spring.service"></context:component-scan> -->
+		base-package="com.spring.service"></context:component-scan>
 	<!-- <context:component-scan base-package="com.spring.utils"></context:component-scan> -->
 </beans>
