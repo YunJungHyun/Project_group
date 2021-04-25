@@ -18,9 +18,9 @@ public class UserDAOImpl  implements UserDAO{
 	
 	
 	@Override
-	public int idCheck(String inputId) {
+	public int idCheck(String userid) {
 		
-			int result = sqlSession.selectOne(Namespace+".idCheck", inputId);
+			int result = sqlSession.selectOne(Namespace+".idCheck", userid);
 		
 		return result;
 	}
@@ -28,6 +28,46 @@ public class UserDAOImpl  implements UserDAO{
 	@Override
 	public int signUp(UserVO userVO) {
 		int result = sqlSession.insert(Namespace+".signUp", userVO);
+		return result;
+	}
+	
+	@Override
+	public String login(UserVO userVO) {
+		
+		int idChk =sqlSession.selectOne(Namespace+".idCheck", userVO.getUserid());
+		
+		String result = null;
+		if(idChk == 1) {
+			
+			
+			int pwChk =sqlSession.selectOne(Namespace +".loginPwChk", userVO);
+			
+			if(pwChk ==1) {
+				
+			
+					result="loginSuccess";
+			}else {
+				
+				
+				
+				result ="pwChkFail";
+			}
+						
+		}else {
+			
+			
+			result ="idChkFail";
+		}
+		
+		return result;
+	}
+	
+	
+	@Override
+	public UserVO getUserInfo(UserVO userVO) {
+		
+		UserVO result = sqlSession.selectOne(Namespace+".getUserInfo", userVO);
+		
 		return result;
 	}
 	

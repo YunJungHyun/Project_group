@@ -7,7 +7,7 @@
 
 	<select id="idCheck" resultType="int">
 		 <![CDATA[
-		SELECT COUNT(*) FROM user WHERE userid = #{inputId}
+		SELECT COUNT(*) FROM user WHERE userid = #{userid}
 		]]>
 	</select>
 	
@@ -18,6 +18,25 @@
 		]]>
 	
 	</insert>
+	
+	<select id="loginPwChk" resultType="int">
+		
+		 <![CDATA[
+			SELECT COUNT(*) FROM user WHERE userid = #{userid} AND userpw = #{userpw}
+		]]>
+		
+	</select>
+
+
+	<select id="getUserInfo" resultType="userVO">
+		
+		 <![CDATA[
+			SELECT * FROM user WHERE userid = #{userid} AND userpw = #{userpw}
+		]]>
+		
+	</select>
+	
+	
 </mapper>
 
  

@@ -15,14 +15,24 @@ public class UserServiceImpl implements UserService{
 	UserDAO userDAO;
 	
 	@Override
-	public int idCheck(String inputId) {
+	public int idCheck(String userid) {
 		
-		return userDAO.idCheck(inputId); 
+		return userDAO.idCheck(userid); 
 	}
 	@Override
 	public int signUp(UserVO userVO) {
-		// TODO Auto-generated method stub
 		return userDAO.signUp(userVO); 
 	}
 	
+	@Override
+	public String login(UserVO userVO) {
+	
+		return userDAO.login(userVO);
+	}
+	
+	@Override
+	public UserVO getUserInfo(UserVO userVO) {
+		// TODO Auto-generated method stub
+		return userDAO.getUserInfo(userVO);
+	}
 }

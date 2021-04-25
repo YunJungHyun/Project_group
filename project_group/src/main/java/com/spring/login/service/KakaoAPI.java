@@ -17,6 +17,10 @@ import com.google.gson.JsonParser;
 
 @Service
 public class KakaoAPI {
+	
+	
+	
+	
 	public String getAccessToken (String authorize_code) {
         String access_Token = "";
         String refresh_Token = "";

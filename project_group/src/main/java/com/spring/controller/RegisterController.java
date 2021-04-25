@@ -18,7 +18,7 @@ import com.spring.service.UserService;
 import com.spring.vo.UserVO;
 
 @Controller
-public class registerController {
+public class RegisterController {
 
 	
 	@Autowired
@@ -42,13 +42,13 @@ public class registerController {
 	@RequestMapping(value="/idCheck" , method = RequestMethod.POST)
 	@ResponseBody
 	public String useridChk(
-			@RequestParam(value="inputId") String inputId
+			@RequestParam(value="userid") String userid
 			) {
 		
 		
-		System.out.println(inputId);
+		System.out.println(userid);
 		 
-		int result =userService.idCheck(inputId);
+		int result =userService.idCheck(userid);
 		
 		System.out.println("result :" +result);
 		String data = null;

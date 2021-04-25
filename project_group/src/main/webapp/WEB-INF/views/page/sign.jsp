@@ -1,23 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
 <div class="simple-login-container">
 	
     <h2>STUDY PLANNER</h2>
+    <form id="signIn-form" name="signIn-form" method="POST">
     <div class="row">
         <div class="col-md-12 form-group">
-            <input type="text" class="form-control" placeholder="아이디 ">
+            <input type="text" class="form-control" id="signIn-userid" name="userid" placeholder="아이디 ">
         </div>
     </div>
     <div class="row">
         <div class="col-md-12 form-group"> 
-            <input type="password" placeholder="패스워드" class="form-control">
+            <input type="password" id="signIn-userpw" name="userpw" placeholder="패스워드" class="form-control">
         </div>
     </div>
+    </form>
     <div class="row">
         <div class="col-md-12 form-group">
-            <a href="/login?with=this" class="btn btn-block btn-login">  
-            	로그인
-            </a>
+            <input type="submit" form="signIn-form" id="signIn-btn" class="btn btn-block btn-login" value="로그인">         	  
         </div>
     </div>
     <div class="row">
@@ -25,7 +26,6 @@
              <input type="button" class="btn btn-block btn-signUp" value="회원 가입">
         </div>
     </div>
-    
     <div class="row">
         <div class="col-md-12 form-group"> 
             <a href="/login?with=kakao" >
@@ -158,6 +158,69 @@
 
 <script type="text/javascript">
 
+function login(queryString){
+	
+	$.ajax({
+		
+		url : "/login?with=this",
+		type : "POST",
+		data : queryString,
+		success : function(data){
+			
+			switch (data) { 
+				case "idChkFail" :
+					alert("존재하지 않는 아이디입니다.");
+					$("#signIn-userid").focus();
+					break;
+					
+				case "pwChkFail" :
+					alert("비밀번호가 잘못되었습니다.");
+					$("#signIn-userpw").focus();
+					break;
+					
+				case "loginSuccess" :
+					alert("로그인 되었습니다.");
+					window.location.href="/plannerHome";
+					break;
+			}			
+				
+		
+		},error : function(error){
+			
+			alert(error);
+		}
+		
+	})
+}
+
+
+/* "id":1704423317,
+"connected_at":"2021-04-20T16:30:54Z",
+"properties":{"nickname":"정-현",
+"profile_image":"http://k.kakaocdn.net/dn/b7k8vo/btq1ZEWuxb4/X5KaX1r91vXDsQr58K5MA1/img_640x640.jpg",
+"thumbnail_image":"http://k.kakaocdn.net/dn/b7k8vo/btq1ZEWuxb4/X5KaX1r91vXDsQr58K5MA1/img_110x110.jpg"},
+"kakao_account":{"profile_needs_agreement":false,
+"profile":{"nickname":"정-현",
+"thumbnail_image_url":"http://k.kakaocdn.net/dn/b7k8vo/btq1ZEWuxb4/X5KaX1r91vXDsQr58K5MA1/img_110x110.jpg",
+"profile_image_url":"http://k.kakaocdn.net/dn/b7k8vo/btq1ZEWuxb4/X5KaX1r91vXDsQr58K5MA1/img_640x640.jpg"},
+"has_email":true,
+"email_needs_agreement":false,
+"is_email_valid":true,
+"is_email_verified":true,
+"email":"yjh_zzzz@naver.com",
+"has_gender":true,
+"gender_needs_agreement":false,
+"gender":"male"}
+
+id, nickname, gender 
+
+pw : none 
+
+email
+phn
+name
+birth
+regday */
 var timer = null;
 var isRunning = false;
 
@@ -193,6 +256,8 @@ $(document).ready(function(){
 			  idChk =false;
 		  }
 		  else{
+			  
+			 
 			 if(!idRegExp.test(inputId)){
 				alert("아이디는 공백없이 영문 대소문자와 숫자 6~20자리로 입력해야합니다!");
 				$("#userid").val("");
@@ -200,13 +265,14 @@ $(document).ready(function(){
 				
 				return false;
 			 }
+			 
 		 	 $.ajax({
 			  
-				  url: "/idCheck",
+				 url: "/idCheck",
 			 	 type: "POST",
 			 	 data : {
 				  
-					  "inputId" : inputId
+					  "userid" : inputId
 			 
 				  },success:function(data){
 				  
@@ -505,7 +571,8 @@ $(document).ready(function(){
 		 		
 		 		var queryString = $("form[name=reg-form]").serialize() ;
 				signUp(queryString);
-		 		return false;
+		 		
+				
 		 	}else if(idChk == false){
 		 		
 		 		alert("아이디가 중복 되었습니다.");
@@ -632,9 +699,38 @@ $(document).ready(function(){
 			  }
 		  }
 	  })
+	  
+	  $("#signIn-btn").on("click",function(){
+		  
+		  
+		  if($("#signIn-userid").val()==""){
+			  
+			  alert("아이디를 입력해주세요.");
+				
+			  $("#signIn-userid").focus();
+			  return false;
+		  }
+		  
+		  if($("#signIn-userpw").val()==""){
+		  
+			alert("비밀번호를 입력해주세요.");  
+			$("#signIn-userpw").focus();
+			return false;
+		  }
+		  
+	  	
+		  
+
+	  		var queryString = $("form[name=signIn-form]").serialize();
+	  		
+	  		login(queryString);
+	  		
+	  		
+	  		return false;
+	
+	  })
 	});
 	
- 
 
 function startTimer(count, display) {
             
@@ -661,6 +757,7 @@ function startTimer(count, display) {
 }
 
 
+
 function signUp(queryString){
 	
 	$.ajax({
@@ -671,8 +768,11 @@ function signUp(queryString){
 		success : function(data){
 			
 			alert("성공");
+			
 		}
 	})
+	
+	return false;
 }
 
 </script>

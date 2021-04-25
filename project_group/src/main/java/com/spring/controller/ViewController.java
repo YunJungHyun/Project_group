@@ -8,8 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ViewController {
 	
 	@RequestMapping(value="/StudyPlanner")
-	public String YoonStudy(
-			
+	public String StudyPlanner(
 			Model model
 			) {
 		
@@ -19,5 +18,20 @@ public class ViewController {
 		
 		return "sign.page";
 	}
+	
+	@RequestMapping(value="/plannerHome")
+	public String plannerHome(
+			
+			Model model
+			) {
+		
+		System.out.println("plannerHome");
+		
+		model.addAttribute("title","HOME");
+		
+		return "main.page";
+	}
+	
+	
 	
 }
