@@ -14,9 +14,12 @@
 
 <link type="text/css" rel="stylesheet" href="<c:url value='resources/css/modalCSS.css'/>" />
 
-
-
-
+<meta name="google-signin-scope" content="profile email">
+<meta name="google-signin-client_id" content="351044074609-1jm81l8d3bvst0v67cm6ifq31nfmrft6.apps.googleusercontent.com">
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+ 
+   
+ 
 
 
 

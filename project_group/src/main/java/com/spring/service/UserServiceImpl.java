@@ -35,4 +35,10 @@ public class UserServiceImpl implements UserService{
 		// TODO Auto-generated method stub
 		return userDAO.getUserInfo(userVO);
 	}
+	
+	@Override
+	public int kakaoReg(UserVO userVO) {
+		// TODO Auto-generated method stub
+		return userDAO.kakaoReg(userVO);
+	}
 }

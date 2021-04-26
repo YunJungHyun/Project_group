@@ -5,6 +5,7 @@ import java.sql.Date;
 public class UserVO {
 	
 	private int unum;
+	private String usercode;
 	private String userid;
 	private String userpw;
 	private String username;
@@ -14,7 +15,29 @@ public class UserVO {
 	private String gender;
 	private String phn;
 	private String email;
+	private String loginsort;
+	private Date regday;
 	
+	
+	
+	public Date getRegday() {
+		return regday;
+	}
+	public void setRegday(Date regday) {
+		this.regday = regday;
+	}
+	public String getUsercode() {
+		return usercode;
+	}
+	public void setUsercode(String usercode) {
+		this.usercode = usercode;
+	}
+	public String getLoginsort() {
+		return loginsort;
+	}
+	public void setLoginsort(String loginsort) {
+		this.loginsort = loginsort;
+	}
 	public int getUnum() {
 		return unum;
 	}
@@ -81,10 +104,11 @@ public class UserVO {
 	
 	@Override
 	public String toString() {
-		return "UserVO [unum=" + unum + ", userid=" + userid + ", userpw=" + userpw + ", username=" + username
-				+ ", nickname=" + nickname + ", strBirth=" + strBirth + ", gender=" + gender + ", phn=" + phn
-				+ ", email=" + email + "]";
+		return "UserVO [unum=" + unum + ", usercode=" + usercode + ", userid=" + userid + ", userpw=" + userpw
+				+ ", username=" + username + ", nickname=" + nickname + ", strBirth=" + strBirth + ", birth=" + birth
+				+ ", gender=" + gender + ", phn=" + phn + ", email=" + email + ", loginsort=" + loginsort + ", regday="
+				+ regday + "]";
 	}
 	
-	
+
 }

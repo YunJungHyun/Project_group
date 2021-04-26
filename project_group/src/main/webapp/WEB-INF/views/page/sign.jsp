@@ -28,20 +28,31 @@
     </div>
     <div class="row">
         <div class="col-md-12 form-group"> 
-            <a href="/login?with=kakao" >
-             	<img src="//mud-kage.kakao.com/14/dn/btqbjxsO6vP/KPiGpdnsubSq3a0PHEGUK1/o.jpg" width="300"/>
+            <a class="loginBtn" id="kakaoLogin" href="/login?with=kakao" >
+             	<span class="kakaoLogo">
+             		<img src="resources/logo/kakaotalk_logo_icon_147272.png">
+             	</span>
+             	<span class="kakao-login logo-line">카카오 로그인</span>
             </a> 
         </div>
     </div>
+   
     <div class="row">
-        <div class="col-md-12 form-group"> 
-            <a href="/login?with=google">
-             	<img src="//mud-kage.kakao.com/14/dn/btqbjxsO6vP/KPiGpdnsubSq3a0PHEGUK1/o.jpg" width="300"/>
-            </a> 
-        </div>
-    </div>
+  		<div class="col-md-12 form-group"> 
+         	<a class="loginBtn" id="googleLogin" href="/login?with=google">
+         		<span class="googleLogo">
+         			<img src="resources/logo/Google_icon-icons.com_66793.png">
+         		</span>
+         		<span class="google-login logo-line">Google 로그인</span>
+         	</a>
+        </div> 
+    </div> 
     
+   <!--  <div>테스트입니다.</div>
+    <a href="http://localhost:8081/auth/GOOGLE">구글 로그인</a> -->
 </div>
+
+
 
 <!-- 회원 가입 모달  -->
 <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog"
@@ -235,6 +246,8 @@ $(document).ready(function(){
 	  var idChk =false;
 	  var emailChk= false;
 	  var emailRegExp = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+	  
+	  
 	  
 	  $('.signUp-input').focus(function(){
 	    $(this).parent().find(".label-txt").addClass('label-active');

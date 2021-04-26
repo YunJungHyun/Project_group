@@ -12,6 +12,8 @@ public interface UserDAO {
 
 	UserVO getUserInfo(UserVO userVO);
 
+	int kakaoReg(UserVO userVO);
+
 	
 
 }

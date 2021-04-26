@@ -16,7 +16,11 @@ body {
 	font-size: 20px;
 	color: #fff;
 }
-
+.btn-block{
+	width: 300px;
+	height: 50px;
+	color: #fff;
+}
 .simple-login-container .btn-login {
 	background-color: #FF5964;
 	color: #fff;
@@ -27,6 +31,59 @@ body {
 	color: #fff;
 }
 
-a { 
-	color: #fff;
+.loginBtn{
+	
+	height: 50px;
+}
+
+#kakaoLogin{
+	
+	background-color: #ffe90a;
+    width: 100%;
+    display: flex;
+    border-radius: .25rem;
+}
+
+.kakaoLogo{
+	
+	padding: 0px 1rem 0px 1rem;
+}
+
+.kakao-login{
+	
+	width: 100%;
+    color: #341819;
+    font-size: 1.25rem;
+    line-height: 2.4;
+    font-weight: bold;
+    padding: 0px 0px 0px 2rem;
+}
+
+#googleLogin{
+	
+	background-color: #ffffff;
+    width: 100%;
+    display: flex;
+    border-radius: .25rem;
+}
+
+.googleLogo{
+	
+	padding: 0.5rem 1.5rem 0.5rem 1.5rem;
+}
+
+.google-login{
+	
+	width: 100%;
+    color: #341819;
+    font-size: 1.25rem;
+    line-height: 2.4;
+    font-weight: bold;
+    padding: 0px 0px 0px 2rem;
+}
+
+a:hover {
+	
+	
+	text-decoration:  none;
 }

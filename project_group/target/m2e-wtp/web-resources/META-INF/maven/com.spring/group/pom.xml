@@ -18,6 +18,13 @@
 
 
 		<!-- +ADD DEPENDENCY -->
+		 
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.20</version>
+        </dependency>
+		
 		<!-- Sql Log -->
 		<dependency>
 			<groupId>org.lazyluke</groupId>
@@ -167,6 +174,7 @@
 					<groupId>commons-logging</groupId>
 					<artifactId>commons-logging</artifactId>
 				</exclusion>
+				
 			</exclusions>
 		</dependency>
 		<dependency>
