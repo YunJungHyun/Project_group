@@ -14,6 +14,8 @@ public interface UserDAO {
 
 	int kakaoReg(UserVO userVO);
 
+	int googleReg(UserVO userVO);
+
 	
 
 }

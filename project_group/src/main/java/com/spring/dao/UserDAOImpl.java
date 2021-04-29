@@ -78,4 +78,10 @@ public class UserDAOImpl  implements UserDAO{
 		int result = sqlSession.insert(Namespace+".kakaoReg", userVO);
 		return result;
 	}
+	
+	@Override
+	public int googleReg(UserVO userVO) {
+		int result = sqlSession.insert(Namespace+".googleReg", userVO);
+		return result;
+	}
 } 

@@ -12,6 +12,8 @@
 		</layout>
 	</appender>
 
+
+	
 	<!-- Application Loggers -->
 	<logger name="com.spring.group">
 		<level value="info" />

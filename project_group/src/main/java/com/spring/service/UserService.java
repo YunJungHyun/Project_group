@@ -14,5 +14,7 @@ public interface UserService {
 
 	int kakaoReg(UserVO userVO);
 
+	int googleReg(UserVO userVO);
+
 
 }

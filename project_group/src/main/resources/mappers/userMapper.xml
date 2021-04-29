@@ -26,6 +26,13 @@
 	
 	</insert>
 	
+	<insert id="googleReg">
+		 <![CDATA[
+			INSERT INTO user(usercode,userid,username,loginsort  ) VALUES(#{usercode},#{userid}, #{username}, #{loginsort})
+		]]>
+	
+	</insert>
+	
 	<select id="loginPwChk" resultType="int">
 		
 		 <![CDATA[

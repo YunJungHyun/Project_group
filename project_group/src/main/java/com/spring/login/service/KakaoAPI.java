@@ -20,7 +20,6 @@ import com.spring.service.UserService;
 import com.spring.vo.UserVO;
 
 @Service
-
 public class KakaoAPI {
 	
 	
@@ -107,6 +106,7 @@ public class KakaoAPI {
 	        
 	        String line = "";
 	        String result = "";
+	        
 	        
 	        while ((line = br.readLine()) != null) {
 	            result += line;

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.spring.login.service.GoogleAPI;
 import com.spring.login.service.KakaoAPI;
 import com.spring.service.UserService;
 import com.spring.vo.UserVO;
@@ -23,6 +24,9 @@ public class LoginController {
 	
 	@Autowired
 	private KakaoAPI kakao;
+	
+	@Autowired
+	private GoogleAPI google;
 	
 	@Inject
 	UserService userService;
@@ -40,7 +44,7 @@ public class LoginController {
 			) {
 		
 		String result = null;
-	
+		
 		if(with.equals("this")) {
 			
 			
@@ -55,7 +59,7 @@ public class LoginController {
 			}
 			
 			
-		}
+		} 
 		return result;
 	}
 	
@@ -75,11 +79,24 @@ public class LoginController {
 			loginUrl.append("&response_type=code");
 		
 			System.out.println("loginUrl.toString() :"+loginUrl.toString());
-		return "redirect:"+loginUrl.toString();
+			return "redirect:"+loginUrl.toString();
 		}else if(with.equals("google")) {
 			
+			StringBuffer loginUrl = new StringBuffer(); //문자열을 추가하거나 변결 할 때 주로 사용하는 자료형.
+			loginUrl.append("https://accounts.google.com/o/oauth2/v2/auth");
+			loginUrl.append("?scope=email%20profile"); 
+			loginUrl.append("%20https://www.googleapis.com/auth/user.birthday.read"); 
+			loginUrl.append("%20https://www.googleapis.com/auth/user.gender.read"); 
+			//loginUrl.append("&include_granted_scopes=true"); 
+			loginUrl.append("&response_type=code");  
+			loginUrl.append("&redirect_uri=http://localhost:8081/googleLogin"); 
+			loginUrl.append("&client_id=351044074609-1jm81l8d3bvst0v67cm6ifq31nfmrft6.apps.googleusercontent.com"); 
+			loginUrl.append("&access_type=offline"); 
+			loginUrl.append("&approval_prompt=force"); 
 			
-		
+			System.out.println("loginUrl.toString() :"+loginUrl.toString());
+			
+			return "redirect:"+loginUrl.toString();
 		}
 		
 		return null;
@@ -89,7 +106,7 @@ public class LoginController {
 	@RequestMapping(value="/kakaoLogin")
 	public String kakaoLogin(@RequestParam("code") String code, HttpSession session) {
 		
-		System.out.println("인가 코드 code : "+code);
+		System.out.println("[kakao] 인가 코드 code : "+code);
 		String access_Token = kakao.getAccessToken(code);
 	    
 		HashMap<String, Object> userInfo = kakao.getUserInfo(access_Token);
@@ -98,16 +115,14 @@ public class LoginController {
 	    
 	    if(userInfo.get("kakaoReg") == "yes") {
 	    	
-	    	int kakaoRegResult =userService.kakaoReg((UserVO)userInfo.get("userVO"));
+	    	userService.kakaoReg((UserVO)userInfo.get("userVO"));
 	    	
 	    }
-	    
 	    
 	    
 	    //클라이언트의 이메일이 존재할 때 세션에 해당 이메일과 토큰 등록
 	    if (userInfo.get("userVO") != null) {
 	    	UserVO gui=(UserVO)userInfo.get("userVO");
-	    	
 	    	session.setAttribute("gui", gui);
 	    	session.setAttribute("access_Token", access_Token);
 	    	
@@ -116,6 +131,23 @@ public class LoginController {
         return "test.page";
 	}
 	
+	
+	@RequestMapping(value="/googleLogin")
+	public String googleLogin(@RequestParam("code") String code, HttpSession session) {
+		
+		System.out.println("[google] 인가 code : " + code);
+		String access_Token = google.getAccessToken(code);
+		
+		HashMap<String, Object> userInfo = google.getUserInfo(access_Token);
+		
+		 if(userInfo.get("googleReg") == "yes") {
+		    	
+		    userService.googleReg((UserVO)userInfo.get("userVO"));
+		    	
+		 }
+		return "test.page";
+		
+	}
 	
 	@RequestMapping(value="/logout")
 	public String logout(HttpSession session) {

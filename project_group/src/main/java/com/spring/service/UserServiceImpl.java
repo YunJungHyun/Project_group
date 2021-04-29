@@ -41,4 +41,10 @@ public class UserServiceImpl implements UserService{
 		// TODO Auto-generated method stub
 		return userDAO.kakaoReg(userVO);
 	}
+	
+	@Override
+	public int googleReg(UserVO userVO) { 
+		// TODO Auto-generated method stub
+		return userDAO.googleReg(userVO);
+	}
 }
