@@ -205,33 +205,6 @@ function login(queryString){
 }
 
 
-/* "id":1704423317,
-"connected_at":"2021-04-20T16:30:54Z",
-"properties":{"nickname":"정-현",
-"profile_image":"http://k.kakaocdn.net/dn/b7k8vo/btq1ZEWuxb4/X5KaX1r91vXDsQr58K5MA1/img_640x640.jpg",
-"thumbnail_image":"http://k.kakaocdn.net/dn/b7k8vo/btq1ZEWuxb4/X5KaX1r91vXDsQr58K5MA1/img_110x110.jpg"},
-"kakao_account":{"profile_needs_agreement":false,
-"profile":{"nickname":"정-현",
-"thumbnail_image_url":"http://k.kakaocdn.net/dn/b7k8vo/btq1ZEWuxb4/X5KaX1r91vXDsQr58K5MA1/img_110x110.jpg",
-"profile_image_url":"http://k.kakaocdn.net/dn/b7k8vo/btq1ZEWuxb4/X5KaX1r91vXDsQr58K5MA1/img_640x640.jpg"},
-"has_email":true,
-"email_needs_agreement":false,
-"is_email_valid":true,
-"is_email_verified":true,
-"email":"yjh_zzzz@naver.com",
-"has_gender":true,
-"gender_needs_agreement":false,
-"gender":"male"}
-
-id, nickname, gender 
-
-pw : none 
-
-email
-phn
-name
-birth
-regday */
 var timer = null;
 var isRunning = false;
 

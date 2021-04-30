@@ -22,7 +22,8 @@ public class UserVO {
 	private String email;
 	private String loginsort;
 	private Date regday;
-	
+	private String profile_img;
+	private String thumnail_img;
 	
 	
 }

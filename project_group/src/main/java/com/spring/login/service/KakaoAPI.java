@@ -51,10 +51,11 @@ public class KakaoAPI {
             bw.write(sb.toString());
             bw.flush();
             
+           
             //    결과 코드가 200이라면 성공
             int responseCode = conn.getResponseCode();
             System.out.println("responseCode : " + responseCode);
- 
+            if(responseCode == 200) {
             //    요청을 통해 얻은 JSON타입의 Response 메세지 읽어오기
             BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
             String line = "";
@@ -77,6 +78,11 @@ public class KakaoAPI {
             
             br.close();
             bw.close();
+            }
+            else {
+            	
+            	access_Token= "";
+            }
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -116,29 +122,32 @@ public class KakaoAPI {
 	        JsonParser parser = new JsonParser();
 	        JsonElement element = parser.parse(result);
 	        
+	       
 	        JsonObject kakao_account = element.getAsJsonObject().get("kakao_account").getAsJsonObject();
-	         
-	        String email = kakao_account.getAsJsonObject().get("email").getAsString();
+	        JsonObject properties = element.getAsJsonObject().get("properties").getAsJsonObject();
+	        JsonObject profile = kakao_account.getAsJsonObject().get("profile").getAsJsonObject();
+	        
 	        int id = element.getAsJsonObject().get("id").getAsInt();
 	        
 	        UserVO userVO = new UserVO();
-	        int idChkResult =userService.idCheck(email);
 	        
-	        if (idChkResult == 0 ) {
-	        	
-	        	userVO=kakaoReg(element);
-	        	
-	        	userInfo.put("kakaoReg","yes");
-	        	userInfo.put("userVO", userVO);
+	        String email = kakao_account.getAsJsonObject().get("email").getAsString();
+	    	String profile_img = profile.get("profile_image_url").getAsString();
+			String thumnail_img = profile.get("thumbnail_image_url").getAsString();
+			String gender = kakao_account.getAsJsonObject().get("gender").getAsString();
+			String nickname = properties.getAsJsonObject().get("nickname").getAsString();
+	    
+	    	String  usercode = "k-"+id;
 	        
-	        }else {
-	        	
-	        	
-	        	userInfo.put("kakaoReg","NO");
-	        	userVO.setUsercode("k-"+id);
-	        	userVO.setUserid(email);
-	        	userInfo.put("userVO",userVO);
-	        }
+	    	userVO.setUserid(email);
+	    	userVO.setNickname(nickname);
+	    	userVO.setUsercode(usercode);
+	    	userVO.setGender(gender);
+	    	userVO.setProfile_img(profile_img);
+	    	userVO.setThumnail_img(thumnail_img);
+	    	userVO.setLoginsort("kakao");
+	      
+	        userInfo.put("userVO", userVO);
 	        
 	    } catch (IOException e) {
 	        // TODO Auto-generated catch block
@@ -148,32 +157,7 @@ public class KakaoAPI {
 	    return userInfo;
 	}
 
-	public UserVO kakaoReg(JsonElement element) {
-		
-		int id = element.getAsJsonObject().get("id").getAsInt();
-		String connected_at = element.getAsJsonObject().get("connected_at").getAsString();
-		
-		JsonObject kakao_account = element.getAsJsonObject().get("kakao_account").getAsJsonObject();
-		JsonObject properties = element.getAsJsonObject().get("properties").getAsJsonObject();
-		
-		String gender = kakao_account.getAsJsonObject().get("gender").getAsString();
-		String email =kakao_account.getAsJsonObject().get("email").getAsString();
-		String nickname = properties.getAsJsonObject().get("nickname").getAsString();
-		 
-		UserVO userVO = new UserVO();
-    	;
-    	String  usercode = "k-"+id;
-        
-        
-    	userVO.setUserid(email);
-    	userVO.setNickname(nickname);
-    	userVO.setUsercode(usercode);
-    	userVO.setGender(gender);
-    	userVO.setLoginsort("kakao");
-    	
-    	return userVO; 
-		
-	} 
+	
 	public void kakaoLogout(String access_Token) {
 	    String reqURL = "https://kapi.kakao.com/v1/user/logout";
 	    try {

@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -55,6 +56,7 @@ public class LoginController {
 				UserVO gui =userService.getUserInfo(userVO);
 				session =request.getSession(true);
 				session.setAttribute("gui", gui);
+				session.setAttribute("REG", "NO");
 				
 			}
 			
@@ -80,6 +82,7 @@ public class LoginController {
 		
 			System.out.println("loginUrl.toString() :"+loginUrl.toString());
 			return "redirect:"+loginUrl.toString();
+		
 		}else if(with.equals("google")) {
 			
 			StringBuffer loginUrl = new StringBuffer(); //문자열을 추가하거나 변결 할 때 주로 사용하는 자료형.
@@ -104,31 +107,45 @@ public class LoginController {
 	
 	
 	@RequestMapping(value="/kakaoLogin")
-	public String kakaoLogin(@RequestParam("code") String code, HttpSession session) {
+	public String kakaoLogin(@RequestParam("code") String code, HttpSession session, Model model) {
 		
 		System.out.println("[kakao] 인가 코드 code : "+code);
 		String access_Token = kakao.getAccessToken(code);
 	    
+		
+		if(access_Token.equals("")) {
+			System.out.println("새로고침");
+			
+			return "sign.page";
+		
+		}else {
+			
 		HashMap<String, Object> userInfo = kakao.getUserInfo(access_Token);
 	    
 	    System.out.println("login Controller : " + userInfo.toString());
 	    
-	    if(userInfo.get("kakaoReg") == "yes") {
-	    	
-	    	userService.kakaoReg((UserVO)userInfo.get("userVO"));
-	    	
-	    }
+	    UserVO userVO = (UserVO)userInfo.get("userVO");
+	   	
 	    
+	     
 	    
 	    //클라이언트의 이메일이 존재할 때 세션에 해당 이메일과 토큰 등록
 	    if (userInfo.get("userVO") != null) {
+	    	int idCheckResult= userService.idCheck(userVO.getUserid());
 	    	UserVO gui=(UserVO)userInfo.get("userVO");
 	    	session.setAttribute("gui", gui);
 	    	session.setAttribute("access_Token", access_Token);
 	    	
-	    }
-	   
-        return "test.page";
+	    	if(idCheckResult != 1) {
+	    		session.setAttribute("REG", "YES");
+	    	}else {
+	    		session.setAttribute("REG", "NO");
+	    	}
+	    	
+	    	}
+		
+        return "between.page";
+		}
 	}
 	
 	
@@ -138,15 +155,33 @@ public class LoginController {
 		System.out.println("[google] 인가 code : " + code);
 		String access_Token = google.getAccessToken(code);
 		
+		
+		if(access_Token.equals("")) {
+			System.out.println("새로고침");
+			
+			return "sign.page";
+		
+		}else {
 		HashMap<String, Object> userInfo = google.getUserInfo(access_Token);
 		
-		 if(userInfo.get("googleReg") == "yes") {
-		    	
-		    userService.googleReg((UserVO)userInfo.get("userVO"));
-		    	
-		 }
-		return "test.page";
-		
+		UserVO userVO = (UserVO)userInfo.get("userVO");
+		int idCheckResult = userService.idCheck(userVO.getUserid());
+		 
+		//클라이언트의 이메일이 존재할 때 세션에 해당 이메일과 토큰 등록
+		if (userInfo.get("userVO") != null) {
+		    UserVO gui=(UserVO)userInfo.get("userVO");
+		    session.setAttribute("gui", gui);
+		    session.setAttribute("access_Token", access_Token);
+		   
+		    if(idCheckResult != 1) {
+	    		session.setAttribute("REG", "YES");
+	    	}else {
+	    		session.setAttribute("REG", "NO");
+	    	}
+		    
+		   }
+		return "between.page";
+		}
 	}
 	
 	@RequestMapping(value="/logout")

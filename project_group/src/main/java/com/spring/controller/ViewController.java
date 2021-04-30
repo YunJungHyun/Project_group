@@ -1,5 +1,7 @@
 package com.spring.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,15 +11,22 @@ public class ViewController {
 	
 	@RequestMapping(value="/StudyPlanner")
 	public String StudyPlanner(
-			Model model
+			Model model,
+			HttpSession session
 			) {
 		
-		System.out.println("StudyPlanner");
+		System.out.println("StudyPlanner : "+ session.getAttribute("gui"));
 		
 		model.addAttribute("title","LOGIN");
 		
-		return "sign.page";
+		
+			return "sign.page";
+		
+		
 	}
+	
+
+	
 	
 	@RequestMapping(value="/plannerHome")
 	public String plannerHome(

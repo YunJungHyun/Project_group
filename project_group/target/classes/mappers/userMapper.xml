@@ -21,7 +21,7 @@
 	
 	<insert id="kakaoReg">
 		 <![CDATA[
-			INSERT INTO user(usercode,userid, nickname, gender,loginsort  ) VALUES(#{usercode},#{userid}, #{nickname}, #{gender}, #{loginsort})
+			INSERT INTO user(usercode,userid, nickname, gender, profile_img ,thumnail_img ,loginsort  ) VALUES(#{usercode},#{userid}, #{nickname}, #{gender}, #{profile_img},#{thumnail_img}, #{loginsort})
 		]]>
 	
 	</insert>

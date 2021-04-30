@@ -56,7 +56,7 @@ public class GoogleAPI {
 			// 결과 코드가 200이라면 성공
 			int responseCode = conn.getResponseCode();
 			System.out.println("responseCode : " + responseCode);
-
+			if(responseCode ==200) {
 			// 요청을 통해 얻은 JSON타입의 Response 메세지 읽어오기
 			BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 			String line = "";
@@ -79,6 +79,11 @@ public class GoogleAPI {
 
 			br.close();
 			bw.close();
+			
+			}else {
+				
+				access_Token="";
+			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -102,7 +107,7 @@ public class GoogleAPI {
 
 			int responseCode = conn.getResponseCode();
 			System.out.println("responseCode : " + responseCode);
-
+			
 			BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 
 			String line = "";
@@ -116,28 +121,20 @@ public class GoogleAPI {
 			JsonParser parser = new JsonParser();
 			JsonElement element = parser.parse(result);
 
-			String email = element.getAsJsonObject().get("email").getAsString();
 			String id = element.getAsJsonObject().get("id").getAsString();
+			String email = element.getAsJsonObject().get("email").getAsString();
+			String name = element.getAsJsonObject().get("name").getAsString();
+			
 			UserVO userVO = new UserVO();
-			int idChkResult = userService.idCheck(email);
-
-
-			if (idChkResult == 0 ) {
-
-				userVO=googleReg(element);
-
-				userInfo.put("googleReg","yes"); 
-				userInfo.put("userVO", userVO);
-
-			}else {
-
-
-				userInfo.put("googleReg","NO"); 
-				userVO.setUsercode("g-"+id);
-				userVO.setUserid(email); 
-				userInfo.put("userVO",userVO);
-			}
-
+			
+			String usercode = "g-" + id;
+			
+			userVO.setUsercode(usercode);
+			userVO.setUserid(email);
+			userVO.setNickname(name);
+			userVO.setLoginsort("google");
+			
+			 userInfo.put("userVO", userVO);
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -147,25 +144,5 @@ public class GoogleAPI {
 		return userInfo;
 	}
 
-	private UserVO googleReg(JsonElement element) {
-
-		String id = element.getAsJsonObject().get("id").getAsString();
-
-
-		String email = element.getAsJsonObject().get("email").getAsString();
-		String name = element.getAsJsonObject().get("name").getAsString();
-
-		UserVO userVO = new UserVO();
-
-		String usercode = "g-" + id;
-
-		userVO.setUserid(email);
-		userVO.setNickname(name);
-		userVO.setUsercode(usercode);
-
-		userVO.setLoginsort("google");
-
-		return userVO;
-	}
-
+	
 }
