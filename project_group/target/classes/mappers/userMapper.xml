@@ -14,25 +14,12 @@
 	
 	<insert id="signUp">
 		 <![CDATA[
-			INSERT INTO user(userid, userpw, username, nickname, birth ,gender, phn, email   ) VALUES(#{userid},#{userpw},#{username},#{nickname},#{birth},#{gender},#{phn},#{email})
+			INSERT INTO user(usercode, userid, userpw, username, birth ,gender, email ,loginsort,profile_img ,thumnail_img  ) 
+				VALUES(#{usercode} , #{userid},#{userpw},#{username},#{birth},#{gender},#{email},#{loginsort},#{profile_img},#{thumnail_img})
 		]]>
 	
 	</insert>
-	
-	<insert id="kakaoReg">
-		 <![CDATA[
-			INSERT INTO user(usercode,userid, nickname, gender, profile_img ,thumnail_img ,loginsort  ) VALUES(#{usercode},#{userid}, #{nickname}, #{gender}, #{profile_img},#{thumnail_img}, #{loginsort})
-		]]>
-	
-	</insert>
-	
-	<insert id="googleReg">
-		 <![CDATA[
-			INSERT INTO user(usercode,userid,username,loginsort  ) VALUES(#{usercode},#{userid}, #{username}, #{loginsort})
-		]]>
-	
-	</insert>
-	
+		
 	<select id="loginPwChk" resultType="int">
 		
 		 <![CDATA[

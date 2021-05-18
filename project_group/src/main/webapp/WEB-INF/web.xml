@@ -81,7 +81,7 @@
 
 	</filter>
 
-	<filter-mapping>
+	<filter-mapping> 
 
 		<filter-name>encodingFilter</filter-name>
 

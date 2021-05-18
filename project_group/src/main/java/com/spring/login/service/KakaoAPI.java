@@ -135,12 +135,12 @@ public class KakaoAPI {
 	    	String profile_img = profile.get("profile_image_url").getAsString();
 			String thumnail_img = profile.get("thumbnail_image_url").getAsString();
 			String gender = kakao_account.getAsJsonObject().get("gender").getAsString();
-			String nickname = properties.getAsJsonObject().get("nickname").getAsString();
+			String username = properties.getAsJsonObject().get("nickname").getAsString();
 	    
 	    	String  usercode = "k-"+id;
 	        
 	    	userVO.setUserid(email);
-	    	userVO.setNickname(nickname);
+	    	userVO.setUsername(username);
 	    	userVO.setUsercode(usercode);
 	    	userVO.setGender(gender);
 	    	userVO.setProfile_img(profile_img);

@@ -30,9 +30,17 @@
 
 	
 	<div class="view">
-		<tiles:insertAttribute name="body" />
+		<c:if test="${title == 'HOME' }">
+			<tiles:insertAttribute name="navbar" />
+		</c:if>
+		<div class="main-content">
+			<tiles:insertAttribute name="body" />
+		</div>
+		<div class="right-menu-side">
+			<tiles:insertAttribute name="right-menu" />
+		</div>
 	</div>
-	<div id="mask"></div>
+	<div id="mask"></div> 
 	
 </body>
 

@@ -28,6 +28,8 @@ public class UserDAOImpl  implements UserDAO{
 	@Override
 	public int signUp(UserVO userVO) {
 		int result = sqlSession.insert(Namespace+".signUp", userVO);
+		
+		//System.out.println("userVO : "+userVO.toString());
 		return result;
 	}
 	

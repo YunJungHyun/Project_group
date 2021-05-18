@@ -4,9 +4,9 @@
 <tiles-definitions>
 
 	<definition name="new.default_body" templateExpression="/WEB-INF/views/tiles/layout.jsp">
-	<!-- <put-attribute name="userHeader" expression="/WEB-INF/views/tiles/userHeader.jsp"/>  -->
+	 <put-attribute name="navbar" expression="/WEB-INF/views/tiles/navbar.jsp"/> 
+		<put-attribute name="right-menu" expression="/WEB-INF/views/tiles/right-menu.jsp"/>  
 	<!-- <put-attribute name="left-menu" expression="/WEB-INF/views/tiles/left-menu.jsp"/>  -->	
-	<!-- <put-attribute name="right-menu" expression="/WEB-INF/views/tiles/right-menu.jsp"/>  -->
 	<!-- <put-attribute name="footer" expression="/WEB-INF/views/tiles/footer.jsp"/> -->
 		<put-attribute name="head" expression="/WEB-INF/views/tiles/head.jsp"/> 
 		<put-attribute name="body" expression=""/> 

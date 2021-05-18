@@ -1,5 +1,6 @@
 package com.spring.service;
 
+import com.spring.vo.ProfileImgVO;
 import com.spring.vo.UserVO;
 
 public interface UserService {
@@ -15,6 +16,8 @@ public interface UserService {
 	int kakaoReg(UserVO userVO);
 
 	int googleReg(UserVO userVO);
+
+	//int insertUserImg(ProfileImgVO profileImgVO);
 
 
 }

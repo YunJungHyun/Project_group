@@ -131,7 +131,8 @@ public class GoogleAPI {
 			
 			userVO.setUsercode(usercode);
 			userVO.setUserid(email);
-			userVO.setNickname(name);
+			userVO.setUsername(name);
+			userVO.setGender("");
 			userVO.setLoginsort("google");
 			
 			 userInfo.put("userVO", userVO);

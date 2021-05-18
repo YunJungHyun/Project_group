@@ -99,14 +99,7 @@
 							<div class="line"></div>
 						</div>
 					</label>
-					<label>
-						<p class="label-txt">NICKNAME</p> 
-						<input type="text" class="signUp-input" id="nickname" name="nickname" maxlength="6" placeholder="&#8251; 별칭을 입력하세요." value="윤정현닉네임">
-						<div class="line-box">
-							<div class="line"></div>
-						</div>
-						
-					</label>
+					
 					<label>
 						<p class="label-txt">DATE OF BIRTH </p> 
 						<input type="text" class="signUp-input" id="strBirth" name="strBirth" placeholder="&#8251; 생년월일  8자리를  '-' 없이 입력하세요." value="19940216">
@@ -126,17 +119,7 @@
 						</div>
 					</label>
 					
-					<label>
-						<p class="label-txt">PHONE NUMBER</p> 
-						
-						<input type="text" id="phn" name="phn" class="signUp-input" placeholder="&#8251; 휴대전화번호 10~11자리를  '-' 없이 입력하세요." value="01049775976">
-						
-						<div class="line-box ">
-							<div class="line"></div>
-		
-						</div>
 					
-					</label>
 					
 					<label>
 						<p class="label-txt">E-mail</p> 
@@ -212,9 +195,9 @@ $(document).ready(function(){
 	 // 정규식
 	  var idRegExp = /^[a-zA-z0-9]{6,20}$/; //아이디 유효성 검사
 	  var nameRegExp=  /^[가-힣]+$/; //이름 유효성 검사 > 한글만 입력
-	  var nickNameRegExp=  /^[ㄱ-ㅎ|가-힣|a-z|A-Z|0-9|\*]{2,6}$/; //닉네임 유효성 검사
+	  //var nickNameRegExp=  /^[ㄱ-ㅎ|가-힣|a-z|A-Z|0-9|\*]{2,6}$/; //닉네임 유효성 검사
 	  var regExp = /^[0-9]*$/; //숫자로만 구성되어있는지
-	  var phnRegExp = /^((01[1|6|7|8|9])[1-9]+[0-9]{6,7})|(010[1-9][0-9]{7})$/;// 휴대전화 유효성검사
+	  //var phnRegExp = /^((01[1|6|7|8|9])[1-9]+[0-9]{6,7})|(010[1-9][0-9]{7})$/;// 휴대전화 유효성검사
 	  var pwChk =false;
 	  var idChk =false;
 	  var emailChk= false;
@@ -354,25 +337,7 @@ $(document).ready(function(){
 		  
 	  })
 	  
-	  $("#nickname").blur(function(){
-		  
-		  var nickname = $("#nickname").val().trim();
-		  
-		  
-		  if(nickname !=""){
-			  
-			  if(!nickNameRegExp.test(nickname)){
-				  
-				    alert("닉네임은은 공백없이 한글,알파벳,숫자 2~6자로 입력해야합니다.");
-					$("#nickname").val("");
-					$("#nickname").focus();
-					
-					return false;	  
-			  }
-			  
-		  }
-		  
-	  })
+	 
 	  
 	  $("#strBirth").blur(function(){
 		  
@@ -462,32 +427,7 @@ $(document).ready(function(){
 		  }
 		  
 	  })
-	  
-	  
-	  
-	   $("#phn").blur(function(){
-		   
-		   var phn = $("#phn").val().trim();
-		   
-		   
-		   if(phn != ""){
-			   
-			   if(!regExp.test(phn)){
-				   
-				   alert("휴대전화 번호는 숫자로만 입력해주세요.");
-				   $("#phn").val("");
-				   $("#phn").focus();
-				   return false
-			   }else if(!phnRegExp.test(phn)){
-				   
-				   alert("휴대전화 번호를 형식에 맞추어 작성해주세요. ex) 01012341234");
-				   $("#phn").val("");
-				   $("#phn").focus();
-				   return false
-				   
-			   }
-		   }
-	   })
+	 
 	   
 	   $("#email").blur(function(){
 		   
@@ -536,11 +476,7 @@ $(document).ready(function(){
 		 		return false;
 		 	}
 		 	
-		 	if($("#phn").val().trim() ==""){
-		 		alert("사용하시는 휴대전화 번호를 입력해주세요.");
-		 		$("#phn").focus();
-		 		return false;
-		 	}
+		 	
 		 	if($("#email").val().trim() ==""){
 		 		alert("사용하시는 이메일을 입력해주세요.");
 		 		$("#email").focus();
@@ -555,6 +491,7 @@ $(document).ready(function(){
 		 	
 		 	if(idChk == true && pwChk == true && emailChk ==true){
 		 		
+		 		alert("hi");
 		 		var queryString = $("form[name=reg-form]").serialize() ;
 				signUp(queryString);
 		 		
@@ -745,15 +682,15 @@ function startTimer(count, display) {
 
 
 function signUp(queryString){
-	
+	alert("hi2");
 	$.ajax({
 		
-		url : "/signUp",
+		url : "/signUp",:
 		type : "POST",
 		data :queryString,
 		success : function(data){
 			
-			alert("성공");
+			alert("성공"); 
 			
 		}
 	})
