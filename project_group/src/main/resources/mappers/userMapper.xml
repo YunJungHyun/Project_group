@@ -19,11 +19,34 @@
 		]]>
 	
 	</insert>
+	
+	<insert id="oauthSignUp">
+		 <![CDATA[
+			INSERT INTO user(usercode, userid,  username, birth ,gender ,loginsort,profile_img ,thumnail_img  ) 
+				VALUES(#{usercode} , #{userid},#{username},#{birth},#{gender},#{loginsort},#{profile_img},#{thumnail_img})
+		]]>
+	
+	</insert>
 		
 	<select id="loginPwChk" resultType="int">
 		
 		 <![CDATA[
 			SELECT COUNT(*) FROM user WHERE userid = #{userid} AND userpw = #{userpw}
+		]]>
+		
+	</select>
+	<select id="userCodeChk" resultType="int">
+		
+		 <![CDATA[
+			SELECT COUNT(*) FROM user WHERE usercode = #{usercode} 
+		]]>
+		
+	</select>
+	
+	<select id="loginSortChk" resultType="String">
+		
+		 <![CDATA[
+			SELECT loginsort FROM user WHERE userid = #{userid}
 		]]>
 		
 	</select>

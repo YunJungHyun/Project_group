@@ -8,14 +8,14 @@ public interface UserDAO {
 
 	int signUp(UserVO userVO);
 
-	String login(UserVO userVO);
+	int loginPwChk(UserVO userVO);
+
+	String loginSortChk(UserVO userVO);
 
 	UserVO getUserInfo(UserVO userVO);
 
-	int kakaoReg(UserVO userVO);
+	int userCodeChk(String usercode);
 
-	int googleReg(UserVO userVO);
-
-	
+	int oauthSignUp(UserVO userVO);
 
 }

@@ -1,14 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib  uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
 
 <nav class="navbar navbar-expand-lg navbar-dark">
 	<div class="container">
 		
 			<div class="col-3">
+			
 				<div class="user-profile" data-toggle="modal" data-target="#user-profile-modal">
-					<img src="${gui.thumnail_img }"/>
-				</div>
+					<img src="<c:if test="${gui.thumnail_img != null }">${gui.thumnail_img}</c:if>
+							<c:if test="${gui.thumnail_img == null }">/resources/img/basic_profile.png</c:if>
+					"/>
+				</div> 
 			</div>
 			<div class="col-6">
 				<div class="brand-name">
@@ -42,7 +47,9 @@
 			<div class="modal-body user-profile-body">
 				<div class="profile-img-edit" >
 					<div class="profile-img img-edit-btn">
-						<img class="user_img" src="${gui.profile_img }">
+						<img class="user_img" src="<c:if test="${gui.profile_img != null }">${gui.profile_img}</c:if>
+							<c:if test="${gui.profile_img == null }">/resources/img/basic_profile_big.png</c:if>
+					">
 					</div>
 				<div class="profile-usertitle">
                 	<div class="profile-usertitle-name"> 
@@ -51,33 +58,31 @@
                 	</div>
 				</div>
             	<div class="profile-userbuttons">
-					<button type="button" class="btn btn-info  btn-sm" data-toggle="collapse" href="#user-info-form" role="button" aria-expanded="false" aria-controls="user-info-form">
+					<button type="button" class="btn btn-info btn-sm" data-toggle="collapse" onclick="collapse()" data-target="#user-info-form" role="button"  aria-controls="user-info-form">
 						내 정보</button>
-					<button type="button" class="btn btn-info  btn-sm" data-toggle="collapse" href="#" role="button" aria-expanded="false" aria-controls="user-pw-form">
+					<button type="button" class="btn btn-info  btn-sm" data-toggle="collapse" onclick="collapse()" data-target="#pw-update-form" role="button"  aria-controls="pw-update-form">
 						비밀번호 변경</button>
-					<button type="button" class="btn btn-info  btn-sm">로그아웃</button>
-            	</div>
+					<button type="button" class="btn btn-info  btn-sm" onclick="logout()">로그아웃</button>
+            	</div> 
 				
 			</div>
-			<div class="collapse mt-2" id="user-info-form">
-  				<form>
-  					<div class="form-group row">
-						<label for="inputEmail3" class="col-sm-3 col-form-label">Email</label>
-						<div class="col-sm-9">
-							${gui.email}
+			
+			<div class="collapse mt-2" name="profile-info-container" id="pw-update-form">
+				<form>
+					<div class="form-group row">
+						<label for="inputEmail3" class="col-sm-3 col-form-label">비밀번호</label>
+						<div class="col-sm-9 profile-info-box">
+							<div class="profile-info"></div>
+							
 						</div>
 					</div>
 					<div class="form-group row">
-						<label for="inputPassword3" class="col-sm-3 col-form-label">전화번호</label>
-						<div class="col-sm-9">
-							 
-						</div>
-					</div>
-					<div class="form-group row">
-						
-						<label for="inputPassword3" class="col-sm-3 col-form-label">생일</label>
-						<div class="col-sm-9">
-							 ${gui.birth } 
+						<label for="inputEmail3" class="col-sm-3 col-form-label">비밀번호 확인</label>
+						<div class="col-sm-9 profile-info-box">
+							<div class="profile-info">
+								
+							</div>
+							
 						</div>
 					</div>
 					<div class="form-group row submitBtnGroup">
@@ -85,6 +90,38 @@
 					</div>
 				</form>
 			</div>
+		
+			<div class="collapse mt-2" name="profile-info-container" id="user-info-form">
+  				<form>
+  					<div class="form-group row">
+						<label for="inputEmail3" class="col-sm-3 col-form-label">Email</label>
+						<div class="col-sm-9 profile-info-box">
+							<div class="profile-info">${gui.email}</div>
+							<span class="badge sm badge-light"><i class="fas fa-pencil-alt"></i></span>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="inputPassword3" class="col-sm-3 col-form-label">전화번호</label>
+						<div class="col-sm-9 profile-info-box">
+							 <div class="profile-info">01012341234</div>
+							 <span class="badge sm badge-light"><i class="fas fa-pencil-alt"></i></span>
+						</div>
+					</div>
+					<div class="form-group row">
+						
+						<label for="inputPassword3" class="col-sm-3 col-form-label">생일</label>
+						
+						<div class="col-sm-9 profile-info-box">
+							 <div class="profile-info">${gui.birth}</div>
+							 <span class="badge sm badge-light"><i class="fas fa-pencil-alt"></i></span>
+						</div>
+					</div>
+					<div class="form-group row submitBtnGroup">
+						<button class="btn btn-primary" type="submit">변경사항 저장</button>	
+					</div>
+				</form>
+			</div>
+			
 				<!-- <form class="info-update-form">
 					<div class="row">
      				   <div class="col-md-12 form-group">
@@ -124,6 +161,31 @@
 		
 	})
 	
+	function logout(){
+		
+		$.ajax({
+			
+			url : "/logout",
+			success : function(data){
+				
+				location.href="/StudyPlanner";
+			}
+		})		
+	}
+
+	
+	 function collapse(){
+		
+		$('div[name=profile-info-container]').each(function(){
+			
+			if($(this).hasClass('show')){
+				
+				$(this).collapse('toggle');
+			};
+		})
+	} 
 	
 	
+	
+
 </script>

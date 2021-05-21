@@ -120,4 +120,29 @@
 .submitBtnGroup > button {
 	margin :0px auto;
 }
+
+.profile-info-box{
+	display: flex;
+    justify-content: space-between;
+    padding-right: 3rem;
+}
+
+
+.profile-info{
+	
+	padding-top: calc(.375rem + 1px);
+	padding-bottom:calc(.375rem + 1px);
+	color : red;
+}
+
+.badge.sm {
+	
+	padding: .7rem .25rem;
+}
+
+.badge {
+	
+	padding :.3rem .25rem;
+	
+}
 /* 회원 프로필 모달 끝  */

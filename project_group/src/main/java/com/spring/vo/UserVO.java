@@ -27,5 +27,7 @@ public class UserVO {
 	private String profile_img;
 	private String thumnail_img;
 	
+	//private boolean cookieDel;
+	
 	
 }

@@ -28,7 +28,7 @@
     </div>
     <div class="row">
         <div class="col-md-12 form-group"> 
-            <a class="loginBtn" id="kakaoLogin" href="/login?with=kakao" >
+            <a class="loginBtn" id="kakao" href="/signin/KAKAO" >
              	<span class="kakaoLogo">
              		<img src="resources/logo/kakaotalk_logo_icon_147272.png">
              	</span>
@@ -39,7 +39,7 @@
    
     <div class="row">
   		<div class="col-md-12 form-group"> 
-         	<a class="loginBtn" id="googleLogin" href="/login?with=google">
+         	<a class="loginBtn" id="google" href="/signin/GOOGLE">
          		<span class="googleLogo">
          			<img src="resources/logo/Google_icon-icons.com_66793.png">
          		</span>
@@ -51,8 +51,6 @@
    <!--  <div>테스트입니다.</div>
     <a href="http://localhost:8081/auth/GOOGLE">구글 로그인</a> -->
 </div>
-
-
 
 <!-- 회원 가입 모달  -->
 <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog"
@@ -67,7 +65,7 @@
 				</button>
 			</div>
 			<div class="modal-body signUp-body">
-				<form id="reg-form" name="reg-form" >
+				<form id="reg-form" name="reg-form" action="/signUp" method="POST">
 					<label>
 						<p class="label-txt">ID</p> 
 						<input type="text" class="signUp-input" id="userid" name="userid" maxlength="20" placeholder="&#8251; 아이디  6 ~ 20자를 입력하세요." value="userid1">
@@ -133,6 +131,7 @@
 							<div class="email-check-timer">
 								<span class="time"></span>
 							</div>
+							<input type="hidden" name="loginsort" value="SP">
 							<input type="text" class="signUp-input email-check-input" id="email-check-input">
 							<input type="button" class="email-check-btn" id="email-check-btn" value="확인">
 							
@@ -152,47 +151,23 @@
 
 <script type="text/javascript">
 
-function login(queryString){
-	
-	$.ajax({
-		
-		url : "/login?with=this",
-		type : "POST",
-		data : queryString,
-		success : function(data){
-			
-			switch (data) { 
-				case "idChkFail" :
-					alert("존재하지 않는 아이디입니다.");
-					$("#signIn-userid").focus();
-					break;
-					
-				case "pwChkFail" :
-					alert("비밀번호가 잘못되었습니다.");
-					$("#signIn-userpw").focus();
-					break;
-					
-				case "loginSuccess" :
-					alert("로그인 되었습니다.");
-					window.location.href="/plannerHome";
-					break;
-			}			
-				
-		
-		},error : function(error){
-			
-			alert(error);
-		}
-		
-	})
+
+history.pushState(null, null, "http://localhost:8081/StudyPlanner")
+var referrer = document.referrer;
+
+if( referrer == "http://localhost:8081/plannerHome"){
+	window.onpopstate=function(event){
+		history.go(-2);
+	};
 }
+
 
 
 var timer = null;
 var isRunning = false;
 
 $(document).ready(function(){
-	 // 정규식
+	 	// 정규식
 	  var idRegExp = /^[a-zA-z0-9]{6,20}$/; //아이디 유효성 검사
 	  var nameRegExp=  /^[가-힣]+$/; //이름 유효성 검사 > 한글만 입력
 	  //var nickNameRegExp=  /^[ㄱ-ㅎ|가-힣|a-z|A-Z|0-9|\*]{2,6}$/; //닉네임 유효성 검사
@@ -202,9 +177,7 @@ $(document).ready(function(){
 	  var idChk =false;
 	  var emailChk= false;
 	  var emailRegExp = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-	  
-	  
-	  
+	 
 	  $('.signUp-input').focus(function(){
 	    $(this).parent().find(".label-txt").addClass('label-active');
 	  });
@@ -214,7 +187,7 @@ $(document).ready(function(){
 	      $(this).parent().find(".label-txt").removeClass('label-active');
 	    };
 	  });
-	    
+	   
 	  $("#userid").blur(function(){
 		  
 		  var inputId = $("#userid").val().trim();
@@ -491,10 +464,9 @@ $(document).ready(function(){
 		 	
 		 	if(idChk == true && pwChk == true && emailChk ==true){
 		 		
-		 		alert("hi");
+		 		//alert("hi");
 		 		var queryString = $("form[name=reg-form]").serialize() ;
-				signUp(queryString);
-		 		
+				
 				
 		 	}else if(idChk == false){
 		 		
@@ -681,22 +653,41 @@ function startTimer(count, display) {
 
 
 
-function signUp(queryString){
-	alert("hi2");
-	$.ajax({
+function login(queryString){
+	
+	$.ajax({ 
 		
-		url : "/signUp",:
-		type : "POST",
-		data :queryString,
+		url : "/signin/SP",
+		type : "GET",
+		data : queryString, 
 		success : function(data){
 			
-			alert("성공"); 
+			switch (data) { 
+				case "idChkFail" :
+					alert("존재하지 않는 아이디입니다.");
+					$("#signIn-userid").focus();
+					break;
+					
+				case "pwChkFail" :
+					alert("비밀번호가 잘못되었습니다.");
+					$("#signIn-userpw").focus();
+					break;
+					
+				case "loginSuccess" :
+					alert("로그인 되었습니다.");
+					window.location.href="/plannerHome";
+					break;
+			}			
+				
+		
+		},error : function(error){
 			
+			alert("에러");
 		}
+		
 	})
-	
-	return false;
 }
+
 
 </script>
 

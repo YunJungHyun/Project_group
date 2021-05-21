@@ -1,6 +1,5 @@
 package com.spring.service;
 
-import com.spring.vo.ProfileImgVO;
 import com.spring.vo.UserVO;
 
 public interface UserService {
@@ -9,15 +8,14 @@ public interface UserService {
 
 	int signUp(UserVO userVO);
 
-	String login(UserVO userVO);
+	int loginPwChk(UserVO userVO);
+
+	String loginSortChk(UserVO userVO);
 
 	UserVO getUserInfo(UserVO userVO);
 
-	int kakaoReg(UserVO userVO);
+	int userCodeChk(String usercode);
 
-	int googleReg(UserVO userVO);
-
-	//int insertUserImg(ProfileImgVO profileImgVO);
-
-
+	int oauthSignUp(UserVO userVO);
+	
 }

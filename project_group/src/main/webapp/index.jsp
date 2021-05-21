@@ -10,4 +10,4 @@
 
 <% response.sendRedirect(request.getContextPath()+"/StudyPlanner");%> 
 </body>
-</html>
+</html> 

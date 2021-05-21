@@ -8,9 +8,8 @@ import com.spring.dao.UserDAO;
 import com.spring.vo.UserVO;
 
 @Service
-public class UserServiceImpl implements UserService{
-	
-	
+public class UserServiceImpl implements UserService {
+
 	@Inject
 	UserDAO userDAO;
 	
@@ -21,13 +20,20 @@ public class UserServiceImpl implements UserService{
 	}
 	@Override
 	public int signUp(UserVO userVO) {
-		return userDAO.signUp(userVO); 
+		// TODO Auto-generated method stub
+		return userDAO.signUp(userVO);
 	}
 	
 	@Override
-	public String login(UserVO userVO) {
+	public int loginPwChk(UserVO userVO) {
+		
+		return userDAO.loginPwChk(userVO);
+	}
 	
-		return userDAO.login(userVO);
+	@Override
+	public String loginSortChk(UserVO userVO) {
+		// TODO Auto-generated method stub
+		return userDAO.loginSortChk(userVO);
 	}
 	
 	@Override
@@ -37,14 +43,13 @@ public class UserServiceImpl implements UserService{
 	}
 	
 	@Override
-	public int kakaoReg(UserVO userVO) {
+	public int userCodeChk(String usercode) {
 		// TODO Auto-generated method stub
-		return userDAO.kakaoReg(userVO);
-	}
-	
+		return userDAO.userCodeChk(usercode);
+	} 
 	@Override
-	public int googleReg(UserVO userVO) { 
+	public int oauthSignUp(UserVO userVO) {
 		// TODO Auto-generated method stub
-		return userDAO.googleReg(userVO);
+		return userDAO.oauthSignUp(userVO);
 	}
-}
+}	

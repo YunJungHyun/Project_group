@@ -18,8 +18,8 @@
 				</button>
 			</div>
 			<div class="modal-body signUp-body">
-				<form id="api-reg-form" name="api-reg-form" >
-					<input type="hidden" name="loginsort" value="${gui.loginsort }">
+				<form id="api-reg-form" name="api-reg-form" action="/oauthSignUp" method="POST">
+					
 					
 					<label>
 						<p class="label-txt">NAME</p> 
@@ -59,9 +59,14 @@
 							<label for="female">여성</label>
 						</div>
 					</label>
-					
-					
-					
+					 <c:if test="${gui.gender != '' }">
+							<input type="hidden" name="gender" value="${gui.gender }">
+					</c:if>
+					<input type="hidden" name="loginsort" value="${gui.loginsort }">
+					<input type="hidden" name="usercode" value="${gui.usercode }">
+					<input type="hidden" name="userid" value="${gui.userid }">
+					<input type="hidden" name="profile_img" value="${gui.profile_img }">
+					<input type="hidden" name="thumnail_img" value="${gui.thumnail_img }">
 				</form>
 			</div>
 			<div class="modal-footer signUp-footer">
@@ -244,29 +249,11 @@
  			 		return false;
  			 	}
  				
- 				var queryString = $("form[name=api-reg-form]").serialize() ;
-				apiSignUp(queryString);
+ 			
 		 		
  			})
  	})
  
- function apiSignUp(queryString){
-	 	
-	 	alert("apiSignUp");
-	 	$.ajax({
-			
-			url : "/signUp",
-			type : "POST",
-			data :queryString,
-			success : function(data){
-				
-				alert(data);
-				
-				//window.location.href="/plannerHome";
-			}
-		})
-		
-		return false;
- }
+ 
  	
  </script>
