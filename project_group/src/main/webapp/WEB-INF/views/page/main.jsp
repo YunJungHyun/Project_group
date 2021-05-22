@@ -4,3 +4,4 @@
 
 <h3 align="center">달력</h3>
 
+<%=request.getRealPath("/") %>

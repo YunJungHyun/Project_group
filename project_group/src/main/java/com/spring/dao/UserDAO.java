@@ -18,4 +18,12 @@ public interface UserDAO {
 
 	int oauthSignUp(UserVO userVO);
 
+	int profileUpdate(UserVO userVO);
+
+	UserVO getUserInfoCode(String usercode);
+
+	int beforePwChk(UserVO userVO);
+
+	int pwUpdate(UserVO userVO);
+
 }

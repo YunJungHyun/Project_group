@@ -62,4 +62,29 @@ public class UserDAOImpl implements UserDAO {
 		int result = sqlSession.insert(Namespace+".oauthSignUp", userVO);
 		return result;
 	}
+	
+	@Override
+	public int profileUpdate(UserVO userVO) {
+		
+		int result =sqlSession.update(Namespace+".profileUpdate",userVO);
+		return result;
+	}
+	
+	@Override
+	public UserVO getUserInfoCode(String usercode) {
+		UserVO result =sqlSession.selectOne(Namespace+".getUserInfoCode",usercode);
+		return result;
+	}
+	
+	@Override
+	public int beforePwChk(UserVO userVO) {
+		int result =sqlSession.selectOne(Namespace+".beforePwChk",userVO);
+		return result;
+	}
+	
+	@Override
+	public int pwUpdate(UserVO userVO) {
+		int result =sqlSession.update(Namespace+".pwUpdate",userVO);
+		return result;
+	}
 }

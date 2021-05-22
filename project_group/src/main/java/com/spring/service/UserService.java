@@ -17,5 +17,13 @@ public interface UserService {
 	int userCodeChk(String usercode);
 
 	int oauthSignUp(UserVO userVO);
+
+	int profileUpdate(UserVO userVO);
+
+	UserVO getUserInfoCode(String usercode);
+
+	int beforePwChk(UserVO userVO);
+
+	int pwUpdate(UserVO userVO);
 	
 }

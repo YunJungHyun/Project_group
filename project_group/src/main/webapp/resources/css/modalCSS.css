@@ -1,7 +1,7 @@
 @charset "UTF-8";
-.modal{
-	
-	padding-left : unset;
+
+.modal {
+	padding-left: unset;
 }
 
 /* 회원가입 모달  */
@@ -43,16 +43,29 @@
 /* 회원가입 모달 끝 */
 
 /* 회원 프로필 모달   */
+#user-info-form , #pw-update-form{
+	transition: .4s;
+}
+
+.img-edit-btn, .profile-usertitle {
+	cursor: pointer;
+}
+
+.profile-img:hover>.user_img {
+	filter: brightness(60%);
+}
+
+.profile-usertitle-name:hover {
+	transform: scale(1.2);
+	transition: 0.5s;
+}
+
 .user-profile-header {
 	border: none;
 }
 
 .user-profile-body {
 	padding: 2rem 1rem;
-}
-
-.profile-img-edit {
-	
 }
 
 .profile-img {
@@ -71,14 +84,6 @@
 	object-fit: cover;
 }
 
-.profile-edit {
-	
-}
-
-.profile-edit>button {
-	
-}
-
 .profile-usertitle {
 	text-align: center;
 	margin-top: 20px
@@ -88,11 +93,11 @@
 	color: #5a7391;
 	font-size: 20px;
 	font-weight: 600;
-	margin-bottom: 7px
+	margin: 0px auto 7px auto;
+	width: fit-content;
 }
 
-.profile-usertitle-name > span {
-	
+.profile-usertitle-name>span {
 	position: absolute;
 	line-height: 1.3;
 }
@@ -117,32 +122,66 @@
 	padding: 6px 15px
 }
 
-.submitBtnGroup > button {
-	margin :0px auto;
-}
-
-.profile-info-box{
-	display: flex;
-    justify-content: space-between;
-    padding-right: 3rem;
-}
-
-
-.profile-info{
-	
-	padding-top: calc(.375rem + 1px);
-	padding-bottom:calc(.375rem + 1px);
-	color : red;
+.submitBtnGroup>button {
+	margin: 0px auto;
 }
 
 .badge.sm {
-	
 	padding: .7rem .25rem;
+	float: right;
 }
 
 .badge {
-	
-	padding :.3rem .25rem;
-	
+	padding: .3rem .25rem;
+	cursor: pointer;
 }
+
+.profile-row {
+	padding: 0.5rem 1rem;
+}
+
+.profile-input {
+	width: 90%;
+	padding: 10px;
+	background: transparent;
+	border: none;
+	outline: none;
+}
+
+.profile-input:focus ~.line-box .line {
+	width: 100%;
+}
+
+.profile-input::placeholder {
+	font-size: 70%;
+	font-style: italic;
+	text-align: right;
+}
+
+.line-box.profile-line {
+	width: 90%;
+}
+
+.profile-update-form, .pw-update-form {
+	padding: 1rem;
+}
+
+.profile-update-btn-box {
+	width: 100%;
+	padding: 1rem;
+}
+
+.profile-update-btn , .pw-update-btn {
+	margin: 0px auto;
+	display: block;
+}
+
+.pwChk-text-box{
+	display : none;
+	text-align: left;
+	width: 100%;
+    color : red;
+    padding: .2rem;
+}
+
 /* 회원 프로필 모달 끝  */

@@ -42,27 +42,9 @@
 		</beans:property>
 	</beans:bean>
 
-	<!-- 업로드 패스 설정 -->
-	<beans:bean class="java.lang.String" id="uploadPath">
-		<beans:constructor-arg value="" />
-	</beans:bean>
-
-	 <!-- 일반 파일 업로드 경로 -->
-	<!--<resources location="/resources/imgUpload/"
-		mapping="/imgUpload/**"></resources>
-
-	<beans:bean
-		class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
-		id="multipartResolver">
-		<beans:property name="maxUploadSize" value="50000000" />
-		<beans:property name="defaultEncoding" value="utf-8" />
-	</beans:bean> -->
 	
-	<!-- MultipartResolver 설정 -->
-    <beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-        <beans:property name="maxUploadSize" value="100000000" />
-        <beans:property name="maxInMemorySize" value="100000000" />
-    </beans:bean>
+    
+    
 	<!-- email 인증 관련 -->
 	<beans:bean id="mailSender"
 		class="org.springframework.mail.javamail.JavaMailSenderImpl">

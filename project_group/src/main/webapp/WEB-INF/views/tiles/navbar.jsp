@@ -46,80 +46,100 @@
 			 
 			<div class="modal-body user-profile-body">
 				<div class="profile-img-edit" >
-					<div class="profile-img img-edit-btn">
+					<div class="profile-img img-edit-btn" onclick="onclick=document.all.profileImgFile.click()">
 						<img class="user_img" src="<c:if test="${gui.profile_img != null }">${gui.profile_img}</c:if>
 							<c:if test="${gui.profile_img == null }">/resources/img/basic_profile_big.png</c:if>
 					">
 					</div>
-				<div class="profile-usertitle">
-                	<div class="profile-usertitle-name"> 
-                	${gui.username } 
-                		<span class="badge badge-light"><i class="fas fa-pencil-alt"></i></span>
-                	</div>
-				</div>
-            	<div class="profile-userbuttons">
-					<button type="button" class="btn btn-info btn-sm" data-toggle="collapse" onclick="collapse()" data-target="#user-info-form" role="button"  aria-controls="user-info-form">
-						내 정보</button>
-					<button type="button" class="btn btn-info  btn-sm" data-toggle="collapse" onclick="collapse()" data-target="#pw-update-form" role="button"  aria-controls="pw-update-form">
-						비밀번호 변경</button>
-					<button type="button" class="btn btn-info  btn-sm" onclick="logout()">로그아웃</button>
-            	</div> 
+					<form id="fileForm" method="post" enctype="multipart/form-data">
+						<input type="file" id="profileImgFile" onchange="handleFiles()" style="display:none" multiple="true"/>
+					</form>
+					<div class="profile-usertitle">
+                		<div class="profile-usertitle-name"> 
+                		${gui.username } 
+                			<span class="badge badge-light"><i class="fas fa-pencil-alt"></i></span>
+                		</div>
+					</div>
+            		<div class="profile-userbuttons">
+						<button type="button" class="btn btn-info btn-sm" data-toggle="collapse" onclick="collapse()" data-target="#profile-collapse" role="button"  aria-controls="profile-collapse">
+							내 정보</button>
+						<button type="button" class="btn btn-info  btn-sm" data-toggle="collapse" onclick="collapse()" data-target="#pw-collapse" role="button"  aria-controls="pw-collapse">
+							비밀번호 변경</button>
+						<button type="button" class="btn btn-info  btn-sm" onclick="logout()">로그아웃</button>
+            		</div> 
 				
 			</div>
 			
-			<div class="collapse mt-2" name="profile-info-container" id="pw-update-form">
-				<form>
-					<div class="form-group row">
-						<label for="inputEmail3" class="col-sm-3 col-form-label">비밀번호</label>
-						<div class="col-sm-9 profile-info-box">
-							<div class="profile-info"></div>
+			<div class="collapse mt-2" name="profile-collapse-container" id="pw-collapse">
+				<form class="pw-update-form" name="pw-update-form" id="pw-update-form" method="POST">
+					
+  					<div class="row profile-row">
+  						<p class="col-sm-3 col-3 col-form-label label-pw">기존 비밀번호</p> 
+  						<div class="col-sm-9 col-9">
+  							
+							<input type="password" class="profile-input" id="beforePw" name="beforePw">
 							
+							<div class="line-box profile-line">
+								<div class="line"></div>
+							</div>
+							<div class=pwChk-text-box>
+								<span class="pwChk-text"></span>
+							</div>
 						</div>
-					</div>
-					<div class="form-group row">
-						<label for="inputEmail3" class="col-sm-3 col-form-label">비밀번호 확인</label>
-						<div class="col-sm-9 profile-info-box">
-							<div class="profile-info">
-								
+					</div> 
+					<div class="row profile-row">
+						<p class="col-sm-3 col-3 col-form-label label-pw">바꿀 비밀번호</p> 
+						<div class="col-sm-9 col-9">
+							<input type="password" class="profile-input" id="afterPw" name="afterPw">
+							<div class="line-box profile-line">
+								<div class="line"></div>
+							</div>
+						</div>
+					</div>   
+					
+				</form>
+				<div class="profile-update-btn-box">
+					<button class="pw-update-btn" type="button" >비밀번호 저장</button> 
+				</div>
+			</div>
+		
+			<div class="collapse mt-2" name="profile-collapse-container" id="profile-collapse">
+  				<form class="profile-update-form" name="profile-update-form" id="profile-update-form" method="POST">
+  					
+  					<div class="row profile-row">
+  						<p class="col-sm-3 col-3 col-form-label">e-mail</p> 
+  						<div class="col-sm-9 col-9">
+  							
+							<input type="text" class="profile-input" name="email" value="${gui.email }">
+							
+							<div class="line-box profile-line">
+								<div class="line"></div>
 							</div>
 							
 						</div>
-					</div>
-					<div class="form-group row submitBtnGroup">
-						<button class="btn btn-primary" type="submit">변경사항 저장</button>	
-					</div>
+					</div> 
+					<div class="row profile-row">
+						<p class="col-sm-3 col-3 col-form-label">전화번호</p> 
+						<div class="col-sm-9 col-9">
+							<input type="text" class="profile-input" name="uphn" value="${gui.uphn}">
+							<div class="line-box profile-line">
+								<div class="line"></div>
+							</div>
+						</div>
+					</div>   
+					<div class="row profile-row">
+						<p class="col-sm-3 col-3 col-form-label">생일</p> 
+						<div class="col-sm-9 col-9">
+							<input type="text" class="profile-input"  name="birth" value="${gui.birth }" disabled="disabled">
+							<div class="line-box profile-line">
+								<div class="line"></div>
+							</div>
+						</div>
+					</div>  
 				</form>
-			</div>
-		
-			<div class="collapse mt-2" name="profile-info-container" id="user-info-form">
-  				<form>
-  					<div class="form-group row">
-						<label for="inputEmail3" class="col-sm-3 col-form-label">Email</label>
-						<div class="col-sm-9 profile-info-box">
-							<div class="profile-info">${gui.email}</div>
-							<span class="badge sm badge-light"><i class="fas fa-pencil-alt"></i></span>
-						</div>
-					</div>
-					<div class="form-group row">
-						<label for="inputPassword3" class="col-sm-3 col-form-label">전화번호</label>
-						<div class="col-sm-9 profile-info-box">
-							 <div class="profile-info">01012341234</div>
-							 <span class="badge sm badge-light"><i class="fas fa-pencil-alt"></i></span>
-						</div>
-					</div>
-					<div class="form-group row">
-						
-						<label for="inputPassword3" class="col-sm-3 col-form-label">생일</label>
-						
-						<div class="col-sm-9 profile-info-box">
-							 <div class="profile-info">${gui.birth}</div>
-							 <span class="badge sm badge-light"><i class="fas fa-pencil-alt"></i></span>
-						</div>
-					</div>
-					<div class="form-group row submitBtnGroup">
-						<button class="btn btn-primary" type="submit">변경사항 저장</button>	
-					</div>
-				</form>
+				<div class="profile-update-btn-box">
+					<button class="profile-update-btn" type="button">내 정보 저장</button> 
+				</div>
 			</div>
 			
 				<!-- <form class="info-update-form">
@@ -153,13 +173,31 @@
 		}
 		
 	})
+
 	
-	$(".img-edit-btn").on("click",function(){
+ 	function handleFiles(){
 		
+		var formData = new FormData($('#fileForm')[0]);
 		
+		$.ajax({
+			type : "POST",
+			enctype : 'multipart/form-data',
+			url: '/update/profileImg',
+			data : formData,
+			processData : false,
+			contentType:false,
+			cache : false,
+			success : function(){
+				
+			},error : function(){
+				
+				alert("error");
+			}
+			
+		})
 		
-		
-	})
+	} 
+	
 	
 	function logout(){
 		
@@ -176,7 +214,7 @@
 	
 	 function collapse(){
 		
-		$('div[name=profile-info-container]').each(function(){
+		$('div[name=profile-collapse-container]').each(function(){
 			
 			if($(this).hasClass('show')){
 				
@@ -185,7 +223,138 @@
 		})
 	} 
 	
+	$(".profile-update-btn").on("click",function(){
+		
+		/* 유효성 검사  */
+		var usercode="${gui.usercode}";
+		var queryString = $("form[name=profile-update-form]").serialize()+"&usercode="+usercode;
+		
+		//alert(usercode);
+
+		
+		$.ajax({
+			
+			url : "/update/profileUpdate",
+			type: "POST",
+			data : queryString,
+			success : function(data){
+				if(data =="updateSuccess"){
+					
+					alert("회원 정보가 수정되었습니다.");
+					window.location.reload();
+				}else{
+					
+					alert("정보수정실패 ");
+					window.location.reload();
+					
+				}
+					
+			},error : function(){
+				alert("error");
+			}
+			
+			
+		})
+	})
 	
+	$("#beforePw").blur(function(){
+		
+		var usercode="${gui.usercode}";
+		var beforePw=$("#beforePw").val();
+		
+		if(beforePw !=""){
+			var queryString = "userpw="+beforePw+"&usercode="+usercode;
+			
+			$.ajax({
+				
+				url : "/update/beforePwChk",
+				type : "POST",
+				data: queryString,
+				success : function(data){
+					
+					if (data == "beforePwSuccess"){
+						$(".pwChk-text-box").css("display","block");
+						 $(".pwChk-text-box").css("color","green");
+						 $(".pwChk-text").text("※ 비밀번호 확인 되었습니다.");
+						 $("#beforePw").addClass("pwChkOkay");
+						
+					}else{
+						$(".pwChk-text-box").css("display","block");
+						 $(".pwChk-text-box").css("color","red");
+						 $(".pwChk-text").text("※ 비밀번호를 정확히 입력해주세요.");
+						 
+						 if( $("#beforePw").hasClass("pwChkOkay")){
+							 
+							 $("#beforePw").removeClass("pwChkOkay");
+						 }
+						
+					} 
+				},error : function(){
+					alert("error");
+				}
+				
+			})	
+		}else{
+			
+			 if( $("#beforePw").hasClass("pwChkOkay")){
+				 $(".pwChk-text-box").css("display","none");
+				 $("#beforePw").removeClass("pwChkOkay");
+			 }
+			
+		}
+		
+	})
+	
+	$(".pw-update-btn").on("click",function(){
+		
+		/* 유효성 검사  */
+		var usercode="${gui.usercode}";
+		var afterPw =$("#afterPw").val();
+		var queryString = "userpw="+afterPw+"&usercode="+usercode;
+		
+		var pwChk = $("#beforePw").hasClass("pwChkOkay");
+	
+		if(!pwChk){
+			
+			alert("기존 사용하던 비밀번호를 확인해주세요.");
+			$("#beforePw").focus();
+			return false;
+		}
+		
+		if(afterPw ==""){
+			alert("변경하실 비밀번호를 입력하세요.");
+			$("#afterPw").focus();
+			return false;
+		} 
+		
+		if(afterPw !="" && pwChk){
+		
+		 $.ajax({
+			
+			url : "/update/pwUpdate",
+			type: "POST",
+			data : queryString,
+			success : function(data){
+				if(data =="updateSuccess"){
+					
+					alert("비밀번호가 수정되었습니다.");
+					window.location.reload();
+				}else{
+					
+					alert("정보수정실패 ");
+					window.location.reload();
+					
+				}
+					
+			},error : function(){
+				alert("error");
+			}
+			
+			
+		}) 
+		
+		}
+	})
 	
 
 </script>

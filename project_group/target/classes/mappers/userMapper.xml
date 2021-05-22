@@ -61,6 +61,36 @@
 	</select>
 	
 	
+	<update id="profileUpdate">
+		
+		 <![CDATA[
+			UPDATE user SET uphn =#{uphn} , email =#{email}  WHERE usercode = #{usercode} 
+		]]>
+		
+	</update>
+	
+	<select id="getUserInfoCode" resultType="userVO">
+	 	<![CDATA[
+			SELECT * FROM user WHERE usercode = #{usercode}
+		]]>
+	
+	</select>
+	<select id="beforePwChk" resultType="int">
+		
+		 <![CDATA[
+			SELECT COUNT(*) FROM user WHERE usercode = #{usercode} AND userpw = #{userpw}
+		]]>
+		
+	</select>
+	
+	<update id="pwUpdate">
+		
+		 <![CDATA[
+			UPDATE user SET userpw =#{userpw}  WHERE usercode = #{usercode} 
+		]]>
+		
+	</update>
+	
 </mapper>
 
  

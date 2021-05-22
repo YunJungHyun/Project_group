@@ -52,4 +52,28 @@ public class UserServiceImpl implements UserService {
 		// TODO Auto-generated method stub
 		return userDAO.oauthSignUp(userVO);
 	}
+	
+	@Override
+	public int profileUpdate(UserVO userVO) {
+		// TODO Auto-generated method stub
+		return userDAO.profileUpdate(userVO);
+	}
+	
+	@Override
+	public UserVO getUserInfoCode(String usercode) {
+		// TODO Auto-generated method stub
+		return userDAO.getUserInfoCode(usercode);
+	}
+	
+	@Override
+	public int beforePwChk(UserVO userVO) {
+		// TODO Auto-generated method stub
+		return userDAO.beforePwChk(userVO);
+	}
+	
+	@Override
+	public int pwUpdate(UserVO userVO) {
+		// TODO Auto-generated method stub
+		return userDAO.pwUpdate(userVO);
+	}
 }	

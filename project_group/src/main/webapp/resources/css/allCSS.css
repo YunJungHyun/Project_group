@@ -1,15 +1,20 @@
 @charset "UTF-8";
 
-
-.main-content{
-	
+.main-content {
 	
 }
 
-.col-form-label{
-	
+.col-form-label {
 	margin-bottom: unset;
-	margin-top : 0px;
+	margin-top: 0px;
 	text-align: center;
-    font-weight: bold;
+	font-weight: bold;
+	font-size: 1rem;
+	color: #0a3ea9;
 }
+
+.col-form-label.label-pw{
+	
+	    word-break: keep-all;
+}
+
