@@ -91,6 +91,14 @@
 		
 	</update>
 	
+	<update id="updateProfileImg">
+		
+		 <![CDATA[
+			UPDATE user SET profile_img =#{profile_img} , thumnail_img=#{thumnail_img} WHERE usercode = #{usercode} 
+		]]>
+		
+	</update>
+	
 </mapper>
 
  

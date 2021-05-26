@@ -76,4 +76,10 @@ public class UserServiceImpl implements UserService {
 		// TODO Auto-generated method stub
 		return userDAO.pwUpdate(userVO);
 	}
+	
+	@Override
+	public int updateProfileImg(UserVO userVO) {
+		// TODO Auto-generated method stub
+		return userDAO.updateProfileImg(userVO);
+	}
 }	

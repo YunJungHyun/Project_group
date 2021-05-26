@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 실질적인 쿼리문을 작성하는 곳 -->
+<mapper namespace="com.spring.mapper.calendarMapper">
+
+	<select id="createPlanner" parameterType="HashMap">
+	
+		<![CDATA[
+			${sql}
+		]]>
+		
+	</select>
+	
+	<select id="getUserPlanner" resultType="calendarVO" parameterType="HashMap">
+		<![CDATA[
+		
+			 ${sql}
+		]]>
+	</select>
+	
+</mapper>
+
+ 

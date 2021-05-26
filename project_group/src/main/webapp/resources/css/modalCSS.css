@@ -184,4 +184,14 @@
     padding: .2rem;
 }
 
+.profileImg-update-btn{
+	
+	text-align: center;
+}
+
+#profileImg-collapse{
+	
+	text-align : center;
+}
+
 /* 회원 프로필 모달 끝  */

@@ -26,4 +26,6 @@ public interface UserDAO {
 
 	int pwUpdate(UserVO userVO);
 
+	int updateProfileImg(UserVO userVO);
+
 }

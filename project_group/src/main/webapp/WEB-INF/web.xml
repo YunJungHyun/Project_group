@@ -3,15 +3,6 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee https://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
 
-
-	<beans xmlns="http://www.springframework.org/schema/beans"
-		xmlns:security="http://www.springframework.org/schema/security">
-		<security:http>
-			<security:headers>
-				<security:frame-options disabled="true"></security:frame-options>
-			</security:headers>
-		</security:http>
-	</beans>
 	<!-- The definition of the Root Spring Container shared by all Servlets 
 		and Filters -->
 	<context-param>
@@ -24,7 +15,6 @@
 		<listener-class>org.springframework.web.context.ContextLoaderListener
 		</listener-class>
 	</listener>
-
 
 	<!-- Processes application requests -->
 	<servlet>
@@ -43,9 +33,7 @@
 		<servlet-name>action</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
-
-
-
+	
 	<!-- index file 설정 -->
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
@@ -81,17 +69,17 @@
 
 	</filter>
 
-	<filter-mapping> 
+	<filter-mapping>
 
 		<filter-name>encodingFilter</filter-name>
 
 		<url-pattern>/*</url-pattern>
-
+ 
 	</filter-mapping>
 
 	<!-- 한글설정 END -->
 
-	
+
 
 
 </web-app>

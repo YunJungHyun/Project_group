@@ -46,14 +46,26 @@
 			 
 			<div class="modal-body user-profile-body">
 				<div class="profile-img-edit" >
-					<div class="profile-img img-edit-btn" onclick="onclick=document.all.profileImgFile.click()">
-						<img class="user_img" src="<c:if test="${gui.profile_img != null }">${gui.profile_img}</c:if>
+					<div class="profile-img img-edit-btn" data-toggle="collapse" onclick="collapse()" data-target="#profileImg-collapse" role="button"  aria-controls="profileImg-collapse">
+					<!--onclick="onclick=document.all.profileImgFile.click()"  -->
+						<img id="profile_img_${gui.usercode}" class="user_img" src="<c:if test="${gui.profile_img != null }">${gui.profile_img}</c:if>
 							<c:if test="${gui.profile_img == null }">/resources/img/basic_profile_big.png</c:if>
 					">
 					</div>
-					<form id="fileForm" method="post" enctype="multipart/form-data">
-						<input type="file" id="profileImgFile" onchange="handleFiles()" style="display:none" multiple="true"/>
+					
+					<div class="collapse mt-3 profileImg-update-btn" name="profile-collapse-container" id="profileImg-collapse">
+						<button onclick="document.getElementById('profileImgFile').click()">프로필 변경</button>
+						<button onclick="profileBasicImg()" >기본이미지로 변경</button>
+
+					</div>
+					
+					
+					<form id="fileForm"  method="POST" enctype="multipart/form-data">
+						<input type="file" id="profileImgFile" name="profileImgFile"  style="display:none"/> 
 					</form>
+					
+					
+					
 					<div class="profile-usertitle">
                 		<div class="profile-usertitle-name"> 
                 		${gui.username } 
@@ -175,186 +187,228 @@
 	})
 
 	
- 	function handleFiles(){
+	$("#profileImgFile").on("change",function(){
 		
-		var formData = new FormData($('#fileForm')[0]);
+		//alert("profileImgFile");
+		
+		var usercode = "${gui.usercode}";
+		
+		var output = document.createElement("button");
+		if(this.files && this.files[0]){
+			var reader = new FileReader;
+			reader.onload = function(data){
+				
+				$("#profile_img_"+usercode).attr("src" , data.target.result).width("100%");
+			}
+			
+			reader.readAsDataURL(this.files[0]);
+			
+			output.setAttribute("id","chgProfile_"+usercode);
+			output.setAttribute("name","chgProfile_reg");
+			output.setAttribute("class","chgProfile_reg");
+			output.innerHTML= "저장";
+			
+			var parent = document.getElementById("profileImg-collapse");
+			parent.appendChild(output);
+		}
+	})
+	
+	$(document).on("click", ".chgProfile_reg", function(){
+		
+	
+				var formData = new FormData($("#fileForm")[0]);
+				formData.append("basic","no");
+				changeProfile(formData);
+
+			})
+	 function profileBasicImg(){
+	
+		var formData = new FormData($("#fileForm")[0]);
+		formData.append("basic","yes");
+		changeProfile(formData);
+		
+	}
+	
+	function changeProfile(formData){
 		
 		$.ajax({
 			type : "POST",
-			enctype : 'multipart/form-data',
-			url: '/update/profileImg',
+			url : "/update/profileImg",
 			data : formData,
 			processData : false,
-			contentType:false,
-			cache : false,
-			success : function(){
-				
-			},error : function(){
-				
-				alert("error");
+			contentType : false,
+			success : function(data) {
+				if (data == "success") {
+					alert("프로필이 변경되었습니다.");
+					window.location.reload();
+				} else {
+					alert("프로필 변경 실패하였습니다.");
+				}
+			},
+			error : function(request, status, error) {
+				alert("code : " + request.status + "\n" + "message : "
+						+ request.responseText + "\n" + "error : "
+						+ error);
 			}
-			
-		})
-		
-	} 
+		});
+	}
 	
-	
-	function logout(){
-		
+	function logout() {
+
 		$.ajax({
-			
+
 			url : "/logout",
-			success : function(data){
-				
-				location.href="/StudyPlanner";
+			success : function(data) {
+
+				location.href = "/StudyPlanner";
 			}
-		})		
+		})
 	}
 
-	
-	 function collapse(){
-		
-		$('div[name=profile-collapse-container]').each(function(){
-			
-			if($(this).hasClass('show')){
-				
-				$(this).collapse('toggle');
-			};
-		})
-	} 
-	
-	$(".profile-update-btn").on("click",function(){
-		
-		/* 유효성 검사  */
-		var usercode="${gui.usercode}";
-		var queryString = $("form[name=profile-update-form]").serialize()+"&usercode="+usercode;
-		
-		//alert(usercode);
+	function collapse() {
 
-		
-		$.ajax({
-			
-			url : "/update/profileUpdate",
-			type: "POST",
-			data : queryString,
-			success : function(data){
-				if(data =="updateSuccess"){
-					
-					alert("회원 정보가 수정되었습니다.");
-					window.location.reload();
-				}else{
-					
-					alert("정보수정실패 ");
-					window.location.reload();
-					
-				}
-					
-			},error : function(){
-				alert("error");
+		$('div[name=profile-collapse-container]').each(function() {
+
+			if ($(this).hasClass('show')) {
+
+				$(this).collapse('toggle');
 			}
-			
-			
+			;
 		})
-	})
-	
-	$("#beforePw").blur(function(){
-		
-		var usercode="${gui.usercode}";
-		var beforePw=$("#beforePw").val();
-		
-		if(beforePw !=""){
-			var queryString = "userpw="+beforePw+"&usercode="+usercode;
-			
+	}
+
+	$(".profile-update-btn").on("click", function() {
+
+				/* 유효성 검사  */
+				var usercode = "${gui.usercode}";
+				var queryString = $("form[name=profile-update-form]")
+						.serialize()
+						+ "&usercode=" + usercode;
+
+				//alert(usercode);
+
+				$.ajax({
+
+					url : "/update/profileUpdate",
+					type : "POST",
+					data : queryString,
+					success : function(data) {
+						if (data == "updateSuccess") {
+
+							alert("회원 정보가 수정되었습니다.");
+							window.location.reload();
+						} else {
+
+							alert("정보수정실패 ");
+							window.location.reload();
+
+						}
+
+					},
+					error : function() {
+						alert("error");
+					}
+
+				})
+			})
+
+	$("#beforePw").blur(function() {
+
+		var usercode = "${gui.usercode}";
+		var beforePw = $("#beforePw").val();
+
+		if (beforePw != "") {
+			var queryString = "userpw=" + beforePw + "&usercode=" + usercode;
+
 			$.ajax({
-				
+
 				url : "/update/beforePwChk",
 				type : "POST",
-				data: queryString,
-				success : function(data){
-					
-					if (data == "beforePwSuccess"){
-						$(".pwChk-text-box").css("display","block");
-						 $(".pwChk-text-box").css("color","green");
-						 $(".pwChk-text").text("※ 비밀번호 확인 되었습니다.");
-						 $("#beforePw").addClass("pwChkOkay");
-						
-					}else{
-						$(".pwChk-text-box").css("display","block");
-						 $(".pwChk-text-box").css("color","red");
-						 $(".pwChk-text").text("※ 비밀번호를 정확히 입력해주세요.");
-						 
-						 if( $("#beforePw").hasClass("pwChkOkay")){
-							 
-							 $("#beforePw").removeClass("pwChkOkay");
-						 }
-						
-					} 
-				},error : function(){
+				data : queryString,
+				success : function(data) {
+
+					if (data == "beforePwSuccess") {
+						$(".pwChk-text-box").css("display", "block");
+						$(".pwChk-text-box").css("color", "green");
+						$(".pwChk-text").text("※ 비밀번호 확인 되었습니다.");
+						$("#beforePw").addClass("pwChkOkay");
+
+					} else {
+						$(".pwChk-text-box").css("display", "block");
+						$(".pwChk-text-box").css("color", "red");
+						$(".pwChk-text").text("※ 비밀번호를 정확히 입력해주세요.");
+
+						if ($("#beforePw").hasClass("pwChkOkay")) {
+
+							$("#beforePw").removeClass("pwChkOkay");
+						}
+
+					}
+				},
+				error : function() {
 					alert("error");
 				}
-				
-			})	
-		}else{
-			
-			 if( $("#beforePw").hasClass("pwChkOkay")){
-				 $(".pwChk-text-box").css("display","none");
-				 $("#beforePw").removeClass("pwChkOkay");
-			 }
-			
+
+			})
+		} else {
+
+			if ($("#beforePw").hasClass("pwChkOkay")) {
+				$(".pwChk-text-box").css("display", "none");
+				$("#beforePw").removeClass("pwChkOkay");
+			}
+
 		}
-		
+
 	})
-	
-	$(".pw-update-btn").on("click",function(){
-		
+
+	$(".pw-update-btn").on("click", function() {
+
 		/* 유효성 검사  */
-		var usercode="${gui.usercode}";
-		var afterPw =$("#afterPw").val();
-		var queryString = "userpw="+afterPw+"&usercode="+usercode;
-		
+		var usercode = "${gui.usercode}";
+		var afterPw = $("#afterPw").val();
+		var queryString = "userpw=" + afterPw + "&usercode=" + usercode;
+
 		var pwChk = $("#beforePw").hasClass("pwChkOkay");
-	
-		if(!pwChk){
-			
+
+		if (!pwChk) {
+
 			alert("기존 사용하던 비밀번호를 확인해주세요.");
 			$("#beforePw").focus();
 			return false;
 		}
-		
-		if(afterPw ==""){
+
+		if (afterPw == "") {
 			alert("변경하실 비밀번호를 입력하세요.");
 			$("#afterPw").focus();
 			return false;
-		} 
-		
-		if(afterPw !="" && pwChk){
-		
-		 $.ajax({
-			
-			url : "/update/pwUpdate",
-			type: "POST",
-			data : queryString,
-			success : function(data){
-				if(data =="updateSuccess"){
-					
-					alert("비밀번호가 수정되었습니다.");
-					window.location.reload();
-				}else{
-					
-					alert("정보수정실패 ");
-					window.location.reload();
-					
+		}
+
+		if (afterPw != "" && pwChk) {
+
+			$.ajax({
+
+				url : "/update/pwUpdate",
+				type : "POST",
+				data : queryString,
+				success : function(data) {
+					if (data == "updateSuccess") {
+
+						alert("비밀번호가 수정되었습니다.");
+						window.location.reload();
+					} else {
+
+						alert("정보수정실패 ");
+						window.location.reload();
+
+					}
+
+				},
+				error : function() {
+					alert("error");
 				}
-					
-			},error : function(){
-				alert("error");
-			}
-			
-			
-		}) 
-		
+
+			})
+
 		}
 	})
-	
-
 </script>

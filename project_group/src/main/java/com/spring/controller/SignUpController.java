@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.spring.register.service.MailSendService;
+import com.spring.service.CalendarService;
 import com.spring.service.UserService;
 import com.spring.vo.UserVO;
 
@@ -31,6 +32,9 @@ public class SignUpController {
 	@Inject
 	private UserService userService;
 
+	@Inject
+	private CalendarService calendarService;
+	
 	private HttpSession session;
 
 	@RequestMapping(value="/emailCheck")
@@ -108,7 +112,7 @@ public class SignUpController {
 
 		response.setContentType("text/html; charset=UTF-8");
 
-		PrintWriter out = null;
+		PrintWriter out = null; 
 		try {
 			out = response.getWriter();
 		} catch (IOException e) {
@@ -117,7 +121,10 @@ public class SignUpController {
 		}
 
 		if(result > 0) {
-
+			
+			
+			calendarService.createPlanner(usercode);
+			
 			out.println("<script>alert('회원가입 완료 되었습니다'); location.href='/StudyPlanner'</script>");
 
 			out.flush();
@@ -203,7 +210,12 @@ public class SignUpController {
 
 		if(result >= 1) {
 			
+
+			
+			calendarService.createPlanner(userVO.getUsercode());
+			
 			session.setAttribute("gui", userVO);
+			
 			out.println("<script>alert('회원가입 완료 되었습니다'); location.href='/plannerHome'</script>");
 
 			out.flush();

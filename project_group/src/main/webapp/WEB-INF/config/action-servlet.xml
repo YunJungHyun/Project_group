@@ -14,6 +14,22 @@
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<annotation-driven />
 
+	<!-- 업로드 패스 설정 -->
+	<beans:bean class="java.lang.String" id="uploadPath">
+		<beans:constructor-arg
+			value="C:\Users\yjh_z\workspace\portpolio\project_group\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\project_group\resources" />
+	</beans:bean>
+
+	<!-- 일반 파일 업로드 경로 -->
+	<resources mapping="/imgUpload/**" location="/resources/imgUpload/" />
+
+	<beans:bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<beans:property name="maxUploadSize" value="31457280" />
+		<beans:property name="defaultEncoding" value="utf-8" />
+	</beans:bean>
+
+
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving 
 		up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
@@ -27,14 +43,18 @@
 	</beans:bean>
 
 
-	<context:component-scan base-package="com.spring" />
+	<context:component-scan
+		base-package="com.spring" />
 
 	<!-- tiles 선언 -->
-	<beans:bean id="urlBasedViewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
-		<beans:property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView" />
+	<beans:bean id="urlBasedViewResolver"
+		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<beans:property name="viewClass"
+			value="org.springframework.web.servlet.view.tiles3.TilesView" />
 		<beans:property name="order" value="0" />
 	</beans:bean>
-	<beans:bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+	<beans:bean id="tilesConfigurer"
+		class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
 		<beans:property name="definitions">
 			<beans:list>
 				<beans:value>/WEB-INF/config/tiles.xml</beans:value>
@@ -42,15 +62,17 @@
 		</beans:property>
 	</beans:bean>
 
-	
-    
-    
+
+
+
+
 	<!-- email 인증 관련 -->
 	<beans:bean id="mailSender"
 		class="org.springframework.mail.javamail.JavaMailSenderImpl">
 		<beans:property name="host" value="smtp.gmail.com" />
 		<beans:property name="port" value="587" />
-		<beans:property name="username" value="yjhzzzz@gmail.com" />
+		<beans:property name="username"
+			value="yjhzzzz@gmail.com" />
 		<beans:property name="password" value="sksWkd12@!" />
 		<beans:property name="javaMailProperties">
 			<beans:props>

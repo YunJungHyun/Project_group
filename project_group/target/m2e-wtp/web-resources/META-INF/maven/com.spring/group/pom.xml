@@ -18,13 +18,13 @@
 
 
 		<!-- +ADD DEPENDENCY -->
-		 
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.18.20</version>
-        </dependency>
-		
+
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.20</version>
+		</dependency>
+
 		<!-- Sql Log -->
 		<dependency>
 			<groupId>org.lazyluke</groupId>
@@ -122,6 +122,14 @@
 			<artifactId>commons-fileupload</artifactId>
 			<version>1.3.3</version>
 		</dependency>
+		<!-- thumbnail 관련 -->
+		<!-- https://mvnrepository.com/artifact/net.coobird/thumbnailator -->
+		<dependency>
+			<groupId>net.coobird</groupId>
+			<artifactId>thumbnailator</artifactId>
+			<version>0.4.8</version>
+		</dependency>
+
 		<!-- 이메일 인증: https://mvnrepository.com/artifact/javax.mail/mail -->
 		<dependency>
 			<groupId>javax.mail</groupId>
@@ -161,7 +169,7 @@
 			<artifactId>jackson-datatype-jsr310</artifactId>
 			<version>2.9.4</version>
 		</dependency>
-	
+
 		<!-- +ADD DEPENDENCY END -->
 		<!-- Spring -->
 		<dependency>
@@ -174,7 +182,7 @@
 					<groupId>commons-logging</groupId>
 					<artifactId>commons-logging</artifactId>
 				</exclusion>
-				
+
 			</exclusions>
 		</dependency>
 		<dependency>

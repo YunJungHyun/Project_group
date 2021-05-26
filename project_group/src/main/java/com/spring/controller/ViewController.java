@@ -1,15 +1,23 @@
 package com.spring.controller;
 
+import java.util.List;
+
+import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.spring.service.CalendarService;
+import com.spring.vo.CalendarVO;
 import com.spring.vo.UserVO;
 
 @Controller
 public class ViewController {
+	
+	@Inject
+	private CalendarService calendarService;
 	
 	@RequestMapping(value="/StudyPlanner")
 	public String StudyPlanner(
@@ -50,6 +58,9 @@ public class ViewController {
 			return "redirect:/StudyPlanner";
 		}else {
 			
+			List<CalendarVO> gup =calendarService.getUserPlanner(gui.getUsercode());
+			System.out.println("gup.size():"+gup.size());
+			session.setAttribute("gup", gup);
 			model.addAttribute("title","HOME");
 			return "main.page";
 		}

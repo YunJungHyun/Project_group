@@ -87,4 +87,10 @@ public class UserDAOImpl implements UserDAO {
 		int result =sqlSession.update(Namespace+".pwUpdate",userVO);
 		return result;
 	}
+	
+	@Override
+	public int updateProfileImg(UserVO userVO) {
+		int result =sqlSession.update(Namespace+".updateProfileImg",userVO);
+		return result;
+	}
 }
