@@ -20,8 +20,7 @@
 
 <link type="text/css" rel="stylesheet"
 	href="<c:url value='resources/css/loginCSS.css'/>" />
-<link type="text/css" rel="stylesheet"
-	href="<c:url value='resources/css/calendarCSS.css'/>" />
+
 
 <link type="text/css" rel="stylesheet"
 	href="<c:url value='resources/css/registerCSS.css'/>" />
@@ -53,4 +52,6 @@
 	crossorigin="anonymous">
 
 
-
+<!-- google font  -->
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">

@@ -1,7 +1,21 @@
 @charset "UTF-8";
 
+body {
+	margin: 0px auto;
+}
+
+label {
+	
+	margin : 0px;
+} 
 .main-content {
 	
+	
+}
+.planner {
+	padding: 1rem;
+	background-color:#dddffd;
+	height: calc(100vh - 3rem);
 }
 
 .col-form-label {
@@ -13,8 +27,6 @@
 	color: #0a3ea9;
 }
 
-.col-form-label.label-pw{
-	
-	    word-break: keep-all;
+.col-form-label.label-pw {
+	word-break: keep-all;
 }
-
