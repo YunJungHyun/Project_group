@@ -4,8 +4,6 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-
-
 <!-- Bootstrap CSS -->
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -17,14 +15,8 @@
 	media="screen and (min-width:992px)"
 	href="<c:url value='resources/css/xlCSS.css'/>" />
 
-
 <link type="text/css" rel="stylesheet"
 	href="<c:url value='resources/css/loginCSS.css'/>" />
-
-
-<link type="text/css" rel="stylesheet"
-	href="<c:url value='resources/css/registerCSS.css'/>" />
-
 
 <link type="text/css" rel="stylesheet"
 	href="<c:url value='resources/css/modalCSS.css'/>" />
@@ -39,6 +31,8 @@
 	
 <link type="text/css" rel="stylesheet"
 	href="<c:url value='resources/css/menuCSS.css'/>" />
+<link type="text/css" rel="stylesheet"
+	href="<c:url value='resources/css/calendarCSS.css'/>" />
 	
 <meta name="google-signin-scope" content="profile email">
 <meta name="google-signin-client_id"
@@ -55,3 +49,7 @@
 <!-- google font  -->
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
+
+
+<!-- js dateFormat  -->
+<script src="<c:url value='resources/js/dateFormat.js'/>"></script>

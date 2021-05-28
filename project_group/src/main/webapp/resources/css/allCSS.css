@@ -6,16 +6,18 @@ body {
 
 label {
 	
-	margin : 0px;
-} 
+}
+
 .main-content {
 	
-	
 }
+
 .planner {
-	padding: 1rem;
-	background-color:#dddffd;
+	padding: 2rem 3rem;
+	background-color: #dddffd;
 	height: calc(100vh - 3rem);
+	display: flex;
+	justify-content: center;
 }
 
 .col-form-label {

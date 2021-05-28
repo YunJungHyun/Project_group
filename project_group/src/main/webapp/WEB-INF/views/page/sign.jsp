@@ -109,10 +109,10 @@
 						<p class="label-txt">GENDER</p> 
 						<div class="reg-radio" >
 					
-						<input type="radio" value="male"  id="male" name="gender" checked="checked">
+							<input type="radio" value="male"  id="male" name="gender" checked="checked">
 							<label for="male">남성</label>
 					
-						<input type="radio" value="female" id="female" name="gender">
+							<input type="radio" value="female" id="female" name="gender">
 							<label for="female">여성</label>
 						</div>
 					</label>
