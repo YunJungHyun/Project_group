@@ -12,6 +12,13 @@
 		]]>
 		
 	</select>
+	<select id="auto_increment_reset" parameterType="HashMap">
+	
+		<![CDATA[
+			${sql}
+		]]>
+		
+	</select>
 	
 	<select id="getUserPlanner" resultType="calendarVO" parameterType="HashMap">
 		<![CDATA[
@@ -19,7 +26,29 @@
 			 ${sql}
 		]]>
 	</select>
+	<insert id="insertEvent" parameterType="HashMap">
+		<![CDATA[
+		
+ 
+			${sql}
+		]]>
+	</insert>
 	
+	<select id="selectING" resultType="calendarVO" parameterType="HashMap">
+		<![CDATA[
+		
+			${sql}
+			
+		]]>
+	</select>
+	
+	<update id="updateEvent" parameterType="HashMap">
+		<![CDATA[
+		
+			${sql}
+		]]>
+		
+	</update>
 </mapper>
 
  

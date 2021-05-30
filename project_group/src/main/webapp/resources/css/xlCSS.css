@@ -18,6 +18,10 @@
 	height: calc(100vh - 4.5rem);
 }
 
+.calendar-body{
+	
+	width : 70vw;
+}
 
 .calendar-container {
 

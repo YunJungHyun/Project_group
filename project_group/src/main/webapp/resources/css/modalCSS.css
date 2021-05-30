@@ -406,17 +406,22 @@ input.signUp-input.email-check-input {
 	border-top: 1px solid #bbb;
 	justify-content: flex-end;
 }
+
 .title-content-group {
-    width: 100%;
+	width: 100%;
 }
 
-.time-select-chk-label,.allDay-select-chk-label, .day-select-label, .time-select-label,
-	.color-label {
+.time-select-chk-label, .allDay-select-chk-label, .day-select-label,
+	.time-select-label, .color-label {
 	margin: 0px;
 }
 
-.event-input-box {
-	margin-top: 1.5rem;
+.event-input-box , .select-color-title{
+	margin-top: 1rem;
+}
+
+.event-input-box.color-radio-box {
+	margin-top: unset;
 }
 
 .event-input-box:first-child {
@@ -431,7 +436,7 @@ input.signUp-input.email-check-input {
 	width: 2rem;
 }
 
-.day-select-label, .time-select-label {
+.day-select-label, .time-select-label, .select-color-title {
 	padding-left: .5rem;
 	padding: .25rem;
 }
@@ -454,7 +459,7 @@ input.signUp-input.email-check-input {
 	justify-content: space-around;
 }
 
-#time-select-chk , #allDay-select-chk{
+#time-select-chk, #allDay-select-chk {
 	width: 1rem;
 	height: 1rem;
 }
@@ -479,40 +484,36 @@ input.signUp-input.email-check-input {
 	display: none;
 }
 
-.day-time-group:hover > .input-group {
-	
-	
-	box-shadow: 0 0 0 0.2rem rgb(0 123 255 / 25%);
+.day-time-group:hover>.input-group {
+	box-shadow: 0 0 0 0.2rem rgb(0 123 255/ 25%);
 	border-radius: .25rem;
 }
 
-.day-time-group:hover > .input-group > .input-group-append > span{
-	color : #fff;
+.day-time-group:hover>.input-group>.input-group-append>span {
+	color: #fff;
 	background-color: #5286F3;
 }
 
-.time-chk-group:hover{
-
-	color :#5286F3;
+.time-chk-group:hover {
+	color: #5286F3;
 }
 
-#time-select-chk, .time-select-chk-label,.allDay-select-chk,.allDay-select-chk-label {
-    cursor: pointer;
+#time-select-chk, .time-select-chk-label, .allDay-select-chk,
+	.allDay-select-chk-label {
+	cursor: pointer;
 }
 
-.time-select-chk-label,.allDay-select-chk-label{
-	
+.time-select-chk-label, .allDay-select-chk-label {
 	font-weight: bold;
 	padding: .1rem;
 }
-
 
 label.input-group-append {
 	margin: 0px;
 	cursor: pointer;
 }
-label.input-group-append:active{
-	
+
+label.input-group-append:active {
 	filter: brightness(0.5);
 }
 

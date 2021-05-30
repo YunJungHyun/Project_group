@@ -61,8 +61,7 @@
 				prevDay = prevDay - firstDate.getDay()+i+1;
 				prevMonthValue = new Date(today.getFullYear(),today.getMonth()-1, prevDay);
 				
-				
-				cell.innerHTML = "<font color=#bbb>" + prevDay+"<input class='dateInfo' type='hidden' value='"+prevMonthValue.format('yyyy-MM-dd')+"'></font>";
+				cell.innerHTML = "<div class='dateInfo oneSpace' id='"+prevMonthValue.format('yyyy-MM-dd')+"'><font color=#bbb>" + prevDay + "</font></div>";
 				 
 				prevDay = prevDate.getDate();
 		 } 
@@ -73,20 +72,23 @@
 				//1일부터 마지막 일까지 돌림
 				cell = row.insertCell();//열 한칸한칸 계속 만들어주는 역할
 				thisMonthValue = new Date(today.getFullYear(), today.getMonth() , i);
-				cell.innerHTML ="<font color=#000>" + i +"<input class='dateInfo' type='hidden' value='"+thisMonthValue.format('yyyy-MM-dd')+"'></font>";
+				//<input class='dateInfo' type='hidden' value='"+thisMonthValue.format('yyyy-MM-dd')+"'>";
+				cell.innerHTML ="<div class='dateInfo oneSpace' id='"+thisMonthValue.format('yyyy-MM-dd')+"'><font color=#000>" + i +"</font></div>";
 				
 				cnt = cnt + 1;//열의 갯수를 계속 다음으로 위치하게 해주는 역할
 		
 				if (cnt % 7 == 1) {/*일요일 계산*/
 					//1주일이 7일 이므로 일요일 구하기
 					//월화수목금토일을 7로 나눴을때 나머지가 1이면 cnt가 1번째에 위치함을 의미한다
-					cell.innerHTML = "<font color=#F79DC2>" + i +"<input class='dateInfo' type='hidden' value='"+thisMonthValue.format('yyyy-MM-dd')+"'></font>";
+					//<input class='dateInfo' type='hidden' value='"+thisMonthValue.format('yyyy-MM-dd')+"'>
+					cell.innerHTML = "<div class='dateInfo oneSpace' id='"+thisMonthValue.format('yyyy-MM-dd')+"'><font color=#F79DC2>" + i +"</font></div>";
 					//1번째의 cell에만 색칠
 				}    
 				
 				if (cnt%7 == 0){/* 1주일이 7일 이므로 토요일 구하기*/
 					//월화수목금토일을 7로 나눴을때 나머지가 0이면 cnt가 7번째에 위치함을 의미한다
-					cell.innerHTML = "<font color=skyblue>" + i +"<input class='dateInfo' type='hidden' value='"+thisMonthValue.format('yyyy-MM-dd')+"'></font>";
+					//<input class='dateInfo' type='hidden' value='"+thisMonthValue.format('yyyy-MM-dd')+"'>
+					cell.innerHTML = "<div class='dateInfo oneSpace' id='"+thisMonthValue.format('yyyy-MM-dd')+"'><font color=skyblue>" + i +"</font></div>";
 					//7번째의 cell에만 색칠
 					row = dateColumn.insertRow();
 					rowNum = rowNum + 1;
@@ -115,7 +117,8 @@
 			for (j = 1 ; j < x ; j++){
 					nextMonthValue = new  Date(today.getFullYear(), today.getMonth()+1 , j);
 					 cell = row.insertCell();
-					 cell.innerHTML = "<font color=#bbb>" + j +"<input class='dateInfo' type='hidden' value='"+nextMonthValue.format('yyyy-MM-dd')+"'></font>";
+					 //<input class='dateInfo' type='hidden' value='"+nextMonthValue.format('yyyy-MM-dd')+"'>
+					 cell.innerHTML = "<div class='dateInfo oneSpace' id='"+nextMonthValue.format('yyyy-MM-dd')+"'><font color=#bbb>" + j +"</font></div>";
 			 }
 			
 			
@@ -129,7 +132,8 @@
 				for(k = j ; k < j+7 ;k++){
 					nextMonthValue = new  Date(today.getFullYear(), today.getMonth()+1 , k);
 					cell = row.insertCell();
-					cell.innerHTML = "<font color=#bbb>" + k+"<input class='dateInfo' type='hidden' value='"+nextMonthValue.format('yyyy-MM-dd')+"'></font>";
+					//<input class='dateInfo' type='hidden' value='"+nextMonthValue.format('yyyy-MM-dd')+"'>
+					cell.innerHTML = "<div class='dateInfo oneSpace' id='"+nextMonthValue.format('yyyy-MM-dd')+"'><font color=#bbb>" + k+"</font></div>";
 				}
 				
 			}
@@ -143,10 +147,12 @@
 			for(k = j ; k < j+7 ;k++){
 				nextMonthValue = new  Date(today.getFullYear(), today.getMonth()+1 , k);
 				cell = row.insertCell();
-				cell.innerHTML = "<font color=#bbb>" + k+"<input class='dateInfo' type='hidden' value='"+nextMonthValue.format('yyyy-MM-dd')+"'></font>";
+				//<input class='dateInfo' type='hidden' value='"+nextMonthValue.format('yyyy-MM-dd')+"'>
+				cell.innerHTML = "<div class='dateInfo oneSpace' id='"+nextMonthValue.format('yyyy-MM-dd')+"'><font color=#bbb>" + k+"</font></div>";
 			}
 		}
 		 
+		 //column에 div 추가
 		 
 		 
 		  
@@ -159,8 +165,9 @@
 			 for (var q = 0 ; q < childrenLength ; q++){
 				 
 				 var colNum = q + 1;
-				 parentColumn.children("td:eq("+q+")").addClass("column-"+colNum);
-				 
+				 var textDate = parentColumn.children("td:eq("+q+")").children().find(".dateInfo").val();
+				 parentColumn.children("td:eq("+q+")").addClass("row-"+findRowNum+"-column-"+colNum);
+				 parentColumn.children("td:eq("+q+")").attr("id",textDate);
 			 }
 			 
 		 }
@@ -235,7 +242,7 @@
 				</button>
       	</div>
 		<div class="modal-body eventPop-body">
-			<form id="eventPop-form" name="eventPop-form" action="#" method="POST">
+			<form id="eventPop-form" name="eventPop-form" method="POST">
 				<div class="eventPop-input-form">
 					<div class="input-group event-input-box">
 						<div class="event-input-group title-content-group">
@@ -263,12 +270,12 @@
 						<div class="event-input-group day-time-group" id="group-start-day">
 							<label class="form-check-label day-select-label" for="start-day">시작 날짜</label>
 							<div id="sdb" class="input-group" onclick="$('#start-day').datepicker('show')" >
-								<input type="text" name="date" class="form-control event-input day-time-input" disabled="disabled" id="start-day" value="">
+								<input type="text" name="start" class="form-control event-input day-time-input" disabled="disabled" id="start-day" value="">
  								<label class="input-group-append" for="start-day">
     								<span class="input-group-text event-input" ><i class="far fa-calendar-alt"></i></span>
   								</label>
   							</div>
-  						</div>
+  						</div> 
   						
 						
   						<div class="between-empty">
@@ -276,7 +283,7 @@
   						<div class="event-input-group day-time-group" id="group-end-day">
   							<label class="form-check-label day-select-label" for="end-day"> 끝 날짜</label>
   							<div id="edb" class="input-group" onclick="$('#end-day').datepicker('show')">
-								<input type="text" class="form-control event-input day-time-input" disabled="disabled" id="end-day" value="">
+								<input type="text" name="end" class="form-control event-input day-time-input" disabled="disabled" id="end-day" value="">
  								<label class="input-group-append" for="end-day">
     								<span class="input-group-text event-input"><i class="far fa-calendar-alt"></i></span>
   								</label>
@@ -289,7 +296,7 @@
 						<div class="event-input-group day-time-group" id="group-start-time">
 							<label class="form-check-label time-select-label" for="start-time"> 시작 시간</label>
 							<div class="input-group " data-autoclose="true">
-								<input type="text" class="form-control event-input day-time-input" id="start-time" value="00 : 00">
+								<input type="text" name="starttime" class="form-control event-input day-time-input" id="start-time" value="00 : 00">
  								<label class="input-group-append" for="start-time" onclick="$('#start-time').timepicker()">
     								<span class="input-group-text event-input"><i class="far fa-clock"></i></span>
   								</label>
@@ -300,32 +307,32 @@
   						<div class="event-input-group day-time-group" id="group-end-time">
   							<label class="form-check-label time-select-label" for="end-time"> 끝 시간</label>
   							<div class="input-group ">
-								<input type="text" class="form-control event-input day-time-input"  id="end-time" value="00 : 00">
+								<input type="text" name="endtime" class="form-control event-input day-time-input"  id="end-time" value="00 : 00">
  								<label class="input-group-append"  for="end-time" onclick="$('#end-time').timepicker()">
     								<span class="input-group-text event-input"><i class="far fa-clock"></i></span>
   								</label>
   							</div> 
   						</div>
-  					</div>
-					
+  					</div> 
+					<label class="select-color-title">색상</label>
 					<div class="input-group event-input-box color-radio-box">
 						<div class="color-radio-group">
-							<input type="radio" class="color-radio" id="red-color"><label class="color-label" for="red-color"></label>
+							<input type="radio" class="color-radio" name="color" id="red-color"><label class="color-label" for="red-color"></label>
 						</div>
 						<div class="color-radio-group">
-							<input type="radio" class="color-radio" id="orange-color"><label class="color-label" for="orange-color"></label>
+							<input type="radio" class="color-radio" name="color"  id="orange-color"><label class="color-label" for="orange-color"></label>
 						</div>
 						<div class="color-radio-group">
-							<input type="radio" class="color-radio" id="yellow-color"><label class="color-label" for="yellow-color"></label>
+							<input type="radio" class="color-radio" name="color"  id="yellow-color"><label class="color-label" for="yellow-color"></label>
 						</div>
 						<div class="color-radio-group">
-							<input type="radio" class="color-radio" id="green-color"><label class="color-label" for="green-color"></label>
+							<input type="radio" class="color-radio" name="color"  name="color"  id="green-color"><label class="color-label" for="green-color"></label>
 						</div>
 						<div class="color-radio-group">
-							<input type="radio" class="color-radio" id="blue-color"><label class="color-label" for="blue-color"></label>
+							<input type="radio" class="color-radio" name="color"  id="blue-color"><label class="color-label" for="blue-color"></label>
 						</div>
 						<div class="color-radio-group">
-							<input type="radio" class="color-radio" id="navy-color"><label class="color-label" for="navy-color"></label>
+							<input type="radio" class="color-radio" name="color"  id="navy-color"><label class="color-label" for="navy-color"></label>
 						</div>
 								
 					</div>
@@ -335,7 +342,7 @@
 		</div>
       <div class="modal-footer eventPop-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
-        <button type="button" class="btn btn-primary">저장</button>
+        <button type="button" id="eventPop-form-btn" form="eventPop-form" class="btn btn-primary">저장</button>
       </div>
     </div>
   </div>
@@ -356,14 +363,14 @@
 			
 			var tdNum= $(this).attr("class");
 			var trNum= $(this).parent().attr("class");
-			var dateInfo = $(this).find(".dateInfo").val();
+			var dateInfo = $(this).find(".dateInfo").attr("id");
 			
 		
-			$(".eventPop").attr("id",dateInfo);
+			$(".eventPop").attr("id",dateInfo+"-modal");
 			$("#start-day").val(dateInfo);
 			$("#end-day").val(dateInfo);
 			
-			$("#"+dateInfo).modal();
+			$("#"+dateInfo+"-modal").modal();
 		})
 		
 		
@@ -434,32 +441,6 @@
 			$(this).parent().css("box-shadow","none");
 		})
 		
-		
-		
-		/*날짜 선택  */
-		/* $(".day-time-group").on("click",function(){
-			
-			var dtpickStr =$(this).attr("id");
-			var dtpick = dtpickStr.includes("day");
-			
-			switch(dtpick){
-			
-				case true  :
-					
-				
-					break;
-				
-				case false  :
-					alert("시간");
-					break;
-				 default:
-					alert("error");
-					break;
-			}
-		})
-		 */
-		
-		
 		$(function(){
 			var today = new Date();
 			var y = today.getFullYear();
@@ -488,18 +469,188 @@
 			yearRange:  prevY+":"+nextFiveY //연도 범위
 			    	
 		
-			});
-			
-			 
+			});	 
 
 		}) 	
 
 		$("#start-time, #end-time").timepicker();
 			
 	
+		$("#eventPop-form-btn").on("click",function(){
+			
+			$("#start-day, #end-day").prop( "disabled" , false);
+			
+			var usercode="${gui.usercode}";
 		
+			var sDayVal =$("#start-day").val();
+			var eDayVal =$("#end-day").val();
+			
+			var sDay = new Date(sDayVal);
+			var eDay = new Date(eDayVal);
+			
+			var sDayRC = null;
+			var eDayRC = null;
+			
+			
+			
+			var pnum = null;
+			
+			if(sDay <= eDay){
+				
+				$.ajax({
+					
+					url : "/event/insertEvent/"+usercode,
+					type:"POST",
+					success :function(data){
+						var queryString = $("form[name=eventPop-form]").serialize();
+						
+						addPlan(data,sDay,eDay,usercode,queryString);
+					},error : function(){
+						alert("error");
+					}
+					
+				})
+				
+			
+			}else{
+				
+				
+				alert("날짜 설정이 잘못되었습니다.");
+				return false;
+			}
+			
+			
+			$(".dateInfo").each(function(){
+				
+				if($(this).val() == sDayVal){
+					sDayRc = $(this).closest("td").attr("class");
+					//alert(sDayRc);	
+				}
+				
+				if($(this).val() == eDayVal){
+					
+					eDayRc = $(this).closest("td").attr("class");
+				}
+			}) 
+			
+			
+			
+			$(".eventPop ").modal("hide");
+			$("#start-day, #end-day").prop( "disabled" , true);
+			
+		})	
 	})
 	
+	function addPlan(pnum,sDay,eDay,usercode,queryString){
+		var listDate = [];
+		var dateList= getDateRange(sDay.format("yyyy-MM-dd") , eDay.format("yyyy-MM-dd"), listDate);
+		
+		for(var i = 0 ; i <dateList.length ;i++){
+			
+			if(i == 0  && i != dateList.length-1){ //시작점 
+				var output ="<div class='start-eventDay '>"
+				output +="<div class='eventBar event-"+pnum+"'>"
+				output +="<a href=#>"
+				output +=pnum
+				output +="</a>";
+				output +="</div>";
+				output +="</div>";
+				
+				$("#"+dateList[i]).append(output);
+		
+			
+			}else if(i != 0 &&i == dateList.length-1){ //끝점
+				var output ="<div class='end-eventDay '>"
+				output +="<div class='eventBar event-"+pnum+"'>"
+				output +="<a href=#>"
+				output +=pnum
+				output +="</a>";
+				output +="</div>";
+				output +="</div>";
+				
+				$("#"+dateList[i]).append(output);
+			
+			}else if(i == 0 && i == dateList.length-1){ //하루일경우
+				var output ="<div class='allDay-eventDay '>"
+					output +="<div class='eventBar event-"+pnum+"'>"
+					output +="<a href=#>"
+					output +=pnum
+					output +="</a>";
+					output +="</div>";
+					output +="</div>";
+					
+				$("#"+dateList[i]).append(output);
+			
+			}else{ //가운데점
+				
+				var output ="<div class='mid-eventDay '>"
+				output +="<div class='eventBar event-"+pnum+"'>"
+				output +="<a href=#>"
+				output +=pnum
+				output +="</a>";
+				output +="</div>";
+				output +="</div>";
+				
+				$("#"+dateList[i]).append(output);
+			}
+		}
+		var queryString =queryString + "&pnum=" + pnum;
+		
+		barAddUp();
+		
+		$.ajax({
+			
+			url : "/event/updateEvent/"+usercode,
+			data : queryString,
+			type : "POST",
+			success : function(data){
+				
+				alert("성공");
+			},error : function(){
+				
+				alert("error");
+			}
+			
+		})
+	}
+	
+	function barAddUp(){
+		
+		
+	}
+	
+	function getDateRange(startDate, endDate, listDate) {
+
+      	//alert("startDate :"+startDate+"endDate"+endDate+"listDate :"+listDate);
+		
+      	var dateMove = new Date(startDate);
+      	//alert("dateMove :"+dateMove);
+      	
+      	var strDate = startDate;
+	      	
+      	
+      	if(startDate == endDate){
+      		
+      		var strDate= dateMove.format("yyyy-MM-dd");
+      		listDate.push(strDate);
+      	}else{
+      		
+      		while (strDate < endDate){
+      			 var strDate = dateMove.format("yyyy-MM-dd");
+      			listDate.push(strDate);
+      			//alert("hi");
+      			dateMove.setDate(dateMove.getDate() + 1);
+
+      		}
+      	}
+      	return listDate;
+    };
+
+
+	
+
+
+
 
 	function textareaResize(obj){
 		
@@ -507,5 +658,8 @@
 		obj.style.height = (12+obj.scrollHeight)+"px";
 		
 	}
+	
+	
+	
 </script>
 

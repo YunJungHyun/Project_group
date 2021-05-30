@@ -36,7 +36,7 @@ public class SignOutController {
 		String loginsort = gui.getLoginsort();
 		
 		System.out.println("loginsort:"+loginsort);
-		
+		 
 		session.invalidate();
 		
 		

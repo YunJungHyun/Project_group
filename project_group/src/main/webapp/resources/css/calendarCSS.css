@@ -7,8 +7,9 @@
 }
 
 .calendar-body {
-    padding: 0 2rem;
+	padding: 0 2rem;
 }
+
 .calendar-nav {
 	display: flex;
 	padding: 2rem 2rem 1rem;
@@ -72,7 +73,24 @@
 
 #date-col>tr>td {
 	height: 12vh;
+	
+	padding: 0px;
+}
+
+td>div>font {
 	text-align: right;
+	padding: .25rem;
+}
+
+.oneSpace {
+	display: flex;
+	flex-direction: column;
+}
+
+.eventBar {
+	color: blue;
+	width: 100%;
+	background-color: #ff00ff;
 }
 
 .sunday {

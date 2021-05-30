@@ -10,4 +10,11 @@ public interface CalendarService {
 
 	List<CalendarVO> getUserPlanner(String usercode);
 
+	void insertEvent(String usercode);
+
+	CalendarVO selectING(String usercode);
+
+	void updateEvent(CalendarVO calendarVO);
+
 }
+ 

@@ -285,7 +285,7 @@
 						.serialize()
 						+ "&usercode=" + usercode;
 
-				//alert(usercode);
+				//alert(queryString);
 
 				$.ajax({
 

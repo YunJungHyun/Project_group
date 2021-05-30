@@ -10,11 +10,14 @@ import lombok.ToString;
 @Setter
 @ToString(callSuper=true)
 public class CalendarVO {
-	
-	private int pnum;
+	private int pnum;	
+	private String cip;
 	private String plantitle;	
 	private String plan;
 	private Date start;
 	private Date end;
 	private String color;
+	private Date startTime;
+	private Date endTime;
+	private String usercode;
 }
