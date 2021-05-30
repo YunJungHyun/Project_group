@@ -35,7 +35,7 @@
 		 
          //날짜를 찍을 테이블 변수 만듬, 일 까지 다 찍힘
 		 var calendarTitle = document.getElementById("calendarTitle");
-		 calendarTitle.innerHTML = today.getFullYear() +" "+ (today.getMonth() + 1) + ".";
+		 calendarTitle.innerHTML = today.getFullYear() +" "+ (today.getMonth() + 1);
 		
 		 var dateColumn = document.getElementById("date-col");
 		 	
@@ -59,7 +59,9 @@
 			 cnt = cnt + 1;
 			
 				prevDay = prevDay - firstDate.getDay()+i+1;
-				prevDateValue = new Date(today.getFullYear(),today.getMonth()-1, prevDay);
+				prevMonthValue = new Date(today.getFullYear(),today.getMonth()-1, prevDay);
+				
+				
 				cell.innerHTML = "<font color=#bbb>" + prevDay+"<input class='dateInfo' type='hidden' value='"+prevMonthValue.format('yyyy-MM-dd')+"'></font>";
 				 
 				prevDay = prevDate.getDate();
@@ -166,9 +168,7 @@
 	
 
 </script>
-<style type="text/css">
 
-</style>
 <div class="planner">
 <div id='planner_${gui.usercode}' class="calendar-container">
 	<div class="calendar-nav">
@@ -223,6 +223,7 @@
 	</div>
 </div>
 </div>
+<!-- 스케쥴 추가 모달  -->
 <div class="modal fade eventPop" id="" tabindex="-1" role="dialog"
 	aria-labelledby="eventPop-modalLabel" aria-hidden="true">
 	<div class="modal-dialog" role="document">
@@ -235,46 +236,101 @@
       	</div>
 		<div class="modal-body eventPop-body">
 			<form id="eventPop-form" name="eventPop-form" action="#" method="POST">
-				<label>
-					<p class="label-txt">제목</p> 
-					<input type="text" class="eventPop-input" id="" name="" maxlength="20" value="">
-					<div class="line-box">
-						<div class="line"></div>
-					</div>
-						
-				</label>  
-				<label>
-					<p class="label-txt">내용</p> 
-					<textarea rows="3"  class="eventPop-input pop-text-area"></textarea>
-					<div class="line-box">
-						<div class="line"></div>
-					</div>
-						
-				</label>  
-				
-				<label>
-					<div class="label-txt eventPop-chk">
-						<span class="eventPop-chk-title">
-							시간 정하기
-						</span>
-						<div class="eventPop-chk-btn">
-							<input class="eventPop-chkbox" type="checkbox"> 
+				<div class="eventPop-input-form">
+					<div class="input-group event-input-box">
+						<div class="event-input-group title-content-group">
+							<label class="form-check-label time-select-label" for="start-time"> 제목 </label>
+							<input type="text" id="event-title" name="plantitle" class="form-control event-input" placeholder="제목">
 						</div>
-					</div> 
-				</label>
-				
-				
-				<div class="row select-day-group">
-					<div class="select-day-box startDay">
-							<div class="select-title">시작 날짜</div> 
-							<input type="text" value=""/>
 					</div>
-					<div class="select-day-box endDay">
-						<div class="select-title">끝 날짜</div> 
-						<input type="text" value=""/>
+					<div class="input-group event-input-box">
+						<div class="event-input-group title-content-group">
+							<label class="form-check-label time-select-label" for="start-time"> 내용 </label>
+							<textarea onkeydown="textareaResize(this)" name="plan"  onkeyup="textareaResize(this)" id="event-content" class="form-control event-input" placeholder="내용"></textarea>
+						</div>
 					</div>
+					<div class="input-group form-check event-input-box">
+						<div class="allDay-chk-group">
+							<input class="form-check-input" type="checkbox" value="" id="allDay-select-chk">
+							<label class="form-check-label allDay-select-chk-label" for="allDay-select-chk"> 하루만 하기 </label>
+						</div>
+						<div class="time-chk-group">
+							<input class="form-check-input" type="checkbox" value="" id="time-select-chk">
+							<label class="form-check-label time-select-chk-label" for="time-select-chk"> 시간 정하기 </label>
+						</div>
+					</div>
+					<div class="input-group event-input-box select-day-time-box">
+						<div class="event-input-group day-time-group" id="group-start-day">
+							<label class="form-check-label day-select-label" for="start-day">시작 날짜</label>
+							<div id="sdb" class="input-group" onclick="$('#start-day').datepicker('show')" >
+								<input type="text" name="date" class="form-control event-input day-time-input" disabled="disabled" id="start-day" value="">
+ 								<label class="input-group-append" for="start-day">
+    								<span class="input-group-text event-input" ><i class="far fa-calendar-alt"></i></span>
+  								</label>
+  							</div>
+  						</div>
+  						
+						
+  						<div class="between-empty">
+  						</div>
+  						<div class="event-input-group day-time-group" id="group-end-day">
+  							<label class="form-check-label day-select-label" for="end-day"> 끝 날짜</label>
+  							<div id="edb" class="input-group" onclick="$('#end-day').datepicker('show')">
+								<input type="text" class="form-control event-input day-time-input" disabled="disabled" id="end-day" value="">
+ 								<label class="input-group-append" for="end-day">
+    								<span class="input-group-text event-input"><i class="far fa-calendar-alt"></i></span>
+  								</label>
+  							</div> 
+  						</div>
+  					</div>
+  					
+					
+					<div class="input-group event-input-box select-day-time-box" id="select-time-box">
+						<div class="event-input-group day-time-group" id="group-start-time">
+							<label class="form-check-label time-select-label" for="start-time"> 시작 시간</label>
+							<div class="input-group " data-autoclose="true">
+								<input type="text" class="form-control event-input day-time-input" id="start-time" value="00 : 00">
+ 								<label class="input-group-append" for="start-time" onclick="$('#start-time').timepicker()">
+    								<span class="input-group-text event-input"><i class="far fa-clock"></i></span>
+  								</label>
+  							</div>
+  						</div>
+  						<div class="between-empty">
+  						</div>
+  						<div class="event-input-group day-time-group" id="group-end-time">
+  							<label class="form-check-label time-select-label" for="end-time"> 끝 시간</label>
+  							<div class="input-group ">
+								<input type="text" class="form-control event-input day-time-input"  id="end-time" value="00 : 00">
+ 								<label class="input-group-append"  for="end-time" onclick="$('#end-time').timepicker()">
+    								<span class="input-group-text event-input"><i class="far fa-clock"></i></span>
+  								</label>
+  							</div> 
+  						</div>
+  					</div>
+					
+					<div class="input-group event-input-box color-radio-box">
+						<div class="color-radio-group">
+							<input type="radio" class="color-radio" id="red-color"><label class="color-label" for="red-color"></label>
+						</div>
+						<div class="color-radio-group">
+							<input type="radio" class="color-radio" id="orange-color"><label class="color-label" for="orange-color"></label>
+						</div>
+						<div class="color-radio-group">
+							<input type="radio" class="color-radio" id="yellow-color"><label class="color-label" for="yellow-color"></label>
+						</div>
+						<div class="color-radio-group">
+							<input type="radio" class="color-radio" id="green-color"><label class="color-label" for="green-color"></label>
+						</div>
+						<div class="color-radio-group">
+							<input type="radio" class="color-radio" id="blue-color"><label class="color-label" for="blue-color"></label>
+						</div>
+						<div class="color-radio-group">
+							<input type="radio" class="color-radio" id="navy-color"><label class="color-label" for="navy-color"></label>
+						</div>
+								
+					</div>
+					
 				</div>
-				
 			</form>
 		</div>
       <div class="modal-footer eventPop-footer">
@@ -284,6 +340,10 @@
     </div>
   </div>
 </div>
+
+
+
+
 <script type="text/javascript">
 
 	calendar();
@@ -300,49 +360,152 @@
 			
 		
 			$(".eventPop").attr("id",dateInfo);
+			$("#start-day").val(dateInfo);
+			$("#end-day").val(dateInfo);
 			
 			$("#"+dateInfo).modal();
 		})
 		
-		 $('.eventPop-input').focus(function(){
-			    $(this).parent().find(".label-txt").addClass('label-active');
-			  });
-
-		$(".eventPop-input").focusout(function(){
-			    if ($(this).val() == '') {
-			      $(this).parent().find(".label-txt").removeClass('label-active');
-			    };
-			  });
-			  
-		$('.eventPop-chkbox').change(function(){
+		
+		$("#time-select-chk").change(function(){
+       		 	
+			if($("#time-select-chk").is(":checked")){
+				$("#select-time-box").css("display","flex");
+				$(".time-chk-group").css("color","#5286F3");
+			}else{
+				$("#select-time-box").css("display","none");
+				$(".time-chk-group").css("color","#000");
+			}
 			
-			var chk = $(this).is(":checked");
-			
-			if(chk == true){
+		})
+		$("#allDay-select-chk").change(function(){
+       		 	
+			if($("#allDay-select-chk").is(":checked")){
 				
-				$(this).parent().parent().css("color", "#526df3");
+				$("#sdb").attr("onclick","#");
+				$("#edb").attr("onclick","#");
+				$("#end-day").val($("#start-day").val());
 			}else{
 				
-				$(this).parent().parent().css("color", "#000");
+				$("#edb").attr("onclick","$('#end-day').datepicker('show')");
+				$("#sdb").attr("onclick","$('#start-day').datepicker('show')");
+			
+			
 			}
-		})	  
-		 
-		
-		
-		/* $(".pop-text-area").keyup(function(){
 			
-			if (window.event.keyCode == 13){
-				alert($(".pop-text-area").val());
-				keyupCnt += 1;
+		})
+		
+		$(".time-chk-group").hover(function(){
 			
-				if( keyupCnt > 4){
+			$(".time-chk-group").css("color", "#5286F3");
+			
+		},function(){
+		
+			$(".time-chk-group").css("color", "#000");
 				
-					$(".pop-text-area").attr("rows",keyupCnt);
-				}
+			
+		})
+		$(".allDay-chk-group").hover(function(){
+			
+			$(".allDay-chk-group").css("color", "#5286F3");
+			
+		},function(){
+		
+			$(".allDay-chk-group").css("color", "#000");
+				
+			
+		})
+		 
+		var colorArr = ["#ff0068", "#ff8100", "#ffc800", "#00ff43", "#00a1ff", "#1b00ff"];
+		
+		$(".color-radio").each(function(){
+			var i = $(".color-radio").index(this); 
+			$(this).next().css("background-color",colorArr[i]);
+			//alert("i :"+i);
+		})
+		
+		$(".day-time-input").focus(function(){
+			$(this).parent().css("border-radius", ".25rem");
+			$(this).parent().css("box-shadow","0 0 0 0.2rem rgb(0 123 255 / 25%)");
+		})
+		
+		$(".day-time-input").focusout(function(){
+			$(this).parent().css("border-radius", "0");
+			$(this).parent().css("box-shadow","none");
+		})
+		
+		
+		
+		/*날짜 선택  */
+		/* $(".day-time-group").on("click",function(){
+			
+			var dtpickStr =$(this).attr("id");
+			var dtpick = dtpickStr.includes("day");
+			
+			switch(dtpick){
+			
+				case true  :
+					
+				
+					break;
+				
+				case false  :
+					alert("시간");
+					break;
+				 default:
+					alert("error");
+					break;
 			}
-		}) */
+		})
+		 */
+		
+		
+		$(function(){
+			var today = new Date();
+			var y = today.getFullYear();
+			var m = today.getMonth();
+			var d = today.getDate();
+			var prevY = y-1;
+			var nextFiveY = y+5;
+		   
+			$("#start-day, #end-day").datepicker({
+		
+			showOn: "focus", // 버튼과 텍스트 필드 모두 캘린더를 보여준다. 
+	    	changeMonth: true, // 월을 바꿀수 있는 셀렉트 박스를 표시한다.
+	    	changeYear: true, // 년을 바꿀 수 있는 셀렉트 박스를 표시한다.
+	    	minDate: '-2y', // 현재날짜로부터 100년이전까지 년을 표시한다. 
+	    	nextText: '다음 달', // next 아이콘의 툴팁. 
+	    	prevText: '이전 달', // prev 아이콘의 툴팁. 
+	    	numberOfMonths: [1,1], // 한번에 얼마나 많은 월을 표시할것인가. [2,3] 일 경우, 2(행) x 3(열) = 6개의 월을 표시한다.
+	    	stepMonths: 1, // next, prev 버튼을 클릭했을때 얼마나 많은 월을 이동하여 표시하는가.
+	    	showButtonPanel: true, // 캘린더 하단에 버튼 패널을 표시한다. 
+			currentText: '오늘 날짜' , // 오늘 날짜로 이동하는 버튼 패널
+	    	closeText: '닫기', // 닫기 버튼 패널 
+		    dateFormat: "yy-mm-dd", // 텍스트 필드에 입력되는 날짜 형식.  
+		    showMonthAfterYear: true , // 월, 년순의 셀렉트 박스를 년,월 순으로 바꿔준다.
+			dayNamesMin: ['월', '화', '수', '목', '금', '토', '일'], // 요일의 한글 형식. 
+		    monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'], // 월의 한글 형식.
+			yearRange:  prevY+":"+nextFiveY //연도 범위
+			    	
+		
+			});
+			
+			 
+
+		}) 	
+
+		$("#start-time, #end-time").timepicker();
+			
+	
+		
 	})
 	
-	
+
+	function textareaResize(obj){
+		
+		obj.style.height= "1px";
+		obj.style.height = (12+obj.scrollHeight)+"px";
+		
+	}
 </script>
 

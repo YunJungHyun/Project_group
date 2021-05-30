@@ -5,7 +5,7 @@
 
 
 <nav class="navbar navbar-expand-lg navbar-dark">
-	<div class="container">
+	<div class="container-fluid">
 		
 			<div class="col-3">
 			
@@ -174,7 +174,7 @@
 		
 		if(!$(".right-menu-side").hasClass("open")){
 			$(".right-menu-side").css("right","0");
-			$(".right-menu-side").css("width","70%");
+			$(".right-menu-side").css("width","30%");
 			$(".right-menu-side").addClass("open");
 		
 		}else{

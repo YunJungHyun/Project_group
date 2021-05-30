@@ -33,6 +33,8 @@ public class CalendarDAOImpl implements CalendarDAO{
 				+"`start` TIMESTAMP NOT NULL,"					
 				+"`end` TIMESTAMP NOT NULL,"					
 				+"`color` VARCHAR(20) NOT NULL,"					
+				+"`starttime` TIMESTAMP NOT NULL,"					
+				+"`endtime` TIMESTAMP NOT NULL,"					
 				+"PRIMARY KEY (`pnum`) USING BTREE";
 		sql += ")";
 		sql +=" COLLATE='utf8_general_ci' ";

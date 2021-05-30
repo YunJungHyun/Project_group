@@ -33,7 +33,8 @@
 	href="<c:url value='resources/css/menuCSS.css'/>" />
 <link type="text/css" rel="stylesheet"
 	href="<c:url value='resources/css/calendarCSS.css'/>" />
-	
+
+
 <meta name="google-signin-scope" content="profile email">
 <meta name="google-signin-client_id"
 	content="351044074609-1jm81l8d3bvst0v67cm6ifq31nfmrft6.apps.googleusercontent.com">
@@ -51,5 +52,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
 
 
-<!-- js dateFormat  -->
-<script src="<c:url value='resources/js/dateFormat.js'/>"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+<link type="text/css" rel="stylesheet"
+	href="<c:url value='resources/css/timepicker.css'/>" />

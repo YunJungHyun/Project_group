@@ -1,8 +1,25 @@
 @charset "UTF-8";
 
-body {
-	
-	max-width: 1092px;
+
+.main-content {
+    width: 70%;
     margin: 0px auto;
+    margin-left: 0px;
+}
+.main-content.LOGIN {
+    width: 100%;
+    margin: 0px auto;
+   
 }
 
+.planner {
+	
+	padding : 0px;
+	height: calc(100vh - 4.5rem);
+}
+
+
+.calendar-container {
+
+	border-radius: 0;	
+}

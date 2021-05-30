@@ -64,9 +64,9 @@ label {
 }
 
 .label-active {
-	color:#526df3;
+	color: #526df3;
 	top: -3em;
-	font-weight :bold;
+	font-weight: bold;
 }
 
 button {
@@ -394,52 +394,138 @@ input.signUp-input.email-check-input {
 .eventPop-body>form {
 	width: 100%;
 	margin: 0px auto;
-	padding: 1rem 4rem;
+	padding: 1rem 2rem;
 	box-shadow: none;
 	background: #efefef;
+	font-weight: bold;
 }
 
 .eventPop-footer {
 	background-color: #efefef;
 	border-top: none;
-	padding: 1rem 2rem 3rem 2rem;
-	justify-content: center;
+	border-top: 1px solid #bbb;
+	justify-content: flex-end;
+}
+.title-content-group {
+    width: 100%;
 }
 
-#eventPop-form label:first-child {
+.time-select-chk-label,.allDay-select-chk-label, .day-select-label, .time-select-label,
+	.color-label {
+	margin: 0px;
+}
+
+.event-input-box {
+	margin-top: 1.5rem;
+}
+
+.event-input-box:first-child {
 	margin: 0;
 }
 
-.eventPop-input {
-	width: 100%;
-	padding: 10px;
-	background: transparent;
-	border: none;
-	outline: none;
+.select-day-time-box {
+	flex-wrap: unset;
 }
 
-.eventPop-input:focus+.line-box .line {
-	width: 100%;
+.between-empty {
+	width: 2rem;
 }
 
-.pop-text-area {
-	background-color: #fff;
-	border-radius: .25rem;
+.day-select-label, .time-select-label {
+	padding-left: .5rem;
+	padding: .25rem;
+}
+
+#select-time-box {
+	display: none;
+	margin-top: .5rem;
+}
+
+#event-content {
 	resize: none;
 	overflow: hidden;
-	border: 1px solid #dee2e6;
 }
 
-.label-txt.eventPop-chk {
-	display: flex;
+.event-input {
+	border: 1px solid #526df3;
 }
 
-.eventPop-chk-btn {
-	padding: .2rem .5rem;
+.form-check.event-input-box {
+	justify-content: space-around;
 }
 
-.select-day-group {
-    padding: 1rem;
-    justify-content: space-between;
+#time-select-chk , #allDay-select-chk{
+	width: 1rem;
+	height: 1rem;
+}
+
+.color-radio-box {
+	justify-content: space-between;
+}
+
+.color-label {
+	/* background-color: red; */
+	padding: 0.7rem 1.7rem;
+	border-radius: .25rem;
+	color: #fff;
+	font-size: 1rem;
+}
+
+.color-label {
+	cursor: pointer;
+}
+
+.color-radio {
+	display: none;
+}
+
+.day-time-group:hover > .input-group {
+	
+	
+	box-shadow: 0 0 0 0.2rem rgb(0 123 255 / 25%);
+	border-radius: .25rem;
+}
+
+.day-time-group:hover > .input-group > .input-group-append > span{
+	color : #fff;
+	background-color: #5286F3;
+}
+
+.time-chk-group:hover{
+
+	color :#5286F3;
+}
+
+#time-select-chk, .time-select-chk-label,.allDay-select-chk,.allDay-select-chk-label {
+    cursor: pointer;
+}
+
+.time-select-chk-label,.allDay-select-chk-label{
+	
+	font-weight: bold;
+	padding: .1rem;
+}
+
+
+label.input-group-append {
+	margin: 0px;
+	cursor: pointer;
+}
+label.input-group-append:active{
+	
+	filter: brightness(0.5);
+}
+
+label.color-label:hover {
+	box-shadow: 0px 0px 5px 2px #bbb;
+}
+
+label.color-label:active {
+	filter: brightness(0.5);
+}
+
+.day-time-input:disabled {
+	background-color: #fff;
+	cursor: pointer;
 }
 /* eventPopup 모달 끝*/

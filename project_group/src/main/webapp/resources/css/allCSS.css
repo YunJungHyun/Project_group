@@ -13,9 +13,9 @@ label {
 }
 
 .planner {
-	padding: 2rem 3rem;
+	
 	background-color: #dddffd;
-	height: calc(100vh - 3rem);
+	/* height: calc(100vh - 3rem); */
 	display: flex;
 	justify-content: center;
 }
