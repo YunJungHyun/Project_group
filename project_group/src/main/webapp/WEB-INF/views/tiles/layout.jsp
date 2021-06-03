@@ -64,5 +64,35 @@
 
 </html>
 
+<script type="text/javascript">
+
+$('.modal').on('hidden.bs.modal', function (e) {
+		 //console.log('modal close');
+		$(this).find('form')[0].reset();
+		$(".pmemo-box").removeClass("memoBox-show");
+		
+		if(!$(".pmemo-box").hasClass("memoBox-show")){
+			
+			$(".note-pad-icon").removeClass("icon-color");
+		}
+		
+		if($("#eventModal").hasClass("eventUpdate")){
+			
+			$("#eventModal").removeClass("eventUpdate");
+			
+			var updateOutput="<button type='submit' id='eventInsertForm-btn' class='btn btn-secondary' data-dismiss='modal'>계획 저장</button>"
+							
+				$(".event-pop-footer").html(updateOutput);
+				
+				$("#eventForm").attr("name","eventInsertForm");
+				
+		}
+		
+		
+		
+	});
+
+
+</script>
 
 

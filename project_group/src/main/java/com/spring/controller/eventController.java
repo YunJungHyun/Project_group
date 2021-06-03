@@ -32,7 +32,8 @@ public class eventController {
 	@ResponseBody
 	public String insertEvent(@PathVariable(name = "usercode") String usercode, CalendarVO calendarVO)
 			throws ParseException {
-
+		
+		
 		Timestamp startDay= calendarVO.getStartDay();
 		Timestamp endDay= calendarVO.getEndDay();
 		if(calendarVO.getAllDay().equals("false")) {
@@ -69,22 +70,22 @@ public class eventController {
 		calendarService.insertEvent(calendarVO);
 		return "";
 	}
-//	@PostMapping("/updateEvent/{usercode}")
-//	@ResponseBody
-//	public String updateEvent(
-//			@PathVariable(name = "usercode") String usercode,
-//			CalendarVO calendarVO
-//			) {
-//
-//
-//		calendarVO.setUsercode(usercode);
-//		System.out.println("calendarVO.getPnum() :" +calendarVO.getPnum());
-//
-//		calendarService.updateEvent(calendarVO);
-//
-//		return "";
-//	}
-//
+	@PostMapping("/updateEvent/{usercode}")
+	@ResponseBody
+	public String updateEvent(
+			@PathVariable(name = "usercode") String usercode,
+			CalendarVO calendarVO
+			) {
+
+
+		
+		System.out.println("calendarVO.toString() :" +calendarVO.toString());
+
+		//calendarService.updateEvent(calendarVO);
+
+		return "";
+	}
+
 
 	@PostMapping("/getAllEvent/{usercode}")
 	@ResponseBody
@@ -105,11 +106,11 @@ public class eventController {
 			String startday =null;
 			String endday =null;
 			CalendarVO calendarVO = calendarList.get(i);
-			 transFormat = new SimpleDateFormat("yyyy-MM-dd");
-			 timeFormat = new SimpleDateFormat("HH:mm:ss");
+			transFormat = new SimpleDateFormat("yyyy-MM-dd");
+			timeFormat = new SimpleDateFormat("HH:mm:ss");
 			Timestamp end  = calendarVO.getEndDay();
 			
-			end.setDate(end.getDate()+1);	
+			
 			
 			boolean allDay= true;
 			
@@ -124,7 +125,7 @@ public class eventController {
 			
 			}else {
 					
-					
+				end.setDate(end.getDate()+1);	
 				startday = transFormat.format(calendarVO.getStartDay());
 				endday = transFormat.format(end);
 				

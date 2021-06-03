@@ -12,7 +12,7 @@
     </div>
     <div class="row">
         <div class="col-md-12 form-group"> 
-            <input type="password" id="signIn-userpw" name="userpw" placeholder="패스워드" class="form-control">
+            <input type="password" id="signIn-userpw" autocomplete="off" name="userpw" placeholder="패스워드" class="form-control">
         </div>
     </div>
     </form>
@@ -78,14 +78,14 @@
 					</label>  
 					<label>
 						<p class="label-txt">PASSWORD</p> 
-						<input type="password" class="signUp-input" id="userpw" name="userpw" maxlength="24" placeholder="&#8251; 비밀번호  8 ~ 24자를 입력하세요." value="12341234">
+						<input type="password" class="signUp-input" autocomplete="off" id="userpw" name="userpw" maxlength="24" placeholder="&#8251; 비밀번호  8 ~ 24자를 입력하세요." value="12341234">
 						<div class="line-box">
 							<div class="line"></div>
 						</div>
 					</label> 
 					<label>
 						<p class="label-txt">PASSWORD CHECK</p> 
-						<input type="password" class="signUp-input" id="userpwChk" maxlength="24" placeholder="&#8251; 비밀번호를  확인해주세요." value="12341234"> 
+						<input type="password" class="signUp-input" autocomplete="off" id="userpwChk" maxlength="24" placeholder="&#8251; 비밀번호를  확인해주세요." value="12341234"> 
 						<div class="line-box">
 							<div class="line"></div>
 						</div>

@@ -5,15 +5,12 @@
 <script src="resources/js/js/eventForm.js"></script>
 <script src="resources/js/ko.js"></script>
 <script type="text/javascript">
+	var usercode = "${gui.usercode}";
 	var calendar;
 	var eventData;
-	$(document).ready(function() {
+	$(document).ready(
+			function() {
 				var calendarEl = document.getElementById('calendar');
-				var usercode = "${gui.usercode}";
-				var date = new Date();
-				var year = date.getFullYear();
-				var month = date.getMonth();
-				
 				calendar = new FullCalendar.Calendar(calendarEl, {
 					timeZone : 'local',
 					height : "100%",
@@ -38,161 +35,231 @@
 						return weekList[info.dow];
 					},
 					select : function(arg) {
-						
-						/* modal 기본값  */
-						var date = new Date(arg.end.getFullYear(), arg.end.getMonth(), arg.end.getDate() - 1);
 
+						/* modal 기본값  */
+						var endDay = new Date(arg.end.getFullYear(), arg.end.getMonth(), arg.end.getDate() - 1);
+
+						/* $("#startDay").val(arg.startStr);//보여주는 시작날짜
+						
+						$("#endDay").val(endDay.format("yyyy-MM-dd"));// 보여주는 끝 날짜
+						 */
 						$("#startDay").val(arg.startStr);
 						$("input[name='startDay']").val(arg.start.format("yyyy-MM-dd HH:mm:ss"));
-						$("#endDay").val(date.format("yyyy-MM-dd"));
-						$("input[name='endDay']").val(date.format("yyyy-MM-dd HH:mm:ss"));
-
-						$("#startDay").prev().addClass("formTop");
-						$("#startDay").next().addClass("icon-color");
-						$("#endDay").prev().addClass("formTop");
-						$("#endDay").next().addClass("icon-color");
+						$("#endDay").val(endDay.format("yyyy-MM-dd"));
+						$("input[name='endDay']").val(endDay.format("yyyy-MM-dd HH:mm:ss"));
+						 
+						
+						modalOption();
 						/* modal 기본 값  */
 
-						$("#eventInsertModal").modal("show");
-						
-						
+						$("#eventModal").modal("show");
 
 					},
-				eventSources : [ getAllEvents() ] ,
-				eventClick :function(info){
-					
-					var thisEventId = info.event.id;
-					var eventSource = eventData.events;
-					var ptitle = info.event.title;
-					var startDay = info.event.start;
-					var endDay = info.event.end;
-					var allDay = info.event.allDay;
-					var color = info.el.style.backgroundColor;
-					var pmemo ;
-					
-					for (var i =0 ; i <eventSource.length ; i++){
-						if(eventSource[i].id ==thisEventId){
-							
-							pmemo = eventSource[i].memo
+					eventSources : [ getAllEvents() ],
+					eventClick : function(info) {
+
+						var thisEventId = info.event.id;
+						var eventSource = eventData.events;
+						var ptitle = info.event.title;
+						var startDay = info.event.start;
+						var endDay = info.event.end;
+						var allDay = info.event.allDay;
+						var color = info.el.style.backgroundColor;
+						var pmemo;
+						//실제데이터의 id값과 eventSource의 id 값을 비교하여 pmemo를 가져옴
+						for (var i = 0; i < eventSource.length; i++) {
+							if (eventSource[i].id == thisEventId) {
+
+								pmemo = eventSource[i].memo
+							}
+
 						}
 						
+
+						var startStr = null;
+						var endStr = null;
+						var	startTimeStr =null;
+						var	endTimeStr =null;
+						
+						if (allDay == false) {
+							startStr = startDay.format("yyyy-MM-dd");
+							endStr =endDay.format("yyyy-MM-dd");
+							startTimeStr= startDay.format("HH:mm");
+							endTimeStr = endDay.format("HH:mm");
+							
+							$("#allDayFalse").prop('checked', true);
+							$("#allDayTrue").prop('checked', false);
+							//alert("false  :"+startStr+"~"+endStr);
+							//alert("false  :"+startTimeStr+"~"+endTimeStr);
+						}else{
+							var endDayDate = new Date(endDay.getFullYear(), endDay.getMonth(), endDay.getDate() - 1);
+							
+							startStr = startDay.format("yyyy-MM-dd");
+							endStr =endDayDate.format("yyyy-MM-dd");
+							startTimeStr="";
+							endTimeStr="";
+							$("#allDayFalse").prop('checked', false);
+							$("#allDayTrue").prop('checked', true);
+							//alert("true  :"+startStr+"~"+endStr);
+							//alert("false  :"+startTimeStr+"~"+endTimeStr);
+							
+						}
+
+						/* modal 기본값  */
+						//title
+						$("#ptitle").val(ptitle);
+						
+						//memo
+						$("#pmemo").val(pmemo);
+						
+						//날짜
+						$("#startDay").val(startStr);
+						$("input[name='startDay']").val(startStr);
+						$("#endDay").val(endStr);
+						$("input[name='endDay']").val(endStr);
+						
+						//시간
+						$("#startTime").val(startTimeStr);
+						$("#endTime").val(endTimeStr);
+						
+						//color
+						color =rgbToHex(color);
+						
+						$("input[name='color']").each(function(){
+							
+							if($(this).val() == color){
+								
+								$(this).prop("checked", true);
+							}
+							
+						})
+						
+						
+						modalOption();
+						/* modal 기본 값  */
+						var updateOutput="<button type='submit' id='eventUpdateForm-btn' class='btn btn-secondary'>계획 수정</button>"
+										+"<button type='button' id='eventDeleteForm-btn'class='btn btn-secondary'>삭제</button>"
+										
+						$(".event-pop-footer").html(updateOutput);
+										
+						$("#eventForm").attr("name","eventUpdateForm");
+						$("#eventModal").addClass("eventUpdate");
+						$("#eventModal").modal("show");
+
 					}
-					var endDayDate = new Date(endDay.getFullYear(), endDay.getMonth(), endDay.getDate() - 1);
-					
-					
-					var startStr = null;
-					var endStr = null;
-				
-					
-					startStr = startDay.format("yyyy-MM-dd");
-					endStr = endDayDate.format("yyyy-MM-dd");
-					
-					/* modal 기본값  */
-					alert(thisEventId+","+ptitle+","+startStr+","+endStr+","+allDay+","+color+","+pmemo);
-					
-					$("#ptitle").val(ptitle);
-					$("#pmemo").val(pmemo);
-					$("input[name='startDay']").val(startDay.format("yyyy-MM-dd HH:mm:ss"));
-					$("input[name='endDay']").val(endDayDate.format("yyyy-MM-dd HH:mm:ss"));
-					$("#startDay").val(startStr);
-					$("#endDay").val(endStr);
-					
-					
-					$("#ptitle").prev().addClass("formTop");
-					$("#ptitle").next().addClass("icon-color");
-					$("#pmemo").prev().addClass("formTop");
-					$(".pmemo-box").css("display","block");
-					$(".ptitle-box").css("margin-bottom","2rem");
-					$(".pmemo-box").addClass("memoBox-show");
-					$("#startDay").prev().addClass("formTop");
-					$("#startDay").next().addClass("icon-color");
-					$("#endDay").prev().addClass("formTop");
-					$("#endDay").next().addClass("icon-color");
-					/* modal 기본 값  */
-					
-					$("#eventInsertModal").modal("show");
-				
-				}
-					 
 
 				});
 
 				calendar.render();
-
-				$("#eventInsertForm-btn").on("click",function() {
-							var usercode = "${gui.usercode}";
-							var startDate = new Date($("#startDay").val());
-							var endDate = new Date($("#endDay").val());
-							$("input[name='startDay']").val(startDate.format("yyyy-MM-dd HH:mm:ss"));
-							$("input[name='endDay']").val(endDate.format("yyyy-MM-dd HH:mm:ss"));
-							
-							var queryString = $("form[name=eventInsertForm]").serialize();
-								
-							//alert(queryString);
-							 $.ajax({
-
-								url : "/event/insertEvent/" + usercode,
-								type : "POST",
-								data : queryString,
-								dataType : "TEXT",
-								async : false,
-								success : function(data) {
-									
-									alert("등록되었습니다.");
-									location.reload();
-								},
-								error : function() {
-
-									alert("error");
-								}
-
-							}) 
 			
-						})
-					
-					
-				function getAllEvents() {
-
-					var usercode = "${gui.usercode}";
-					
-
-					$.ajax({
-
-						url : "/event/getAllEvent/" + usercode,
-						type : "POST",
-						dataType : "JSON",
-						async : false,
-						success : function(data) {
-
-							eventData = data;
-							//alert(events);
-
-						},
-						error : function() {
-
-							alert("error");
-						}
-
-					})
-					console.log(eventData);
-					return eventData;
-				}
+				//이벤트 수정
+				
 
 			});
+	
+	
+	//이벤트 삽입
+	$(document).on("click","#eventInsertForm-btn",function() {
+
+		var queryString = $("form[name=eventInsertForm]").serialize();
+
+				//alert(queryString);
+				$.ajax({
+
+					url : "/event/insertEvent/" + usercode,
+					type : "POST",
+					data : queryString,
+					dataType : "TEXT",
+					async : false,
+					success : function(data) {
+
+						alert("등록되었습니다.");
+						location.reload();
+					},
+					error : function() {
+
+						alert("error");
+					}
+
+				})
+
+			})
+	
+	
+	
+	$(document).on("click","#eventUpdateForm-btn",function(){
+		alert("수정");
+		var startDate = new Date($("#startDay").val()); 
+		var endDate = new Date($("#endDay").val());
+		//실제 데이터로 들어가는 인풋에 삽입
+		$("input[name='startDay']").val(startDate.format("yyyy-MM-dd HH:mm:ss"));
+		$("input[name='endDay']").val(endDate.format("yyyy-MM-dd HH:mm:ss"));
+
+		 
+		var queryString = $("form[name=eventUpdateForm]").serialize();
+		
+		//alert(queryString);
+		
+			$.ajax({
+
+					url : "/event/updateEvent/" + usercode,
+					type : "POST",
+					data : queryString,
+					dataType : "TEXT",
+					async : false,
+					success : function(data) {
+
+						alert("수정되었습니다..");
+						location.reload();
+					},
+					error : function() {
+
+						alert("error");
+					}
+
+				})
+		
+	})
+	
+	function getAllEvents() {
+
+		var usercode = "${gui.usercode}";
+		
+
+		$.ajax({
+
+			url : "/event/getAllEvent/" + usercode,
+			type : "POST",
+			dataType : "JSON",
+			async : false,
+			success : function(data) {
+
+				eventData = data;
+				//alert(events);
+
+			},
+			error : function() {
+
+				alert("error");
+			}
+
+		})
+		console.log(eventData);
+		return eventData;
+	}
 </script>
 
-<div class="modal" id="eventInsertModal" tabindex="-1" role="dialog">
+<div class="modal" id="eventModal" tabindex="-1" role="dialog">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content event-pop-content">
-			<div class="modal-header event-pop-header">
-
+			<div class="modal-header event-pop-header" id="modalClose">
 				<button type="button" class="close" data-dismiss="modal"
 					aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
 			<div class="modal-body event-pop-body">
-				<form id="eventInsertForm" name="eventInsertForm" method="POST">
+				<form id="eventForm" name="eventInsertForm" method="POST">
 					<div class="form-item ptitle-box">
 						<p class="formLabel">제목</p>
 						<input type="text" name="ptitle" id="ptitle" class="form-style"
@@ -210,7 +277,8 @@
 					<div class="form-item allDayRadio-Box">
 						<div class="btn-group allDayRadio-group">
 							<label class="radio-label btn allDay-btn-chk" for="allDayTrue"
-								id="allDay-btn-left"> <input type="radio" name="allDay"
+								id="allDay-btn-left"> 
+								<input type="radio" name="allDay"
 								id="allDayTrue" value="true" checked="checked"> 하루 종일
 							</label>
 							<div class="standard-bar"></div>
@@ -283,12 +351,13 @@
 
 			<div class="modal-footer event-pop-footer">
 				<button type="submit" id="eventInsertForm-btn"
-					class="btn btn-secondary" data-dismiss="modal">Close</button>
+					class="btn btn-secondary"  data-dismiss="modal">계획 저장</button>
+				
 			</div>
 		</div>
 	</div>
 </div>
-<div id="planner_${gui.usercode }" class="planner">
+<div id="planner_${gui.usercode }" class="planner"> 
 	<div id="calendar"></div>
 </div>
 
@@ -348,5 +417,88 @@
 		obj.style.height = "1px";
 		obj.style.height = (12 + obj.scrollHeight) + "px";
 
+	}
+	
+	function modalOption(){
+
+		
+		$(".form-style").each(function(){
+			
+			if($(this).val() ==""){
+				
+				$(this).prev().removeClass("formTop");
+				$(this).next().removeClass("icon-color");
+
+			}else{
+				
+				$(this).prev().addClass("formTop");
+				$(this).next().addClass("icon-color");
+			}
+		})
+		
+		if($("#pmemo").val() !=""){
+			
+			$(".pmemo-box").addClass("memoBox-show");
+			$(".ptitle-box").css("margin-bottom","2rem");
+			$(".note-pad-icon").addClass("icon-color");
+		}else{
+			$(".ptitle-box").css("margin-bottom","1rem");
+			$(".note-pad-icon").removeClass("icon-color");
+			$(".pmemo-box").removeClass("memoBox-show");
+		}
+		
+		$("input[name='allDay']").each(function(){
+			
+			if($(this).is(":checked")){
+				
+				var checked=$(this).parent().attr("id");
+				
+				//alert(checked);
+				if(checked == "allDay-btn-left"){
+					
+					$("#"+checked).addClass("allDay-btn-chk");	
+					$(".day-box").css("width","100%");
+					$(".time-box").css("display","none");
+
+					if($("#allDay-btn-right").hasClass("allDay-btn-chk")){
+						$("#allDay-btn-right").removeClass("allDay-btn-chk");	
+					}
+						
+				}
+				if(checked == "allDay-btn-right"){
+					if($("#allDay-btn-left").hasClass("allDay-btn-chk")){
+						$("#allDay-btn-left").removeClass("allDay-btn-chk");	
+					}
+					
+					$("#"+checked).addClass("allDay-btn-chk");	
+					$(".day-box").css("width","unset");
+					$(".time-box").css("display","flex");
+								
+						
+				}
+				
+			}
+		})
+		
+ 
+	}
+	
+	function rgbToHex (rgbType){
+		
+		  var rgb = rgbType.replace( /[^%,.\d]/g, "" ).split( "," ); 
+		    
+		    rgb.forEach(function (str, x, arr){ 
+		    
+		        /* 컬러값이 "%"일 경우, 변환하기. */ 
+		        if ( str.indexOf( "%" ) > -1 ) str = Math.round( parseFloat(str) * 2.55 ); 
+		        
+		        /* 16진수 문자로 변환하기. */ 
+		        str = parseInt( str, 10 ).toString( 16 ); 
+		        if ( str.length === 1 ) str = "0" + str; 
+		        
+		        arr[ x ] = str; 
+		    }); 
+		    
+		    return "#" + rgb.join( "" ); 
 	}
 </script>

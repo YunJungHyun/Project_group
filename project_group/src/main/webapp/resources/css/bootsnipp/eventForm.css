@@ -190,6 +190,10 @@ input.form-style {
 	margin-bottom: .5rem;
 }
 
+.form-item.memoBox-show{
+	display : block;
+}
+
 #pmemo {
 	width: 100%;
 	border: 1px solid #ccc;
@@ -233,7 +237,7 @@ input.form-style {
 }
 
 input[name='allDay'] {
-	display: none
+	/* display: none */
 }
 
 .radio-label {
