@@ -10,11 +10,13 @@ public interface CalendarDAO {
 
 	List<CalendarVO> getUserPlanner(String usercode);
 
-	void insertEvent(String usercode);
+	void insertEvent(CalendarVO calendarVO);
 
-	CalendarVO selectING(String usercode);
+	
 
 	void updateEvent(CalendarVO calendarVO);
 
+	List<CalendarVO> getAllEvent(String usercode);
+	
 	
 }

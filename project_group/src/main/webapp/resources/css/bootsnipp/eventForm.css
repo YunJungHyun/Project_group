@@ -1,0 +1,308 @@
+@charset "UTF-8";
+
+/* body {
+	background:
+		url(http://www.timurtek.com/wp-content/uploads/2014/10/form-bg.jpg)
+		no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	font-family: 'HelveticaNeue', 'Arial', sans-serif;
+} */
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	color: #aaa;
+}
+
+.pull-right {
+	float: right;
+}
+
+.pull-left {
+	float: left;
+}
+
+.clear-fix {
+	clear: both;
+}
+
+div.logo {
+	text-align: center;
+	margin: 20px 20px 30px 20px;
+	fill: #566375;
+}
+
+.logo-active {
+	fill: #44aacc !important;
+}
+
+#formWrapper {
+	background: rgba(0, 0, 0, .2);
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	transition: all .3s ease;
+}
+
+.darken-bg {
+	background: rgba(0, 0, 0, .5) !important;
+	transition: all .3s ease;
+}
+
+div#form {
+	position: absolute;
+	width: 360px;
+	height: 320px;
+	height: auto;
+	background-color: #fff;
+	margin: auto;
+	border-radius: 5px;
+	padding: 20px;
+	left: 50%;
+	top: 50%;
+	margin-left: -180px;
+	margin-top: -200px;
+}
+
+div.form-item {
+	position: relative;
+	display: flex;
+	margin-bottom: 2rem;
+}
+
+.pmemo-box, .allDayRadio-Box {
+	padding-left: .5rem;
+	padding-right: .5rem;
+}
+
+.form-item.ptitle-box {
+	margin-bottom: 1rem;
+}
+
+.form-ite.day-box, .form-ite.time-box {
+	margint-bottome: 2rem;
+}
+
+.form-box {
+	display: flex;
+}
+
+.form-item.day-box {
+	width: 100%;
+}
+
+div.form-item.time-box {
+	display: none;
+}
+
+input {
+	transition: all .2s ease;
+}
+
+input.form-style {
+	color: #8a8a8a;
+	display: block;
+	width: 100%;
+	height: 44px;
+	padding: 0px 5%;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom: 1px solid #ccc;
+	-moz-background-clip: padding;
+	-webkit-background-clip: padding-box;
+	background-clip: padding-box;
+	background-color: #fff;
+	font-family: 'HelveticaNeue', 'Arial', sans-serif;
+	font-size: 105%;
+	letter-spacing: .8px;
+	-moz-background-clip: padding;
+}
+
+.radio-label.allDay-btn-chk {
+	background-color: #526df3;
+	color: #fff;
+	font-weight: bold;
+}
+.allDayRadio-group:hover {
+	border-color: #5286F3;
+	transition: 0.2s;
+}
+
+.allDayRadio-group>.btn:hover {
+	background-color: #526df3;
+	color: #fff;
+	font-weight: bold;
+	transition: 0.2s;
+}
+
+.allDayRadio-group:hover>.standard-bar {
+	background-color: #5286F3;
+	width: 1px;
+	height: 100%;
+	transition: 0.2s;
+}
+
+.allDayRadio-group>#allDay-btn-left {
+	border-top-left-radius: 2rem;
+	border-bottom-left-radius: 2rem;
+}
+
+.allDayRadio-group>#allDay-btn-right {
+	border-top-right-radius: 2rem;
+	border-bottom-right-radius: 2rem;
+}
+
+#ptitle {
+	padding-right: 10%;
+}
+
+.note-pad-icon, .calendar-icon {
+	padding: .5rem 1rem;
+	color: #bbb;
+}
+
+.color-radio-box {
+	justify-content: space-around;
+}
+
+.color-radio-label {
+	width: 4rem;
+	border-radius: 1rem;
+	height: 1.5rem;
+	margin-top: unset;
+	margin-bottom: 1rem;
+}
+
+.color-radio {
+	/* display: none; */
+	
+}
+
+.form-item.pmemo-box {
+	display: none;
+	margin-bottom: .5rem;
+}
+
+#pmemo {
+	width: 100%;
+	border: 1px solid #ccc;
+	border-radius: .25rem;
+	resize: none;
+	padding: 10px 5%;
+	overflow: hidden;
+}
+
+.form-item.allDayRadio-Box {
+	justify-content: flex-end;
+}
+
+.allDayRadio-group {
+	border: 1px solid #ccc;
+	border-radius: 2rem;
+	width: 40%;
+}
+
+.allDayRadio-group:fisrt-child {
+	border-top-left-radius: 2rem;
+	border-bottom-left-radius: 2rem;
+}
+
+.
+.allDayRadio-group:last-child {
+	border-top-right-radius: 2rem;
+	border-bottom-right-radius: 2rem;
+}
+
+
+
+.standard-bar {
+	height: 70%;
+	/* margin-top: 5%; */
+	/* padding-top: 5%; */
+	position: relative;
+	align-self: center;
+	background-color: #ccc;
+	width: 1px;
+}
+
+input[name='allDay'] {
+	display: none
+}
+
+.radio-label {
+	margin: 0px;
+	font-size: .8rem;
+	color: #ccc;
+}
+
+.openInputTime {
+	display: flex;
+}
+
+.icon-color {
+	color: #526df3;
+}
+
+div.form-item .form-style:focus {
+	outline: none;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom: 1px solid color: #5286F3;
+}
+
+div.form-item p.formLabel {
+	position: absolute;
+	left: 26px;
+	top: 10px;
+	transition: all .4s ease;
+	color: #bbb;
+}
+
+.formTop {
+	top: -22px !important;
+	left: 26px;
+	background-color: #fff;
+	font-size: 14px;
+	font-weight: bold;
+	color: #5286F3 !important;
+}
+
+.formStatus {
+	color: #8a8a8a !important;
+}
+
+input[type="submit"].login {
+	float: right;
+	width: 112px;
+	height: 37px;
+	-moz-border-radius: 19px;
+	-webkit-border-radius: 19px;
+	border-radius: 19px;
+	-moz-background-clip: padding;
+	-webkit-background-clip: padding-box;
+	background-clip: padding-box;
+	background-color: #55b1df;
+	border: 1px solid #55b1df;
+	border: none;
+	color: #fff;
+	font-weight: bold;
+}
+
+input[type="submit"].login:hover {
+	background-color: #fff;
+	border: 1px solid #55b1df;
+	color: #55b1df;
+	cursor: pointer;
+}
+
+input[type="submit"].login:focus {
+	outline: none;
+}

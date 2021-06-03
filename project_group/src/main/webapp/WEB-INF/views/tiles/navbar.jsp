@@ -89,7 +89,7 @@
   						<p class="col-sm-3 col-3 col-form-label label-pw">기존 비밀번호</p> 
   						<div class="col-sm-9 col-9">
   							
-							<input type="password" class="profile-input" id="beforePw" name="beforePw">
+							<input type="password" class="profile-input" autocomplete="off" id="beforePw" name="beforePw">
 							
 							<div class="line-box profile-line">
 								<div class="line"></div>
@@ -102,7 +102,7 @@
 					<div class="row profile-row">
 						<p class="col-sm-3 col-3 col-form-label label-pw">바꿀 비밀번호</p> 
 						<div class="col-sm-9 col-9">
-							<input type="password" class="profile-input" id="afterPw" name="afterPw">
+							<input type="password" class="profile-input" autocomplete="off" id="afterPw" name="afterPw">
 							<div class="line-box profile-line">
 								<div class="line"></div>
 							</div>

@@ -1,0 +1,10 @@
+.fc-header-toolbar.fc-toolbar {
+    padding-left: 2rem;
+    /* //padding-right: 2rem; */
+}
+
+.fc-button-group > button {
+	
+	width :4vw;
+	
+}

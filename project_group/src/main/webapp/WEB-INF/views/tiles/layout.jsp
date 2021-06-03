@@ -26,8 +26,10 @@
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	
-	<script src="resources/js/jquery-ui.min.js"></script> <!-- 1.12.1 -->
-	<script src="resources/js/timepicker.min.js"></script> <!-- 1.12.1 -->
+	<script src="resources/js/jquery-ui.min.js"></script> 
+	<script src="resources/js/timepicker.js"></script> 
+	<script src="resources/js/fullcalendar.js" charset="euc-kr"></script> 
+
 	
 
 	<script

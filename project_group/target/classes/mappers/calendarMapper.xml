@@ -26,21 +26,16 @@
 			 ${sql}
 		]]>
 	</select>
-	<insert id="insertEvent" parameterType="HashMap">
+	<insert id="insertEvent">
 		<![CDATA[
-		
- 
-			${sql}
+	
+ 		INSERT INTO `planner_${usercode}`(ptitle, pmemo, startDay, endDay ,color,allDay ) 
+				VALUES( #{ptitle}, #{pmemo}, #{startDay}, #{endDay},#{color},#{allDay} )
+			 
 		]]>
 	</insert>
 	
-	<select id="selectING" resultType="calendarVO" parameterType="HashMap">
-		<![CDATA[
-		
-			${sql}
-			
-		]]>
-	</select>
+	
 	
 	<update id="updateEvent" parameterType="HashMap">
 		<![CDATA[
@@ -49,6 +44,14 @@
 		]]>
 		
 	</update>
+	
+	<select id="getAllEvent" resultType="calendarVO" parameterType="HashMap">
+	<![CDATA[
+		
+			${sql}
+		]]>
+	
+	</select>
 </mapper>
 
  

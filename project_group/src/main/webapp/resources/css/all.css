@@ -14,10 +14,8 @@ label {
 
 .planner {
 	
-	background-color: #dddffd;
-	/* height: calc(100vh - 3rem); */
-	display: flex;
-	justify-content: center;
+	background-color: #fff;
+	padding: 1rem;
 }
 
 .col-form-label {

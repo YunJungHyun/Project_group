@@ -27,20 +27,22 @@ public class CalendarServiceImpl implements CalendarService{
 	}
 	
 	@Override
-	public void insertEvent(String usercode) {
+	public void insertEvent(CalendarVO calendarVO) {
 		// TODO Auto-generated method stub
-		calendarDAO.insertEvent(usercode);
+		calendarDAO.insertEvent(calendarVO);
 	}
 	
-	@Override
-	public CalendarVO selectING(String usercode) {
-		// TODO Auto-generated method stub
-		return calendarDAO.selectING(usercode);
-	}
+	
 	 
 	@Override
 	public void updateEvent(CalendarVO calendarVO) {
 		calendarDAO.updateEvent(calendarVO);
 		
+	}
+	
+	@Override
+	public List<CalendarVO> getAllEvent(String usercode) {
+		
+		return calendarDAO.getAllEvent(usercode);
 	}
 }

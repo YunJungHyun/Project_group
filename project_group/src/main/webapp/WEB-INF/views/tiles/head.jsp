@@ -13,26 +13,26 @@
 
 <link type="text/css" rel="stylesheet"
 	media="screen and (min-width:992px)"
-	href="<c:url value='resources/css/xlCSS.css'/>" />
+	href="<c:url value='resources/css/xl.css'/>" />
 
 <link type="text/css" rel="stylesheet"
-	href="<c:url value='resources/css/loginCSS.css'/>" />
+	href="<c:url value='resources/css/login.css'/>" />
 
 <link type="text/css" rel="stylesheet"
-	href="<c:url value='resources/css/modalCSS.css'/>" />
+	href="<c:url value='resources/css/modal.css'/>" />
 	
 <link type="text/css" rel="stylesheet"
-	href="<c:url value='resources/css/navCSS.css'/>" />
-
-	
-<link type="text/css" rel="stylesheet"
-	href="<c:url value='resources/css/allCSS.css'/>" />
+	href="<c:url value='resources/css/nav.css'/>" />
 
 	
 <link type="text/css" rel="stylesheet"
-	href="<c:url value='resources/css/menuCSS.css'/>" />
+	href="<c:url value='resources/css/all.css'/>" />
+
+	
 <link type="text/css" rel="stylesheet"
-	href="<c:url value='resources/css/calendarCSS.css'/>" />
+	href="<c:url value='resources/css/menu.css'/>" />
+<link type="text/css" rel="stylesheet"
+	href="<c:url value='resources/css/css/customFullCal.css'/>" />
 
 
 <meta name="google-signin-scope" content="profile email">
@@ -51,8 +51,12 @@
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
 
-
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+ 
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> 
 
 <link type="text/css" rel="stylesheet"
-	href="<c:url value='resources/css/timepicker.css'/>" />
+	href="<c:url value='resources/css/css/fullcalendar.css'/>" />
+<link type="text/css" rel="stylesheet"
+	href="<c:url value='resources/css/css/timepicker.css'/>" />
+<link type="text/css" rel="stylesheet"
+	href="<c:url value='resources/css/bootsnipp/eventForm.css'/>" />

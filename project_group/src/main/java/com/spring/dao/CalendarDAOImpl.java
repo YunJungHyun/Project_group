@@ -24,24 +24,21 @@ public class CalendarDAOImpl implements CalendarDAO{
 	public void createPlanner(String usercode) {
 
 		HashMap map =new HashMap();
-		HashMap map2 =new HashMap();
 
 		String sql = "CREATE TABLE `planner_"+usercode+"` (";
 		sql += "`pnum` INT(20) NOT NULL AUTO_INCREMENT,"
-				+"`plantitle` VARCHAR(50) NULL DEFAULT 'none',"
-				+"`plan` VARCHAR(200) NULL DEFAULT 'none',"
-				+"`start` TIMESTAMP  DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,"					
-				+"`end` TIMESTAMP  DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,"					
+				+"`ptitle` VARCHAR(50) NULL DEFAULT 'none',"
+				+"`pmemo` VARCHAR(200) NULL DEFAULT 'none',"
+				+"`startDay` TIMESTAMP NOT NULL DEFAULT '0000-00-00 00:00:00',"					
+				+"`endDay` TIMESTAMP NOT NULL DEFAULT '0000-00-00 00:00:00',"					
 				+"`color` VARCHAR(20) NULL DEFAULT 'none',"					
-				+"`starttime` TIMESTAMP  DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,"					
-				+"`endtime` TIMESTAMP  DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,"					
-				+"`cip` VARCHAR(10) NULL DEFAULT 'FALSE',"
+				+"`allDay` VARCHAR(5) NULL,"										
 				+"PRIMARY KEY (`pnum`) USING BTREE";
 		sql += ")";
 		sql +=" COLLATE='utf8_general_ci' ";
 		sql +=" ENGINE=InnoDB ";
 		sql +=" AUTO_INCREMENT=1 ";
-
+ 
 		map.put("sql", sql);
 
 
@@ -61,36 +58,13 @@ public class CalendarDAOImpl implements CalendarDAO{
 	}
 
 	@Override
-	public void insertEvent(String usercode) {
+	public void insertEvent(CalendarVO calendarVO) {
 
-
-
-		HashMap map =new HashMap();
-
-		String sql ="INSERT INTO " 
-				+ "`planner_"+usercode+"`"
-				+ "(cip)"
-				+ "VALUES('ING')"; // 1 > 진행중
-
-		map.put("sql", sql);
-
-		sqlSession.insert(Namespace+".insertEvent", map);
+		System.out.println("[daoImpl] :"+calendarVO.toString());
+		sqlSession.insert(Namespace+".insertEvent", calendarVO);
 
 	}
 	
-	@Override
-	public CalendarVO selectING(String usercode) {
-		HashMap map =new HashMap();
-
-		String sql ="SELECT * FROM " 
-				+ "`planner_"+usercode+"` "
-				+ "WHERE cip = 'ING' ";
-
-		map.put("sql", sql);
-		
-		CalendarVO result=sqlSession.selectOne(Namespace+".selectING",map);
-		return result;
-	}
 	
 	@Override
 	public void updateEvent(CalendarVO calendarVO) { 
@@ -106,5 +80,18 @@ public class CalendarDAOImpl implements CalendarDAO{
 		
 		sqlSession.update(Namespace+".updateEvent",map);
 		
+	}
+	
+	@Override
+	public List<CalendarVO> getAllEvent(String usercode) {
+		HashMap map =new HashMap();
+
+		String sql ="SELECT * FROM " 
+				+ "`planner_"+usercode+"`";
+
+		map.put("sql", sql);
+		
+		List<CalendarVO> result = sqlSession.selectList(Namespace+".getAllEvent",map);
+		return result;
 	}
 }
