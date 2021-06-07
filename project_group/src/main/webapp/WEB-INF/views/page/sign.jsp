@@ -3,7 +3,7 @@
 
 <div class="simple-login-container">
 	
-    <h2>STUDY PLANNER</h2>
+    <h2>YOON PLANNER</h2>
     <form id="signIn-form" name="signIn-form" method="POST">
     <div class="row">
         <div class="col-md-12 form-group">
@@ -152,7 +152,7 @@
 <script type="text/javascript">
 
 
-history.pushState(null, null, "http://localhost:8081/StudyPlanner")
+history.pushState(null, null, "http://localhost:8081/YooNPlanner")
 var referrer = document.referrer;
 
 if( referrer == "http://localhost:8081/plannerHome"){

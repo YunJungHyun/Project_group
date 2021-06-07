@@ -1,10 +1,18 @@
 .fc-header-toolbar.fc-toolbar {
-    padding-left: 2rem;
+    /* padding-left: 2rem; */
     /* //padding-right: 2rem; */
 }
 
-.fc-button-group > button {
+.fc-toolbar-chunk:nth-child(1) {
 	
-	width :4vw;
+	padding-left : 2rem;
+	padding-right :2rem;
+}
+.fc-toolbar-chunk:nth-child(2) > .fc-button-group > button {
+	
+	width : 4vw;
+	
+}
+.fc-button-group > button {
 	
 }

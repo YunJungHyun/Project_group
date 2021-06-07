@@ -52,6 +52,14 @@
 		]]>
 	
 	</select>
+	
+	<delete id="deleteEvent" parameterType="HashMap">
+		<![CDATA[
+		
+			${sql}
+		]]>
+		
+	</delete>
 </mapper>
 
  

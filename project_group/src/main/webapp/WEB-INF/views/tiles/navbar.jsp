@@ -5,9 +5,9 @@
 
 
 <nav class="navbar navbar-expand-lg navbar-dark">
-	<div class="container-fluid">
-		
-			<div class="col-3">
+	<div class="container">
+		 
+			<div class="">
 			
 				<div class="user-profile" data-toggle="modal" data-target="#user-profile-modal">
 					<img src="<c:if test="${gui.thumnail_img != null }">${gui.thumnail_img}</c:if>
@@ -15,12 +15,12 @@
 					"/>
 				</div> 
 			</div>
-			<div class="col-6">
+			<div class="">
 				<div class="brand-name">
-					<h6>STUDYPLANNER</h6>
+					<h6>YOONPLANNER</h6>
 				</div>
 			</div>
-			<div class="col-3">
+			<div class="">
 				<div class="right-menu-btn" >
 					<img src="resources/icon/group.png"/>
 				</div>
@@ -260,7 +260,7 @@
 			url : "/logout",
 			success : function(data) {
 
-				location.href = "/StudyPlanner";
+				location.href = "/YooNPlanner";
 			}
 		})
 	}

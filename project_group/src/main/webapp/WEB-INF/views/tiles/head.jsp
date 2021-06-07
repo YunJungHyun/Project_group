@@ -23,6 +23,9 @@
 	
 <link type="text/css" rel="stylesheet"
 	href="<c:url value='resources/css/nav.css'/>" />
+	
+<link type="text/css" rel="stylesheet"
+	href="<c:url value='resources/css/diary.css'/>" />
 
 	
 <link type="text/css" rel="stylesheet"
@@ -50,6 +53,9 @@
 <!-- google font  -->
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Single+Day&display=swap" rel="stylesheet">
 
  
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> 

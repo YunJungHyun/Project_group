@@ -27,5 +27,6 @@ public interface UserService {
 	int pwUpdate(UserVO userVO);
 
 	int updateProfileImg(UserVO userVO);
+
 	
 }

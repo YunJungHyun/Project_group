@@ -8,6 +8,6 @@
 </head>
 <body>
 
-<% response.sendRedirect(request.getContextPath()+"/StudyPlanner");%> 
+<% response.sendRedirect(request.getContextPath()+"/YooNPlanner");%> 
 </body>
 </html> 

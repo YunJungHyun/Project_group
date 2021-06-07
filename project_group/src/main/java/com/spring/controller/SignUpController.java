@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.spring.register.service.MailSendService;
 import com.spring.service.CalendarService;
+import com.spring.service.DiaryService;
 import com.spring.service.UserService;
 import com.spring.vo.UserVO;
 
@@ -31,7 +32,9 @@ public class SignUpController {
 
 	@Inject
 	private UserService userService;
-
+	
+	@Inject
+	private DiaryService diaryService;
 	@Inject
 	private CalendarService calendarService;
 	
@@ -122,15 +125,15 @@ public class SignUpController {
 
 		if(result > 0) {
 			
-			
+			diaryService.createDiary(usercode);
 			calendarService.createPlanner(usercode);
 			
-			out.println("<script>alert('회원가입 완료 되었습니다'); location.href='/StudyPlanner'</script>");
+			out.println("<script>alert('회원가입 완료 되었습니다'); location.href='/YooNPlanner'</script>");
 
 			out.flush();
 		}else{
 
-			out.println("<script>alert('회원가입 실패하였습니다.' ); location.href='/StudyPlanner'</script>");
+			out.println("<script>alert('회원가입 실패하였습니다.' ); location.href='/YooNPlanner'</script>");
 
 			out.flush();
 
@@ -221,7 +224,7 @@ public class SignUpController {
 			out.flush();
 		}else{
 
-			out.println("<script>alert('회원가입 실패하였습니다.' ); location.href='/StudyPlanner'</script>");
+			out.println("<script>alert('회원가입 실패하였습니다.' ); location.href='/YooNPlanner'</script>");
  
 			out.flush();
 

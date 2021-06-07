@@ -4,7 +4,7 @@
 .main-content {
     width: 70%;
     margin: 0px auto;
-    margin-left: 0px;
+    /* margin-left: 0px; */
 }
 .main-content.LOGIN {
     width: 100%;

@@ -36,6 +36,8 @@ div.logo {
 	fill: #566375;
 }
 
+
+
 .logo-active {
 	fill: #44aacc !important;
 }
@@ -181,7 +183,7 @@ input.form-style {
 }
 
 .color-radio {
-	/* display: none; */
+	 display: none; 
 	
 }
 
@@ -237,7 +239,7 @@ input.form-style {
 }
 
 input[name='allDay'] {
-	/* display: none */
+	 display: none 
 }
 
 .radio-label {

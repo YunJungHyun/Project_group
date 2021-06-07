@@ -100,12 +100,12 @@
  		
  			$(".cancel").on("click",function(){
  				
- 				window.location.href="/StudyPlanner";
+ 				window.location.href="/YooNPlanner";
  			})
  			
  			// Modal hidden event fired
   			$('#guiUpdateModal').on('hidden.bs.modal', function () {
-  				window.location.href="/StudyPlanner";
+  				window.location.href="/YooNPlanner";
  			 });
  			
  			var nameRegExp=  /^[가-힣]+$/; //이름 유효성 검사 > 한글만 입력

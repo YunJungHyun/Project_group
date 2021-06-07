@@ -1,5 +1,6 @@
 package com.spring.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -44,5 +45,11 @@ public class CalendarServiceImpl implements CalendarService{
 	public List<CalendarVO> getAllEvent(String usercode) {
 		
 		return calendarDAO.getAllEvent(usercode);
+	}
+	
+	@Override
+	public void deleteEvent(HashMap<String, String> map) {
+		
+		calendarDAO.deleteEvent(map);
 	}
 }

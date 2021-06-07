@@ -1,5 +1,6 @@
 package com.spring.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -16,8 +17,8 @@ public class UserDAOImpl implements UserDAO {
 	private SqlSession sqlSession;
 
 	private static final String Namespace = "com.spring.mapper.userMapper";
-
-
+	
+	
 	@Override
 	public int idCheck(String userid) {
 		

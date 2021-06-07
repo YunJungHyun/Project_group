@@ -389,5 +389,9 @@ input.signUp-input.email-check-input {
 	
 	padding : 0rem 2rem;
 }
+.event-pop-footer{
+	justify-content: center;
+	
+}
 
 /* eventPopup 모달 끝*/

@@ -13,6 +13,8 @@ public class UserServiceImpl implements UserService {
 	@Inject
 	UserDAO userDAO;
 	
+	
+	
 	@Override
 	public int idCheck(String userid) {
 		

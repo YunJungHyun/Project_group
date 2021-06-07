@@ -50,7 +50,7 @@ public class MailSendService {
             .append(authKey)
 	        .toString());
            
-            sendMail.setFrom("yjhzzzz@gmail.com", "STUDYPLANNER");
+            sendMail.setFrom("yjhzzzz@gmail.com", "YOONPLANNER");
             sendMail.setTo(email);
 	            sendMail.send();
 	        } catch (MessagingException e) {

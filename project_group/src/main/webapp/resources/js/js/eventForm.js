@@ -66,4 +66,29 @@ $(document).ready(function(){
 				
 		}
 	})
+	
+	$(".color-radio").each(function(){
+		
+			if($(this).is(":checked")){
+				$(this).parent().css("border" , "3px inset #bbb");
+			}else{
+			
+				$(this).parent().css("border" , "unset");
+			}
+	})
+	
+	$(".color-radio").on("change",function(){
+		
+		
+		$(".color-radio").each(function(){
+		
+			if($(this).is(":checked")){
+				$(this).parent().css("border" , "3px inset #bbb");
+			}else{
+			
+				$(this).parent().css("border" , "unset");
+			}
+		})
+		
+	})
 });

@@ -24,7 +24,7 @@ public class CalendarDAOImpl implements CalendarDAO{
 	public void createPlanner(String usercode) {
 
 		HashMap map =new HashMap();
-
+		
 		String sql = "CREATE TABLE `planner_"+usercode+"` (";
 		sql += "`pnum` INT(20) NOT NULL AUTO_INCREMENT,"
 				+"`ptitle` VARCHAR(50) NULL DEFAULT 'none',"
@@ -72,7 +72,13 @@ public class CalendarDAOImpl implements CalendarDAO{
 		HashMap map =new HashMap();
 
 		String sql ="UPDATE `planner_"+calendarVO.getUsercode()+"` "
-				+ "SET cip = 'TRUE' "
+				+ "SET "
+				+ "ptitle = '"+calendarVO.getPtitle()+"', "
+				+ "pmemo = '"+calendarVO.getPmemo()+"', "
+				+ "startDay = '"+calendarVO.getStartDay()+"', "
+				+ "endDay = '"+calendarVO.getEndDay()+"', "
+				+ "color = '"+calendarVO.getColor()+"', "
+				+ "allDay = '"+calendarVO.getAllDay()+"' "
 				+ "where pnum ="+calendarVO.getPnum();
 
 		map.put("sql", sql);
@@ -93,5 +99,21 @@ public class CalendarDAOImpl implements CalendarDAO{
 		
 		List<CalendarVO> result = sqlSession.selectList(Namespace+".getAllEvent",map);
 		return result;
+	}
+	
+	@Override
+	public void deleteEvent(HashMap<String, String> param) {
+		
+		HashMap map =new HashMap();
+
+		String sql ="DELETE FROM " 
+				+ "`planner_"+param.get("usercode")+"` "
+				+ "WHERE pnum="+param.get("pnum");
+				
+
+		map.put("sql", sql);
+		
+		List<CalendarVO> result = sqlSession.selectList(Namespace+".deleteEvent",map);
+		
 	}
 }

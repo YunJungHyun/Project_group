@@ -1,5 +1,6 @@
 package com.spring.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.spring.vo.CalendarVO;
@@ -17,6 +18,8 @@ public interface CalendarService {
 	void updateEvent(CalendarVO calendarVO);
 
 	List<CalendarVO> getAllEvent(String usercode);
+
+	void deleteEvent(HashMap<String, String> map);
 
 }
  

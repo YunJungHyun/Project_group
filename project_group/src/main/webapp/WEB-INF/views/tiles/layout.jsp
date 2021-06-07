@@ -12,7 +12,7 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 <tiles:insertAttribute name="head" />
-<title>YoonStudy - ${title}</title>
+<title>YooNPlanner - ${title}</title>
 
 <!-- 외부 css  -->
 
@@ -46,7 +46,7 @@
 
 
 	<div class="view">
-		<c:if test="${title == 'HOME' }">
+		<c:if test="${title == 'HOME' || title == 'CALENDAR' || title =='DIARY'}">
 			<tiles:insertAttribute name="navbar" />
 		</c:if>
 		<div class="main-content ${title}">
@@ -55,7 +55,7 @@
 		</div>
 		<div class="right-menu-side">
 			<tiles:insertAttribute name="right-menu" />
-		</div>
+		</div> 
 	</div>
 	<div id="mask"></div>
 
@@ -66,9 +66,18 @@
 
 <script type="text/javascript">
 
-$('.modal').on('hidden.bs.modal', function (e) {
+$(document).on('hidden.bs.modal', '.modal', function (e) {
 		 //console.log('modal close');
-		$(this).find('form')[0].reset();
+		
+		 
+		/*  $(".form-style").each(function(){
+			 
+			 if($(this).val() !=""){
+				 
+				 $(this).val("");
+			 }
+		 }); */
+		 
 		$(".pmemo-box").removeClass("memoBox-show");
 		
 		if(!$(".pmemo-box").hasClass("memoBox-show")){
@@ -88,6 +97,7 @@ $('.modal').on('hidden.bs.modal', function (e) {
 				
 		}
 		
+		$("#pnum").remove();
 		
 		
 	});
