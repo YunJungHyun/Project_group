@@ -1,24 +1,66 @@
 @charset "UTF-8";
 
+@import
+	url('https://fonts.googleapis.com/css2?family=Sunflower:wght@300&display=swap')
+	;
+
 body {
-	margin: 0px auto;
+	background-color: #5286F3;
+	font-size: 14px;
 }
 
-label {
+body::-webkit-scrollbar {
 	
+}
+
+.main-content.LOGIN {
+	width: 100%;
+	margin: 0px auto;
 }
 
 a {
 	color: #000;
 }
 
+a:hover {
+	text-decoration: none;
+}
+
+.calendar-container.container, .diary-container.container {
+	font-family: 'Sunflower', sans-serif;
+}
+
+.container {
+	max-width: 1200px;
+}
+
 .main-content {
+	margin: 0px auto;
+	/* margin-left: 0px; */
+}
+
+/* .navbar{
+	
+	height: 4.5rem;
+} */
+.right-menu-side {
+	/* 	
+	top : 4.5rem;
+	height: calc(100vh - 4.5rem);
+ */
 	
 }
 
-.planner {
+.fc-toolbar-chunk:nth-child(1) {
+	/* 
+	padding-left : 2rem;
+	padding-right :2rem; */
+	
+}
+
+.planner, .diary {
 	background-color: #fff;
-	padding: 1rem;
+	height: calc(100vh - 3rem);
 }
 
 .col-form-label {
@@ -26,7 +68,6 @@ a {
 	margin-top: 0px;
 	text-align: center;
 	font-weight: bold;
-	font-size: 1rem;
 	color: #0a3ea9;
 }
 
@@ -52,23 +93,24 @@ a {
 }
 
 .menu-rows:first-child {
-	margin-top: 2rem;
+	margin-top: 5rem;
 }
 
 .menu-rows:last-child {
-	margin-bottom: 2rem;
+	margin-bottom: 5rem;
 }
 
 .menu-rows {
 	width: 100%;
-	height: 100%;
+	height: auto;
 	display: flex;
 	margin: 1rem 0;
 }
 
 .card.menu-btn {
-	height: 100%;
-	border-radius: .5rem;
+	height: auto;
+	background-color: unset;
+	border: unset;
 }
 
 .menu-row-item {
@@ -82,7 +124,26 @@ a {
 
 p.card-text {
 	font-family: 'Single Day', cursive;
-	font-size: 1rem;
+	font-size: 2rem;
 	text-align: center;
 	font-weight: bold;
+}
+
+.card-header.card-img-top {
+	background-color: unset;
+	border-bottom: unset;
+}
+
+.card-img-top>a>img {
+	margin: 0px auto;
+	display: block;
+	width: 50%;
+}
+
+.fc-col-header-cell:nth-child(1) {
+	color: red;
+}
+
+.fc-col-header-cell:nth-child(7) {
+	color: blue;
 }

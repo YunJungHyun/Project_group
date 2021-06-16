@@ -1,0 +1,181 @@
+@charset "UTF-8";
+
+@font-face {
+	font-family: 'Cafe24Oneprettynight';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.1/Cafe24Oneprettynight.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+.calendar-container.container {
+	padding: unset;
+	font-family: 'Sunflower', sans-serif;
+}
+
+.navbar {
+	height: 3rem;
+	padding: unset;
+}
+
+.user-profile {
+	width: 2rem;
+	height: 2rem;
+}
+
+.right-menu-btn {
+	width: 2rem;
+	height: 2rem;
+}
+
+.right-menu-side {
+	top: 3rem;
+	height: calc(100vh - 3rem);
+}
+
+.right-menu-side {
+	width: 70vw;
+	position: fixed;
+	z-index: 29;
+	right: -70vw;
+	background-color: #ffffffe8;
+	overflow-x: hidden;
+	transition: 0.5s;
+	box-shadow: 0px 0px 21px 2px rgb(0 0 0/ 44%);
+}
+
+.planner .diary {
+	
+}
+
+.fc .fc-toolbar.fc-header-toolbar {
+	margin: 2.5rem 1rem .25rem 1rem;
+}
+
+.profile-userbuttons button {
+	text-transform: uppercase;
+	font-size: 1vw;
+	padding: 6px 15px;
+	font-weight: 600;
+}
+
+.fc .fc-toolbar {
+	display: block;
+}
+
+.fc .fc-toolbar-title {
+	font-size: 1rem;
+	line-height: 1.4;
+	letter-spacing: 2px;
+	padding: .25rem;
+}
+
+.fc-toolbar-chunk:nth-child(2) {
+	display: flex;
+	justify-content: center;
+}
+
+.fc-toolbar-chunk:nth-child(3) {
+	position: absolute;
+	right: 0;
+	top: 3rem;
+	padding: .5rem;
+	font-size: .75rem;
+}
+
+.fc-toolbar-chunk:nth-child(3)>.fc-button {
+	color: black;
+	padding: .25rem .5rem;
+}
+
+.fc .fc-button-primary {
+	color: #000;
+	background-color: unset;
+	border: unset;
+	padding: unset;
+	display: inline-flex;
+	align-items: center;
+	font-size: 1rem;
+	padding: .25rem;
+}
+
+.fc .fc-button-primary:focus {
+	/*  box-shadow: 0 0 0 0.2rem rgba(76, 91, 106, 0.5); */
+	font-size: 1.2rem;
+}
+
+.fc .fc-button-primary:not(:disabled):active, .fc .fc-button-primary:not(:disabled).fc-button-active
+	{
+	font-size: 1.2rem;
+	/*  color: #fff;
+    color: var(--fc-button-text-color, #fff);
+    background-color: #1a252f;
+    background-color: var(--fc-button-active-bg-color, #1a252f);
+    border-color: #151e27;
+    border-color: var(--fc-button-active-border-color, #151e27); */
+}
+
+.fc .fc-button-primary:hover {
+	font-size: 1.2rem;
+	/*  color: #fff;
+    color: var(--fc-button-text-color, #fff);
+    background-color: #1e2b37;
+    background-color: var(--fc-button-hover-bg-color, #1e2b37);
+    border-color: #1a252f;
+    border-color: var(--fc-button-hover-border-color, #1a252f); */
+}
+
+.fc table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+.fc-event, a.fc-daygrid-day-number, a.fc-col-header-cell-cushion {
+	font-size: 1px;
+}
+
+.profileImg-update-btn>button {
+	font-size: 1vw;
+	margin: 0px;
+	padding: .5rem 1rem;
+}
+
+.profileImg-update-btn.show {
+	/* display: flex;
+ */
+	
+}
+
+.col-form-label {
+	font-size: 1vw;
+	padding-right: 0px;
+	padding-left: 0px;
+	line-height: 2;
+}
+
+.profile-input {
+	font-size: 1vw;
+}
+
+button.profile-update-btn, button.pw-update-btn {
+	font-size: 2vw;
+}
+
+.event-pop-body {
+	padding: 0rem 1rem;
+}
+
+.color-radio-label {
+	width: 10vw;
+	height: 3vh;
+}
+
+.note-pad-icon, .calendar-icon {
+	padding: .5rem;
+	align-self: center;
+}
+
+form#eventForm>div {
+	font-size: 3vw;
+}

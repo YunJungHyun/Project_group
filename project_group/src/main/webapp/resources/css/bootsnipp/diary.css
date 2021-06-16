@@ -1,0 +1,117 @@
+@charset "UTF-8";
+
+.diary-container {
+	padding: unset;
+	font-size: .75rem;
+}
+
+form#diary-form {
+	padding: 1rem;
+}
+
+.diary-label-box {
+	padding: .5rem;
+}
+
+label.diary-label {
+	margin: unset;
+}
+
+.diary-label.diary-input-focus {
+	font-size: 1rem;
+	color: #526df3;
+}
+
+.diary-input-box.form-group {
+	margin-bottom: 0.5rem;
+}
+
+.diaryTextarea {
+	resize: none;
+}
+
+.diary-btn-group {
+	text-align: center;
+}
+
+.diary-btn-group>button {
+	padding: .5rem 1rem;
+	background: #526df3;
+	font-size: 1rem;
+	font-weight: unset;
+}
+
+.diary-btn-group {
+	margin: 1rem auto;
+}
+
+/* diary-list */
+.diary-list {
+	padding: 1rem;
+}
+
+.d-update-icon, .d-insert-icon {
+	text-align: right;
+	padding: .25rem;
+}
+
+.diary-list-nav {
+	display: flex;
+	border-bottom: 2px solid #ddd;
+	margin-bottom: .25rem;
+}
+
+.diary-row {
+	display: flex;
+	justify-content: space-around;
+	margin-bottom: .25rem;
+	border: 1px solid;
+	border-radius: .25rem;
+	max-height: 2rem;
+	min-height: 2rem;
+}
+
+.d-list-title, .d-list-writeDay {
+	align-self: center;
+}
+
+.d-list-writeDay {
+	overflow: hidden;
+	font-size: 1vh;
+	text-align: right;
+}
+
+.diary-contents-box {
+	border: 1px solid #526df3;
+	border-radius: .25rem;
+	margin-bottom: .25rem;
+	padding: .5rem 1rem;
+}
+
+.diary-update-btn.col-1,.diary-delete-btn.col-1 {
+    padding: 0px;
+    text-align: center;
+    align-self: center;
+    
+}
+.diary-update-btn.col-1{
+	
+	color : #526df3;
+}
+.diary-delete-btn.col-1{
+	color : red;
+}
+
+.diary-collapse-btn{
+	 
+    width: 100%;
+    align-self: center;
+}
+
+.d-list-head-title{
+	
+	align-self: center;
+    font-weight: bold;
+}
+
+

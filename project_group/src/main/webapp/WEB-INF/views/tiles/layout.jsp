@@ -8,17 +8,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 <tiles:insertAttribute name="head" />
 <title>YooNPlanner - ${title}</title>
 
 <!-- 외부 css  -->
-
-	  
 </head>
 <body>
+	
+	
 	
 
 
@@ -101,8 +100,19 @@ $(document).on('hidden.bs.modal', '.modal', function (e) {
 		
 		
 	});
+	
+function textareaResize(obj) {
+
+	obj.style.height = "1px";
+	obj.style.height = (12 + obj.scrollHeight) + "px";
+
+}
 
 
+$(".brand-name").on("click",function(){
+	
+	location.href="/plannerHome";
+})
 </script>
 
 

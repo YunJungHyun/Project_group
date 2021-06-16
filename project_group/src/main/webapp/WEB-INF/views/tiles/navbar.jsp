@@ -4,7 +4,7 @@
 <%@ taglib  uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
 
-<nav class="navbar navbar-expand-lg navbar-dark">
+<nav class="navbar navbar-dark">
 	<div class="container">
 		 
 			<div class="">
@@ -67,8 +67,9 @@
 					
 					
 					<div class="profile-usertitle">
-                		<div class="profile-usertitle-name"> 
-                		${gui.username } 
+                		<div class="profile-usertitle-name" id="profile-username"> 
+                				<c:set var="username" value="${gui.username }" />
+                				<input type="text" id="profile-username-input" disabled="disabled" name="username" value="${gui.username}" size="${fn:length(username)}px" /> 
                 			<span class="badge badge-light"><i class="fas fa-pencil-alt"></i></span>
                 		</div>
 					</div>
@@ -173,14 +174,11 @@
 	$(".right-menu-btn").on("click",function(){
 		
 		if(!$(".right-menu-side").hasClass("open")){
-			$(".right-menu-side").css("right","0");
-			$(".right-menu-side").css("width","30%");
+			
 			$(".right-menu-side").addClass("open");
-		
+			
 		}else{
 			
-			$(".right-menu-side").css("right","0");
-			$(".right-menu-side").css("width","0");
 			$(".right-menu-side").removeClass("open");
 		}
 		
@@ -209,6 +207,13 @@
 			output.innerHTML= "저장";
 			
 			var parent = document.getElementById("profileImg-collapse");
+			
+			if($(".chgProfile_reg").length >=1){
+				
+				$("#chgProfile_"+usercode).remove();
+			}
+			
+			$("#profileImg-collapse").css("justify-content", "space-around");
 			parent.appendChild(output);
 		}
 	})
@@ -272,8 +277,7 @@
 			if ($(this).hasClass('show')) {
 
 				$(this).collapse('toggle');
-			}
-			;
+			};
 		})
 	}
 
@@ -409,6 +413,25 @@
 
 			})
 
-		}
+		} 
+	})
+	// 회원 이름 수정
+	
+	$("#profile-username").on("click",function(){
+		
+		/* alert($("#profile-username-input").val()); */
+		$("#profile-username-input").attr("disabled",false);
+		$("#profile-username-input").attr("size",$("#profile-username-input").val().length+"px");
+		
+	})
+	
+	$("#profile-username-input").focusout(function(){
+		//alert($(this).val());
+	 	var exname = "${gui.username}";
+	 	
+	 	if($(this).val().trim() != exname){
+	 		
+	 		alert("다름");
+	 	}
 	})
 </script>

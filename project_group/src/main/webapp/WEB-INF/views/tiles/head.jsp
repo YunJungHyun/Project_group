@@ -9,34 +9,23 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
+<!-- 반응형 CSS  -->
 
+<link type="text/css" rel="stylesheet" 	media="screen and (max-width:575px)"  href="<c:url value='resources/css/resp/small.css'/>" />
+<link type="text/css" rel="stylesheet" 	media="screen and (min-width:576px) and (max-width:991px)"  href="<c:url value='resources/css/resp/medium.css'/>" />
+<link type="text/css" rel="stylesheet" 	media="screen and (min-width:991px)"  href="<c:url value='resources/css/resp/large.css'/>" />
+<link type="text/css" rel="stylesheet" href="<c:url value='resources/css/all.css'/>" />
 
-<link type="text/css" rel="stylesheet"
-	media="screen and (min-width:992px)"
-	href="<c:url value='resources/css/xl.css'/>" />
-
-<link type="text/css" rel="stylesheet"
-	href="<c:url value='resources/css/login.css'/>" />
-
-<link type="text/css" rel="stylesheet"
-	href="<c:url value='resources/css/modal.css'/>" />
+<link type="text/css" rel="stylesheet" href="<c:url value='resources/css/me/login.css'/>" />
+<link type="text/css" rel="stylesheet" href="<c:url value='resources/css/me/menu.css'/>" />
+<link type="text/css" rel="stylesheet" href="<c:url value='resources/css/me/modal.css'/>" />
+<link type="text/css" rel="stylesheet" href="<c:url value='resources/css/me/nav.css'/>" />
+<link type="text/css" rel="stylesheet" href="<c:url value='resources/css/me/signup.css'/>" />
 	
-<link type="text/css" rel="stylesheet"
-	href="<c:url value='resources/css/nav.css'/>" />
-	
-<link type="text/css" rel="stylesheet"
-	href="<c:url value='resources/css/diary.css'/>" />
+<link type="text/css" rel="stylesheet" href="<c:url value='resources/css/bootsnipp/diary.css'/>" />
 
+<link type="text/css" rel="stylesheet" href="<c:url value='resources/css/css/customFullCal.css'/>" />
 	
-<link type="text/css" rel="stylesheet"
-	href="<c:url value='resources/css/all.css'/>" />
-
-	
-<link type="text/css" rel="stylesheet"
-	href="<c:url value='resources/css/menu.css'/>" />
-<link type="text/css" rel="stylesheet"
-	href="<c:url value='resources/css/css/customFullCal.css'/>" />
-
 
 <meta name="google-signin-scope" content="profile email">
 <meta name="google-signin-client_id"

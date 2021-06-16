@@ -3,7 +3,6 @@ package com.spring.controller;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 
@@ -25,7 +24,7 @@ import com.spring.vo.CalendarVO;
 
 @Controller
 @RequestMapping(value = "/event" , produces = "application/text; charset=UTF-8")
-public class eventController {
+public class EventController {
 
 	@Inject
 	private CalendarService calendarService;

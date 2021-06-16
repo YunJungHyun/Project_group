@@ -8,26 +8,67 @@
 	var usercode = "${gui.usercode}";
 	var calendar;
 	var eventData;
-	$(document).ready(
-			function() {
+	//var viewPage ="dayGridMonth";
+	
+	$(document).ready(function() { 
 				var calendarEl = document.getElementById('calendar');
 				calendar = new FullCalendar.Calendar(calendarEl, {
 					timeZone : 'local',
 					height : "100%",
-					initialView : 'dayGridMonth',
+					initialView : "dayGridMonth",
 					selectable : true,
 					navLinks : true,
 					selectMirror : true,
 					editable : false,
-					dayMaxEvents : true,
+					dayMaxEvents : false,
 					displayEventTime : true,
 					locale: 'ko',
+					fixedWeekCount: true,
+					handleWindowResize : true,
+					dateClick: function(arg){
+						
+						 
+						var dateClick = new Date(arg.dateStr);
+						$("#startDay").val(arg.dateStr);
+						$("input[name='startDay']").val(dateClick.format("yyyy-MM-dd HH:mm:ss"));
+						$("#endDay").val(arg.dateStr);
+						$("input[name='endDay']").val(dateClick.format("yyyy-MM-dd HH:mm:ss"));
+						 
+						
+						modalOption("insert");
+						/* modal 기본 값  */
+						
+						$("#eventModal").modal("show");
+
+					},
+					customButtons:{
+						myCustomButton :{
+							
+							text : '일기 쓰기',
+							click :function(){
+								
+								alert("일기 쓰기 모달");
+							}
+						},
+						eventRegButton: {
+							
+							text : '일정 등록', 
+							click : function(){
+								
+								
+								modalOption("insert");
+								/* modal 기본 값  */
+								
+								$("#eventModal").modal("show");
+							}
+						}
+					},
 					views :{
 						dayGrid : {
 							 titleFormat: function(info){
 								 
 								var m = info.date.month + 1;
-								 return  info.date.year+"년 "+m+"월";
+								return  info.date.year+"년 "+m+"월";
 							 } 
 						}
 						
@@ -35,15 +76,15 @@
 					buttonText:{
 						
 						today : '오늘',
-						month : '월간 일정',
+						month : '월간 일정', 
 						week : '주간 일정',
 						day : '일간 일정',
 						list : '일정 목록' 
 					},
 					headerToolbar : {
-						left : 'title',
-						center : 'dayGridMonth	',
-						right : 'today prevYear,prev,next,nextYear'
+						left : '',
+						center : 'prev title next',
+						right :'eventRegButton today'
 					},
 					dayHeaderContent : function(info) {
 						var weekList = [ "일", "월", "화", "수", "목", "금", "토" ];
@@ -71,6 +112,8 @@
 
 					},
 					eventSources : [ getAllEvents() ],
+					
+					
 					eventClick : function(info) {
 
 						var thisEventId = info.event.id;
@@ -170,9 +213,10 @@
 					}
 
 				});
-
 				calendar.render();
-			
+				$(".fc-col-header").css("width","100%");
+				$(".fc-today-button").removeClass("fc-button-primary");
+				$(".fc-eventRegButton-button").removeClass("fc-button-primary");
 				//이벤트 수정
 				
 
@@ -361,7 +405,7 @@
 					</div>
 					<div class="form-item pmemo-box">
 						<p class="formLabel">메모</p>
-						<textarea name="pmemo" name="pmemo" id="pmemo"
+						<textarea name="pmemo" id="pmemo"
 							onkeydown="textareaResize(this)" onkeyup="textareaResize(this)"
 							class="form-style" autocomplete="off"></textarea>
 					</div>
@@ -448,16 +492,16 @@
 		</div>
 	</div>
 </div>
-<div id="planner_${gui.usercode }" class="planner"> 
-	<div id="calendar"></div>
+<div class="calendar-container container">
+	<div id="planner_${gui.usercode }" class="planner"> 
+		<div id="calendar"></div>
+	</div>
 </div>
-
 <script>
 	$(document).ready(
 			function() {
 
-				var colorArr = [ "#ff0068", "#ff8100", "#ffc800", "#00ff43",
-						"#00a1ff", "#1b00ff" ];
+				var colorArr = [ "#ff0068", "#ff8100", "#ffc800", "#00ff43","#00a1ff", "#1b00ff" ];
 
 				$(".color-radio-label").each(function() {
 					var i = $(".color-radio-label").index(this);
@@ -503,12 +547,6 @@
 
 			})
 
-	function textareaResize(obj) {
-
-		obj.style.height = "1px";
-		obj.style.height = (12 + obj.scrollHeight) + "px";
-
-	}
 	
 	function modalOption(sort){
 	
@@ -627,4 +665,7 @@
 		    
 		    return "#" + rgb.join( "" ); 
 	}
+	
+	
+	
 </script>

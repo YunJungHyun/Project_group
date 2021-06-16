@@ -10,7 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.spring.service.CalendarService;
-import com.spring.vo.CalendarVO;
+import com.spring.service.DiaryService;
+import com.spring.vo.DiaryVO;
 import com.spring.vo.UserVO;
 
 @Controller
@@ -18,6 +19,9 @@ public class ViewController {
 	
 	@Inject
 	private CalendarService calendarService;
+	
+	@Inject
+	private DiaryService diaryService;
 	
 	@RequestMapping(value="/YooNPlanner")
 	public String YooNPlanner(
@@ -62,7 +66,7 @@ public class ViewController {
 			//System.out.println("gup.size():"+gup.size());
 			//session.setAttribute("gup", gup);
 			model.addAttribute("title","HOME");
-			return "main.page";
+			return "calendar.page";
 		}
 		
 		
@@ -77,30 +81,8 @@ public class ViewController {
 		return "between.page";
 	}
 	
-	@RequestMapping(value="/calendar")
-	public String month(
-			HttpSession session,
-			Model model
-			) {
-		
-		UserVO gui = (UserVO)session.getAttribute("gui");
-		
-		if(gui == null) {
-			
-			return "redirect:/YooNPlanner";
-		}else {
-			
-			//List<CalendarVO> gup =calendarService.getUserPlanner(gui.getUsercode());
-			//System.out.println("gup.size():"+gup.size());
-			//session.setAttribute("gup", gup);
-			model.addAttribute("title","CALENDAR");
-			return "calendar.page";
-		}
-		
-		
-	}
-	@RequestMapping(value="/diary")
-	public String diary(
+	@RequestMapping(value="/diaryWrite")
+	public String diaryWrite(
 			HttpSession session,
 			Model model
 			) {
@@ -116,11 +98,35 @@ public class ViewController {
 			//System.out.println("gup.size():"+gup.size());
 			//session.setAttribute("gup", gup);
 			model.addAttribute("title","DIARY");
-			return "diary.page";
+			return "diaryWrite.page";
 		}
 		
 		
 	}
 	
+	@RequestMapping(value="/diaryList")
+	public String diaryList(
+			HttpSession session,
+			Model model
+			) {
+		
+		UserVO gui = (UserVO)session.getAttribute("gui");
+		
+		if(gui == null) {
+			
+			return "redirect:/YooNPlanner";
+		}else {
+			
+			//System.out.println("diaryList usercode:"+gui.getUsercode());
+			model.addAttribute("title","DIARY");
+			
+			List<DiaryVO> dList = diaryService.getAllDiaryList(gui.getUsercode()); 
+			System.out.println("일기 수 : "+dList.size());
+			model.addAttribute("dList",dList);
+			return "diaryList.page";
+		}
+		
+		
+	}
 	
 }

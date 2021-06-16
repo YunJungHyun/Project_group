@@ -21,7 +21,7 @@ public class CalendarServiceImpl implements CalendarService{
 		calendarDAO.createPlanner(usercode);	
 	}
 	
-	@Override
+	@Override 
 	public List<CalendarVO> getUserPlanner(String usercode) {
 		// TODO Auto-generated method stub
 		return calendarDAO.getUserPlanner(usercode);	

@@ -1,0 +1,39 @@
+@charset "UTF-8";
+
+
+
+.right-menu-side.open{
+	
+	right : 0;
+	
+}
+
+.right-menu {
+	padding: 1rem;
+	font-family: 'Sunflower', sans-serif;
+}
+
+.right-menu-ul {
+	padding-left: unset;
+}
+
+.right-menu-ul li {
+	line-height: 2;
+	list-style: none;
+	text-align: center;
+}
+
+span.right-menu-list-title {
+	/* padding: 1rem; */
+	margin: 1rem;
+	font-size: 1.3rem;
+}
+
+.view-move, .view-move-diary,.view-move-memo {
+	font-size: 1rem;
+}
+
+.right-menu-li:hover {
+	background-color: #bbbbbb7a;
+	border-radius: .5rem;
+}

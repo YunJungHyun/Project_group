@@ -13,6 +13,30 @@
 		
 	</select>
 	
+	<insert id="insertDiary">
+		
+		<![CDATA[
+			
+ 		INSERT INTO `diary_${usercode}`(dtitle, dcontents, writeDay ) 
+				VALUES( #{dtitle}, #{dcontents}, #{writeDay} )
+		]]>
+		
+	</insert>
+	
+	<select id="getAllDiaryList" resultType="diaryVO" parameterType="HashMap">
+	
+		<![CDATA[
+		
+			${sql}
+		]]>
+	</select>
+	<select id="todayWriteCheck" parameterType="HashMap" resultType="int">
+	
+		<![CDATA[
+		
+			${sql}
+		]]>
+	</select>
 </mapper>
 
  

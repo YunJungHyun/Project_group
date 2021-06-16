@@ -18,7 +18,7 @@ public class CalendarDAOImpl implements CalendarDAO{
 
 	private static final String Namespace = "com.spring.mapper.calendarMapper";
 
-
+ 
 
 	@Override
 	public void createPlanner(String usercode) {
@@ -94,7 +94,7 @@ public class CalendarDAOImpl implements CalendarDAO{
 
 		String sql ="SELECT * FROM " 
 				+ "`planner_"+usercode+"`";
-
+		System.out.println("sql :"+sql);
 		map.put("sql", sql);
 		
 		List<CalendarVO> result = sqlSession.selectList(Namespace+".getAllEvent",map);

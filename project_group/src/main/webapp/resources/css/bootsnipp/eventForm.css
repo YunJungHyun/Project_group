@@ -36,8 +36,6 @@ div.logo {
 	fill: #566375;
 }
 
-
-
 .logo-active {
 	fill: #44aacc !important;
 }
@@ -132,6 +130,7 @@ input.form-style {
 	color: #fff;
 	font-weight: bold;
 }
+
 .allDayRadio-group:hover {
 	border-color: #5286F3;
 	transition: 0.2s;
@@ -166,7 +165,7 @@ input.form-style {
 }
 
 .note-pad-icon, .calendar-icon {
-	padding: .5rem 1rem;
+	
 	color: #bbb;
 }
 
@@ -175,16 +174,13 @@ input.form-style {
 }
 
 .color-radio-label {
-	width: 4rem;
 	border-radius: 1rem;
-	height: 1.5rem;
 	margin-top: unset;
 	margin-bottom: 1rem;
 }
 
 .color-radio {
-	 display: none; 
-	
+	display: none;
 }
 
 .form-item.pmemo-box {
@@ -192,8 +188,8 @@ input.form-style {
 	margin-bottom: .5rem;
 }
 
-.form-item.memoBox-show{
-	display : block;
+.form-item.memoBox-show {
+	display: block;
 }
 
 #pmemo {
@@ -212,7 +208,7 @@ input.form-style {
 .allDayRadio-group {
 	border: 1px solid #ccc;
 	border-radius: 2rem;
-	width: 40%;
+	/* width: 40%; */
 }
 
 .allDayRadio-group:fisrt-child {
@@ -226,8 +222,6 @@ input.form-style {
 	border-bottom-right-radius: 2rem;
 }
 
-
-
 .standard-bar {
 	height: 70%;
 	/* margin-top: 5%; */
@@ -239,7 +233,7 @@ input.form-style {
 }
 
 input[name='allDay'] {
-	 display: none 
+	display: none
 }
 
 .radio-label {
