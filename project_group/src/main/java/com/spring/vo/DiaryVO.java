@@ -14,7 +14,8 @@ public class DiaryVO {
 	private int dnum;
 	private String dtitle;
 	private String dcontents;
-	private Timestamp writeDay ;
+	private Timestamp writeDay ;//등록할 날짜
+	private Timestamp regDay ;//등록한 실제 날짜
 	private String picture;
 	
 }

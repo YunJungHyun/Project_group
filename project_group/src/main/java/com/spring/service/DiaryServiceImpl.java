@@ -1,6 +1,7 @@
 package com.spring.service;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -30,14 +31,31 @@ public class DiaryServiceImpl implements DiaryService{
 	}
 	
 	@Override
-	public List<DiaryVO> getAllDiaryList(String usercode) {
+	public List<DiaryVO> getAllDiaryList(String usercode, String sort) {
 		// TODO Auto-generated method stub
-		return diaryDAO.getAllDiaryList(usercode);
+		return diaryDAO.getAllDiaryList(usercode, sort);
 	}
-	
+	 
 	@Override
 	public int todayWriteCheck(DiaryVO diaryVO) {
 		// TODO Auto-generated method stub
 		return diaryDAO.todayWriteCheck(diaryVO);
+	}
+	@Override
+	public int diaryDelete(DiaryVO diaryVO) {
+		// TODO Auto-generated method stub
+		return diaryDAO.diaryDelete(diaryVO);
+	}
+	
+	@Override
+	public int diaryUpdate(DiaryVO diaryVO) {
+		// TODO Auto-generated method stub
+		return  diaryDAO.diaryUpdate(diaryVO);
+	}
+	
+	@Override
+	public List<DiaryVO> getDiaryList(Map<String, String> map) {
+		// TODO Auto-generated method stub
+		return diaryDAO.getDiaryList(map);
 	}
 }

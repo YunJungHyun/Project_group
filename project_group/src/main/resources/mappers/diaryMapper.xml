@@ -17,13 +17,20 @@
 		
 		<![CDATA[
 			
- 		INSERT INTO `diary_${usercode}`(dtitle, dcontents, writeDay ) 
-				VALUES( #{dtitle}, #{dcontents}, #{writeDay} )
+ 		INSERT INTO `diary_${usercode}`(dtitle, dcontents, writeDay,regDay ) 
+				VALUES( #{dtitle}, #{dcontents}, #{writeDay},#{regDay} )
 		]]>
 		
 	</insert>
 	
 	<select id="getAllDiaryList" resultType="diaryVO" parameterType="HashMap">
+	
+		<![CDATA[
+		
+			${sql}
+		]]>
+	</select>
+	<select id="getDiaryList" resultType="diaryVO" parameterType="HashMap">
 	
 		<![CDATA[
 		
@@ -37,6 +44,22 @@
 			${sql}
 		]]>
 	</select>
+	
+	<delete id="diaryDelete" parameterType="HashMap">
+		
+		<![CDATA[
+		
+			${sql}
+		]]>
+	</delete>
+	
+	<update id="diaryUpdate" parameterType="HashMap">
+	
+		<![CDATA[
+		
+			${sql}
+		]]>
+	</update>
 </mapper>
 
  

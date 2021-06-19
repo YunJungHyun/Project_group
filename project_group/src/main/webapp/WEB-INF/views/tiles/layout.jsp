@@ -57,6 +57,7 @@
 		</div> 
 	</div>
 	<div id="mask"></div>
+	
 
 </body>
 
@@ -66,16 +67,7 @@
 <script type="text/javascript">
 
 $(document).on('hidden.bs.modal', '.modal', function (e) {
-		 //console.log('modal close');
-		
-		 
-		/*  $(".form-style").each(function(){
-			 
-			 if($(this).val() !=""){
-				 
-				 $(this).val("");
-			 }
-		 }); */
+	
 		 
 		$(".pmemo-box").removeClass("memoBox-show");
 		

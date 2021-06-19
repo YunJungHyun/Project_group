@@ -32,12 +32,12 @@ public class SignUpController {
 
 	@Inject
 	private UserService userService;
-	
+
 	@Inject
 	private DiaryService diaryService;
 	@Inject
 	private CalendarService calendarService;
-	
+
 	private HttpSession session;
 
 	@RequestMapping(value="/emailCheck")
@@ -108,7 +108,7 @@ public class SignUpController {
 		userVO.setBirth(birth);
 
 		String usercode =random();
-		
+
 		userVO.setUsercode(usercode);
 		int result =userService.signUp(userVO);
 
@@ -124,10 +124,10 @@ public class SignUpController {
 		}
 
 		if(result > 0) {
-			
+
 			diaryService.createDiary(usercode);
 			calendarService.createPlanner(usercode);
-			
+
 			out.println("<script>alert('회원가입 완료 되었습니다'); location.href='/YooNPlanner'</script>");
 
 			out.flush();
@@ -139,26 +139,26 @@ public class SignUpController {
 
 		}
 	} 
-	
+
 	public String random() {
 		//랜덤 숫자 발생
 		String usercode ="s-";
-				
+
 		for(int i = 0 ; i < 10 ; i++) {
 
 			int randomNumber =(int)((Math.random()*10000)%10);
 			String strNumber = Integer.toString(randomNumber);
 			usercode += strNumber;
 		}
-		
+
 		int x= userService.userCodeChk(usercode);
-		
+
 		if(x >=1 ) {
 			return random();
 		}else {
 			return usercode;
 		}
-	
+
 	}
 
 	@RequestMapping(value="/oauthSignUp" , method=RequestMethod.POST)
@@ -212,20 +212,20 @@ public class SignUpController {
 
 
 		if(result >= 1) {
-			
 
-			
+
+
 			calendarService.createPlanner(userVO.getUsercode());
-			
+			diaryService.createDiary(userVO.getUsercode());
 			session.setAttribute("gui", userVO);
-			
+
 			out.println("<script>alert('회원가입 완료 되었습니다'); location.href='/plannerHome'</script>");
 
 			out.flush();
 		}else{
 
 			out.println("<script>alert('회원가입 실패하였습니다.' ); location.href='/YooNPlanner'</script>");
- 
+
 			out.flush();
 
 		}

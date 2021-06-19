@@ -21,23 +21,19 @@
 				<form id="api-reg-form" name="api-reg-form" action="/oauthSignUp" method="POST">
 					
 					
-					<label>
-						<p class="label-txt">NAME</p> 
+					<label class="reg-label">
+						<p class="label-txt label-active">이름</p> 
 						<input type="text" class="signUp-input" id="username" name="username" value="${gui.username}">
-						<div class="line-box">
-							<div class="line"></div>
-						</div>
+						
 					</label>
 					
-					<label>
-						<p class="label-txt">DATE OF BIRTH </p> 
+					<label class="reg-label">
+						<p class="label-txt">생일 </p> 
 						<input type="text" class="signUp-input" id="strBirth" name="strBirth" placeholder="&#8251; 생년월일  8자리를  '-' 없이 입력하세요." value="${gui.birth}">
-						<div class="line-box">
-							<div class="line"></div>
-						</div>
+						
 					</label>
-					<label>
-						<p class="label-txt">GENDER</p> 
+					<label class="reg-label">
+						<p class="label-txt">성별</p> 
 						<div class="reg-radio" >
 					
 						<input type="radio" value="male"  id="male" name="gender" <c:if test="${gui.gender == 'male' }">
@@ -70,13 +66,13 @@
 				</form>
 			</div>
 			<div class="modal-footer signUp-footer">
-				<button type="submit" form="api-reg-form" id="api-reg-form-submit">추가 정보 입력 완료</button>
-				<button type="button" class="cancel"> 취소 </button>
+				<button type="submit" class="reg-btn" form="api-reg-form" id="api-reg-form-submit">추가 정보 입력 완료</button>
+				<button type="button" class="reg-btn" class="cancel"> 취소 </button>
 			</div>
 		</div>
 	</div>
 </div>
- 
+ <script src="/resources/js/sign.js"></script>
  
  
  

@@ -67,12 +67,14 @@
 	})
 	
 	$("#diary-insert-btn").on("click",function(){
-		var nowDate = new Date();
-		var writeDay = null;
-		
-		if(nowDate.format("yyyy년 MM월 dd일") == $("#writeDay").val()){
+		var regDate = new Date();
+		var writeDay = null; 
+		var regDay = null;
+		if(regDate.format("yyyy년 MM월 dd일") == $("#writeDay").val()){
 			
-			writeDay = nowDate.format("yyyy-MM-dd HH:mm:ss");
+			writeDay = regDate.format("yyyy-MM-dd HH:mm:ss");
+			regDay = regDate.format("yyyy-MM-dd HH:mm:ss");
+			
 		}else{
 			var inputDate =$("#writeDay").val();
 			var year =inputDate.split("년");
@@ -82,10 +84,11 @@
 			var inputDate2 = year[0].trim()+"-"+month[0].trim()+"-"+day[0].trim();
 			var d = new Date(inputDate2);
 			writeDay = d.format("yyyy-MM-dd 00:00:00");
+			regDay =regDate.format("yyyy-MM-dd HH:mm:ss");
 		}
-		var testDay = new Date(writeDay);
+		var testDate = new Date(writeDay);
 		
-		if(testDay > nowDate){
+		if(testDate > regDate){
 			alert("일기는 미리 작성 할 수 없습니다. 날짜를 다시 선택해주세요.");
 			return false;
 		}
@@ -128,6 +131,7 @@
 				data :{
 					"usercode" : "${gui.usercode}",
 					"writeDay" :writeDay,
+					"regDay" :regDay,
 					"dtitle" : $("#dtitle").val(),
 					"dcontents" : $("#dcontents").val()
 				},success: function(data){

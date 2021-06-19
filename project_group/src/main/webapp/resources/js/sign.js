@@ -28,9 +28,22 @@ $(document).ready(function(){
 	  var emailRegExp = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 	 
 	  $('.signUp-input').focus(function(){
+	   
 	    $(this).parent().find(".label-txt").addClass('label-active');
+	   
+	  });
+	  $('.email-input').focus(function(){
+	    $(this).parent().parent().children().first().addClass('label-active');
+	   
+	  });
+	  $('.email-input').focusout(function(){
+	     if ($(this).val() == '') {
+	       $(this).parent().parent().children().first().removeClass('label-active');
+	    };
+	   
 	  });
 
+	
 	  $(".signUp-input").focusout(function(){
 	    if ($(this).val() == '') {
 	      $(this).parent().find(".label-txt").removeClass('label-active');
@@ -76,7 +89,7 @@ $(document).ready(function(){
 					 else if(data =="success"){
 					 
 						 $(".idChk-text-box").css("display","block");
-						 $(".idChk-text-box").css("color","blue");
+						 $(".idChk-text-box").css("color","#526df3");
 						 $(".idChk-text").text("※ 사용 가능한 아이디입니다.");
 						 idChk =true;
 					 }

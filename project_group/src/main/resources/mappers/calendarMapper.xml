@@ -52,7 +52,7 @@
 			${sql}
 		]]>
 	
-	</select>
+	</select> 
 	
 	<delete id="deleteEvent" parameterType="HashMap">
 		<![CDATA[

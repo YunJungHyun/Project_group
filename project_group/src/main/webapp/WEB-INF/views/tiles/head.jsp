@@ -13,14 +13,14 @@
 
 <link type="text/css" rel="stylesheet" 	media="screen and (max-width:575px)"  href="<c:url value='resources/css/resp/small.css'/>" />
 <link type="text/css" rel="stylesheet" 	media="screen and (min-width:576px) and (max-width:991px)"  href="<c:url value='resources/css/resp/medium.css'/>" />
-<link type="text/css" rel="stylesheet" 	media="screen and (min-width:991px)"  href="<c:url value='resources/css/resp/large.css'/>" />
+<link type="text/css" rel="stylesheet" 	media="screen and (min-width:992px)"  href="<c:url value='resources/css/resp/large.css'/>" />
 <link type="text/css" rel="stylesheet" href="<c:url value='resources/css/all.css'/>" />
 
 <link type="text/css" rel="stylesheet" href="<c:url value='resources/css/me/login.css'/>" />
 <link type="text/css" rel="stylesheet" href="<c:url value='resources/css/me/menu.css'/>" />
 <link type="text/css" rel="stylesheet" href="<c:url value='resources/css/me/modal.css'/>" />
 <link type="text/css" rel="stylesheet" href="<c:url value='resources/css/me/nav.css'/>" />
-<link type="text/css" rel="stylesheet" href="<c:url value='resources/css/me/signup.css'/>" />
+
 	
 <link type="text/css" rel="stylesheet" href="<c:url value='resources/css/bootsnipp/diary.css'/>" />
 
@@ -33,12 +33,12 @@
 <script src="https://apis.google.com/js/platform.js" async defer></script>
 
 <!-- icon  -->
- <link rel="stylesheet"
+<!--  <link rel="stylesheet"
 	href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" 
 	integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
 	crossorigin="anonymous">
-
-
+ -->
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 <!-- google font  -->
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">

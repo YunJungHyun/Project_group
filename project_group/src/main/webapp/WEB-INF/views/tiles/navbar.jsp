@@ -69,7 +69,7 @@
 					<div class="profile-usertitle">
                 		<div class="profile-usertitle-name" id="profile-username"> 
                 				<c:set var="username" value="${gui.username }" />
-                				<input type="text" id="profile-username-input" disabled="disabled" name="username" value="${gui.username}" size="${fn:length(username)}px" /> 
+                				<input type="text" id="profile-username-input" disabled="disabled" name="username" value="${gui.username}" size="${fn:length(username)+3}px" /> 
                 			<span class="badge badge-light"><i class="fas fa-pencil-alt"></i></span>
                 		</div>
 					</div>
@@ -174,11 +174,11 @@
 	$(".right-menu-btn").on("click",function(){
 		
 		if(!$(".right-menu-side").hasClass("open")){
-			
+			$("#mask").show();
 			$(".right-menu-side").addClass("open");
 			
 		}else{
-			
+			$("#mask").hide();
 			$(".right-menu-side").removeClass("open");
 		}
 		
@@ -418,10 +418,10 @@
 	// 회원 이름 수정
 	
 	$("#profile-username").on("click",function(){
-		
+		var usernameLen =$("#profile-username-input").val().length +3;
 		/* alert($("#profile-username-input").val()); */
 		$("#profile-username-input").attr("disabled",false);
-		$("#profile-username-input").attr("size",$("#profile-username-input").val().length+"px");
+		$("#profile-username-input").attr("size",usernameLen+"px");
 		
 	})
 	

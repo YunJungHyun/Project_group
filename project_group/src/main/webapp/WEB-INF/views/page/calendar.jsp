@@ -11,11 +11,12 @@
 	//var viewPage ="dayGridMonth";
 	
 	$(document).ready(function() { 
+		
 				var calendarEl = document.getElementById('calendar');
 				calendar = new FullCalendar.Calendar(calendarEl, {
 					timeZone : 'local',
 					height : "100%",
-					initialView : "dayGridMonth",
+					initialView : "${viewName}",
 					selectable : true,
 					navLinks : true,
 					selectMirror : true,
