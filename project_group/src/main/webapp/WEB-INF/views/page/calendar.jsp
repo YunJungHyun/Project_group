@@ -37,20 +37,11 @@
 						 
 						
 						modalOption("insert");
-						/* modal 기본 값  */
 						
 						$("#eventModal").modal("show");
 
 					},
 					customButtons:{
-						myCustomButton :{
-							
-							text : '일기 쓰기',
-							click :function(){
-								
-								alert("일기 쓰기 모달");
-							}
-						},
 						eventRegButton: {
 							
 							text : '일정 등록', 
@@ -67,6 +58,31 @@
 					views :{
 						dayGrid : {
 							 titleFormat: function(info){
+								 
+								 $.ajax({
+										
+										url : "/getDiaryWriteDay",
+										success : function(data){
+											//alert(data.length);
+											
+											for (var i = 0 ; i <data.length ; i++){
+												
+												$(".fc-daygrid-day").each(function(){
+													
+													if($(this).attr("data-date")==data[i]){
+														
+														$(this).children().children(".fc-daygrid-day-top").append("<a href='/diaryList' class='diary-write-chk' id='"+data[i]+"'><i class='fas fa-check'></i></a>");
+													}
+												})
+											}
+											
+										 
+										},error :function(){
+											
+											alert("error");
+										}
+									}) 
+								 
 								 
 								var m = info.date.month + 1;
 								return  info.date.year+"년 "+m+"월";
@@ -107,13 +123,11 @@
 						 
 						
 						modalOption("insert");
-						/* modal 기본 값  */
-						
+					
 						$("#eventModal").modal("show");
-
 					},
 					eventSources : [ getAllEvents() ],
-					
+				 
 					
 					eventClick : function(info) {
 
@@ -135,7 +149,7 @@
 
 						}
 						
-						//alert(thisEventId);
+						//alert(color);
 						var startStr = null;
 						var endStr = null;
 						var	startTimeStr =null;
@@ -185,13 +199,16 @@
 						$("#endTime").val(endTimeStr);
 						
 						//color
-						color =rgbToHex(color);
-						
+						var newcolor =rgbToHex(color);
+					 
 						$("input[name='color']").each(function(){
 							
-							if($(this).val() == color){
-								
+							if($(this).val() == newcolor){
+								$(this).parent().css("border" , "3px inset #bbb");
 								$(this).prop("checked", true);
+							} else{
+								
+								$(this).parent().css("border" , "unset");
 							}
 							
 						})
@@ -211,6 +228,9 @@
 						$("#eventModal").addClass("eventUpdate");
 						$("#eventModal").modal("show");
 
+					},eventContent :function(){
+						
+					
 					}
 
 				});
@@ -220,7 +240,9 @@
 				$(".fc-eventRegButton-button").removeClass("fc-button-primary");
 				//이벤트 수정
 				
-
+					
+				
+				 
 			});
 	
 	
@@ -361,7 +383,9 @@
 
 		var usercode = "${gui.usercode}";
 		
-
+		
+		
+		
 		$.ajax({
 
 			url : "/event/getAllEvent/" + usercode,
@@ -545,7 +569,9 @@
 							});
 				})
 				$("#startTime, #endTime").timepicker();
-
+				
+				
+				
 			})
 
 	
@@ -663,7 +689,7 @@
 		        
 		        arr[ x ] = str; 
 		    }); 
-		    
+		  
 		    return "#" + rgb.join( "" ); 
 	}
 	

@@ -133,4 +133,15 @@ public class DiaryDAOImpl implements DiaryDAO{
 		int result = sqlSession.update(Namespace+".diaryUpdate",map);
 		return result;
 	}
+	
+	@Override
+	public List<DiaryVO> getDiaryWriteDay(String usercode) {
+		HashMap map = new HashMap();
+		String sql = "SELECT writeDay FROM `diary_"+usercode+"`";
+		
+		map.put("sql", sql);
+		
+		List<DiaryVO> result = sqlSession.selectList(Namespace+".getDiaryWriteDay",map);
+		return result;
+	}
 }

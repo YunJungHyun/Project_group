@@ -58,4 +58,10 @@ public class DiaryServiceImpl implements DiaryService{
 		// TODO Auto-generated method stub
 		return diaryDAO.getDiaryList(map);
 	}
+	
+	@Override
+	public List<DiaryVO> getDiaryWriteDay(String usercode) {
+		// TODO Auto-generated method stub
+		return diaryDAO.getDiaryWriteDay(usercode);
+	}
 }

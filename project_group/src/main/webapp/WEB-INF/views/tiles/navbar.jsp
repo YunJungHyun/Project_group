@@ -22,7 +22,7 @@
 			</div>
 			<div class="">
 				<div class="right-menu-btn" >
-					<img src="resources/icon/group.png"/>
+					<img src="resources/icon/menu.png"/>
 				</div>
 			</div>
 		

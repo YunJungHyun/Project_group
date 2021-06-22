@@ -4,7 +4,10 @@
 .modal-dialog {
 	margin: 2rem 1rem;
 }
-
+.planner, .diary {
+	background-color: #fff;
+	height: calc(100vh - 3rem);
+}
 .signUp-title {
 	font-size: 1rem;
 }
@@ -53,8 +56,9 @@
 	box-shadow: 0px 0px 21px 2px rgb(0 0 0/ 44%);
 }
 
-.planner .diary {
+.profile-img>img{
 	
+	height : 10rem;
 }
 
 .fc .fc-toolbar.fc-header-toolbar {
@@ -65,7 +69,7 @@
 	text-transform: uppercase;
 	font-size: 1vw;
 	padding: 6px 15px;
-	font-weight: 600;
+	
 }
 
 .fc .fc-toolbar {
@@ -187,4 +191,20 @@ button.profile-update-btn, button.pw-update-btn {
 
 form#eventForm>div {
 	font-size: 3vw;
+}
+
+.diary-contents{
+	
+	font-size : 4vw;
+}
+
+.regDay-box {
+	
+	font-size : 1vw;
+}
+
+
+.d-list-writeDay {
+	font-size : 1vh;
+	
 }

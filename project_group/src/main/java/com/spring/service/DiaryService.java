@@ -19,6 +19,8 @@ public interface DiaryService {
 
 	int diaryUpdate(DiaryVO diaryVO);
 
-	List<DiaryVO> getDiaryList(Map<String, String> map); 
+	List<DiaryVO> getDiaryList(Map<String, String> map);
+
+	List<DiaryVO> getDiaryWriteDay(String usercode); 
 
 }

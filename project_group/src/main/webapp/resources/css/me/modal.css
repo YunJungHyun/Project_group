@@ -2,12 +2,11 @@
 
 .modal {
 	padding-left: unset;
-	
 }
-.modal-dialog{
+/* .modal-dialog{
 	
 	height : 100%;
-}
+} */
 
 /* 회원가입 모달  */
 .reg-label {
@@ -185,12 +184,12 @@ input.signUp-input.email-check-input {
 
 #mask {
 	display: none;
-	z-index: 28; 
+	z-index: 28;
 	position: fixed;
 	width: 100%;
 	height: 100%;
 	left: 0;
-	top: 0; 
+	top: 0;
 	background-color: rgba(0, 0, 0, 0.4);
 	overflow-x: hidden;
 }
@@ -328,8 +327,6 @@ input.signUp-input.email-check-input {
 
 .profile-userbuttons button {
 	text-transform: uppercase;
-	
-	font-weight: 600;
 	padding: 6px 15px
 }
 
@@ -353,7 +350,7 @@ input.signUp-input.email-check-input {
 
 .profile-input {
 	width: 100%;
-	padding:1vw;
+	padding: 1vw;
 	background: transparent;
 	border: none;
 	outline: none;
@@ -379,7 +376,7 @@ input.signUp-input.email-check-input {
 
 .profile-update-btn-box {
 	width: 100%;
-	padding : 1vw;
+	padding: 1vw;
 }
 
 .profile-update-btn, .pw-update-btn {
@@ -400,25 +397,22 @@ input.signUp-input.email-check-input {
 }
 
 .profileImg-update-btn>button {
-   
-    border: unset;
-    border-radius: .25rem;
-    color: #fff;
-    background-color: #526df3;
+	border: unset;
+	border-radius: .25rem;
+	color: #fff;
+	background-color: #526df3;
 }
 
 #profileImg-collapse {
 	text-align: center;
-	
 }
 
-button.profile-update-btn, button.pw-update-btn{
-	
-
-    border: unset;
-    border-radius: .25rem;
-    color: #fff;
-    padding: .5rem 1rem;
+button.profile-update-btn, button.pw-update-btn {
+	border: unset;
+	border-radius: .25rem;
+	color: #fff;
+	padding: .5rem 1rem;
+	background-color: #526df3;
 }
 /* 회원 프로필 모달 끝  */
 
@@ -429,6 +423,7 @@ button.profile-update-btn, button.pw-update-btn{
 
 .event-pop-body {
 	/* padding: 0rem 2rem; */
+	
 }
 
 .event-pop-footer {

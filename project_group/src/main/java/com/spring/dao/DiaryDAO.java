@@ -21,5 +21,7 @@ public interface DiaryDAO {
 
 	List<DiaryVO> getDiaryList(Map<String, String> map);
 
+	List<DiaryVO> getDiaryWriteDay(String usercode);
+
 
 }

@@ -60,6 +60,13 @@
 			${sql}
 		]]>
 	</update>
+	
+	<select id="getDiaryWriteDay" parameterType="HashMap" resultType="diaryVO">
+		<![CDATA[
+		
+			${sql}
+		]]>
+	</select>
 </mapper>
 
  

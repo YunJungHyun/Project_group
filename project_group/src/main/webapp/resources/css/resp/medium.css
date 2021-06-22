@@ -1,5 +1,12 @@
 @charset "UTF-8";
 
+.diary {
+	font-size: 1rem;
+}
+.planner, .diary {
+	background-color: #fff;
+	height: calc(100vh - 3rem);
+}
 /* signUp medium  */
 .modal-dialog {
 	margin: 2rem auto;
@@ -17,7 +24,6 @@
 	font-size: 1rem;
 }
 /* signUp medium end */
-
 .calendar-container.container {
 	padding: unset;
 }
@@ -59,10 +65,12 @@
 
 .profile-userbuttons button {
 	text-transform: uppercase;
-	font-size: 1vw;
-	font-weight: 600;
+	font-size: 1.5vw;
 	padding: 6px 15px;
-	font-weight: 600;
+}
+
+.profile-img>img {
+	max-height: 15rem;
 }
 
 .fc .fc-toolbar {
@@ -140,7 +148,7 @@
 }
 
 .profileImg-update-btn>button {
-	font-size: 1vw;
+	font-size: 1.5vw;
 	margin: 0px;
 	padding: .5rem 1rem;
 }
@@ -152,7 +160,7 @@
 }
 
 .col-form-label {
-	font-size: 1vw;
+	font-size: 2vw;
 	padding-right: 0px;
 	padding-left: 0px;
 	line-height: 2;
@@ -182,4 +190,24 @@ button.profile-update-btn, button.pw-update-btn {
 
 form#eventForm>div {
 	font-size: 3vw;
+}
+
+.diary-contents {
+	font-size: 2vw;
+}
+
+.regDay-box {
+	font-size: 1rem;
+}
+
+.d-list-writeDay {
+	font-size: 1rem;
+}
+
+.diary-title-box {
+	font-size: 1rem;
+}
+
+.d-list-title {
+	font-size: 1rem;
 }

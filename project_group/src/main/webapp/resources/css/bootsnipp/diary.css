@@ -1,5 +1,18 @@
 @charset "UTF-8";
 
+.diary-write-chk {
+	z-index: 4;
+	position: absolute;
+	left: 0;
+    display: inline-flex;
+    font-size: 1vw;
+}
+
+.fas.fa-check {
+	padding: 1px .25rem;
+	color: green;
+}
+
 .diary-container {
 	padding: unset;
 	font-size: .75rem;
@@ -43,10 +56,11 @@ label.diary-label {
 	border: unset;
 	border-radius: .25rem;
 }
-.diary-update-btn-group >button{
-	
-	margin : 0px .5rem;
+
+.diary-update-btn-group>button {
+	margin: 0px .5rem;
 }
+
 .diary-btn-group {
 	margin: 1rem auto;
 }
@@ -97,7 +111,7 @@ label.diary-label {
 
 .d-list-writeDay {
 	overflow: hidden;
-	font-size: 1vh;
+	
 	text-align: right;
 	white-space: nowrap;
 }
@@ -135,7 +149,7 @@ label.diary-label {
 
 .regDay-box {
 	text-align: right;
-	font-size: 1vw;
+
 }
 
 .regDay-line {
@@ -153,7 +167,7 @@ label.diary-label {
 
 .diary-contents {
 	padding: .25rem;
-	font-size: 4vw;
+	/* font-size: 4vw; */
 	font-family: 'Sunflower';
 }
 

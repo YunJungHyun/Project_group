@@ -42,6 +42,7 @@
 
 .brand-name {
 	text-align: center;
+	cursor: pointer;
 }
 
 .brand-name>h6 {

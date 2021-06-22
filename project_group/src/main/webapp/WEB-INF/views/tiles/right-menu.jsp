@@ -22,13 +22,7 @@
 				<a href="/diaryList" id="diaryList" class="view-move-diary">일기 목록 보기</a></li>
 		</ul>		
 	</div>
-	<div class="right-menu-list list-number-3">
-		<span class="right-menu-list-title">메모</span>
-		<ul class="right-menu-ul">
-			<li class="right-menu-li write-memo">
-				<a href="#" class="view-move-memo">메모 쓰기</a></li>
-		</ul>		
-	</div>
+	 
 </div>
 
 <script>
