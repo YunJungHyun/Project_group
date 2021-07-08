@@ -22,6 +22,13 @@
 				<a href="/diaryList" id="diaryList" class="view-move-diary">일기 목록 보기</a></li>
 		</ul>		
 	</div>
+	<div class="right-menu-list list-number-3">
+		<span class="right-menu-list-title">회원</span>
+		<ul class="right-menu-ul">
+			<li class="right-menu-li write-diary">
+				<a href="/userSecession"  class="userSecession-btn" >회원 탈퇴</a></li>
+		</ul>		
+	</div>
 	 
 </div>
 
@@ -32,5 +39,8 @@ $(document).on("click","#mask",function(){
 	$(".right-menu-side").removeClass("open");
 	$("#mask").hide();
 })
+
+
+
   
 </script>

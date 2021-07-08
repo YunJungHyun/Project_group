@@ -28,5 +28,9 @@ public interface UserDAO {
 
 	int updateProfileImg(UserVO userVO);
 
+	int secessionPwChk(String inputpw, String userid);
+
+	void userDelete(UserVO gui);
+
 
 }

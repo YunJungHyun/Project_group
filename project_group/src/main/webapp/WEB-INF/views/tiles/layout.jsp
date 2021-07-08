@@ -8,7 +8,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 <tiles:insertAttribute name="head" />
 <title>YooNPlanner - ${title}</title>
@@ -16,20 +17,20 @@
 <!-- 외부 css  -->
 </head>
 <body>
-	
-	
-	
+
+
+
 
 
 	<!-- jquery 4.3.1 js  -->
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-	
-	<script src="resources/js/jquery-ui.min.js"></script> 
-	<script src="resources/js/timepicker.js"></script> 
-	<script src="resources/js/fullcalendar.js" charset="euc-kr"></script> 
 
-	
+	<script src="resources/js/jquery-ui.min.js"></script>
+	<script src="resources/js/timepicker.js"></script>
+	<script src="resources/js/fullcalendar.js" charset="euc-kr"></script>
+
+
 
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
@@ -45,7 +46,8 @@
 
 
 	<div class="view">
-		<c:if test="${title == 'HOME' || title == 'CALENDAR' || title =='DIARY'}">
+		<c:if
+			test="${title == 'HOME' || title == 'CALENDAR' || title =='DIARY' || title=='USER'}">
 			<tiles:insertAttribute name="navbar" />
 		</c:if>
 		<div class="main-content ${title}">
@@ -54,10 +56,10 @@
 		</div>
 		<div class="right-menu-side">
 			<tiles:insertAttribute name="right-menu" />
-		</div> 
+		</div>
 	</div>
 	<div id="mask"></div>
-	
+
 
 </body>
 
@@ -65,6 +67,8 @@
 </html>
 
 <script type="text/javascript">
+
+
 
 $(document).on('hidden.bs.modal', '.modal', function (e) {
 	

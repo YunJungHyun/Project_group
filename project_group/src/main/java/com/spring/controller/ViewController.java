@@ -161,4 +161,25 @@ public class ViewController {
 		return dlist;
 	}
 	
+	@RequestMapping(value="/userSecession")
+	public String userSecession(
+			HttpSession session,
+			Model model
+			
+			){
+		
+			UserVO gui = (UserVO)session.getAttribute("gui");
+		
+		if(gui == null) {
+			
+			return "redirect:/YooNPlanner";
+		}else {
+			model.addAttribute("title","USER");
+			
+			return "secession.page";
+		}
+	
+		
+	}
+	
 }

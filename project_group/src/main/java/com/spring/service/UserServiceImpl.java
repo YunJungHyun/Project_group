@@ -84,4 +84,16 @@ public class UserServiceImpl implements UserService {
 		// TODO Auto-generated method stub
 		return userDAO.updateProfileImg(userVO);
 	}
+	
+	@Override
+	public int secessionPwChk(String inputpw, String userid) {
+		// TODO Auto-generated method stub
+		return userDAO.secessionPwChk(inputpw , userid);
+	}
+	
+	@Override
+	public void userDelete(UserVO gui) { 
+	
+		userDAO.userDelete(gui);
+	}
 }	

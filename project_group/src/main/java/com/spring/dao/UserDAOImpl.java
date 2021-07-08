@@ -94,4 +94,50 @@ public class UserDAOImpl implements UserDAO {
 		int result =sqlSession.update(Namespace+".updateProfileImg",userVO);
 		return result;
 	}
+	
+	@Override
+	public int secessionPwChk(String inputpw, String userid) {
+		HashMap map = new HashMap();
+		
+		String sql = "SELECT COUNT(*) FROM user"
+					+ " WHERE userid = '"+userid+"'"
+					+ " AND userpw = '"+inputpw+"'";
+		
+		map.put("sql", sql);
+		
+		int result = sqlSession.selectOne(Namespace+".secessionPwChk", map);
+	
+		return result;
+	}
+	
+	@Override
+	public void userDelete(UserVO gui) {
+		
+		HashMap map1 = new HashMap();
+		
+		String sql1 = "DROP TABLE `diary_"+gui.getUsercode()+"`";
+		
+		map1.put("sql", sql1);
+		
+		HashMap map2 = new HashMap();
+		
+		String sql2 = "DROP TABLE `planner_"+gui.getUsercode()+"`";
+		
+		map2.put("sql", sql2);
+		
+		HashMap map3 = new HashMap();
+		
+		String sql3 = "DELETE FROM user"
+					+" WHERE usercode = '"+gui.getUsercode()+"'";
+		
+		
+		
+		map3.put("sql", sql3);
+		
+		
+		sqlSession.insert(Namespace+".userDeleteDiary", map1);
+		sqlSession.insert(Namespace+".userDeletePlanner", map2);
+		sqlSession.insert(Namespace+".userDelete", map3);
+		
+	}
 }

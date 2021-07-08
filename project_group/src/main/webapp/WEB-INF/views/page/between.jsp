@@ -67,7 +67,7 @@
 			</div>
 			<div class="modal-footer signUp-footer">
 				<button type="submit" class="reg-btn" form="api-reg-form" id="api-reg-form-submit">추가 정보 입력 완료</button>
-				<button type="button" class="reg-btn" class="cancel"> 취소 </button>
+				<button type="button" class="reg-btn cancel" id="reg-cancel"> 취소 </button>
 			</div>
 		</div>
 	</div>
@@ -248,6 +248,12 @@
  			
 		 		
  			})
+ 			
+ 		$("#reg-cancel").on("click",function(){
+ 			
+ 			
+ 			location.href="/YooNPlanner";
+ 		})
  	})
  
  

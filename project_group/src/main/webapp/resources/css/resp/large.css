@@ -5,7 +5,7 @@
 }
 /* signUp medium  */
 .modal-dialog {
-	margin: 2rem auto;
+	margin: 10vh auto;
 }
 
 .signUp-title {
@@ -39,10 +39,11 @@
 	height: 3rem;
 }
 
-.planner, .diary {
+.planner, .diary, .secession {
 	background-color: #fff;
 	height: calc(100vh - 4rem);
 }
+
 .right-menu-side {
 	top: 4rem;
 	height: calc(100vh - 4rem);
@@ -76,7 +77,6 @@
 .fc .fc-toolbar-title {
 	font-size: 1rem;
 	line-height: 1.4;
-	font-weight: bold;
 	letter-spacing: 2px;
 	padding: .25rem;
 }
@@ -95,7 +95,6 @@
 .fc-toolbar-chunk:nth-child(3)>.fc-button {
 	color: black;
 	padding: .25rem .5rem;
-	font-weight: bold;
 }
 
 .fc .fc-button-primary {
@@ -147,10 +146,10 @@
 	
 }
 
-.profile-img>img{
-	
-	max-height: 15rem;
+.profile-img {
+	height: 15rem;
 }
+
 .col-form-label {
 	font-size: 1rem;
 	padding-right: 0px;
